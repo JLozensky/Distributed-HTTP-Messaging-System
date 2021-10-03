@@ -5,7 +5,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebServlet(name = "ResortsServlet", value = "/ResortsServlet")
+@WebServlet(name = "ResortsServlet", value = "/resorts")
 public class ResortsServlet extends HttpServlet {
 
     @Override
