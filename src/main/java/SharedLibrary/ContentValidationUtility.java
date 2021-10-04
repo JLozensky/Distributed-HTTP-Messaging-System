@@ -5,9 +5,9 @@ import java.time.format.DateTimeFormatterBuilder;
 import java.util.Calendar;
 import jdk.jfr.StackTrace;
 
-public final class contentValidationUtility {
+public final class ContentValidationUtility {
 
-    private contentValidationUtility(){}
+    private ContentValidationUtility(){}
 
     public static boolean isResort(String resortId) {
         return isInt(resortId);

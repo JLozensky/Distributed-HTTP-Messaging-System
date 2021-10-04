@@ -6,9 +6,19 @@ public class Resorts {
     private ArrayList<Resort> resortsList;
 
 
-    public Resorts() {
+    public Resorts(ArrayList<Resort> resorts) {
+        this.resortsList = resorts;
     }
 
+    public Resorts() {
+        this.resortsList = new ArrayList<Resort>();
+    }
 
-    public void addResort(){}
+    public ArrayList<Resort> getResorts(){
+        return this.resortsList;
+    }
+
+    public void addResort(Resort resort){
+        this.resortsList.add(resort);
+    }
 }

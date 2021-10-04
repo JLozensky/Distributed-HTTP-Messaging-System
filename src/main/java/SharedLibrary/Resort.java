@@ -15,4 +15,12 @@ public class Resort {
         this.seasons = seasons;
         this.vertMeasure = vertMeasure;
     }
+
+    public String getResortName() {
+        return this.resortName;
+    }
+
+    public int getResortId() {
+        return this.resortId;
+    }
 }
