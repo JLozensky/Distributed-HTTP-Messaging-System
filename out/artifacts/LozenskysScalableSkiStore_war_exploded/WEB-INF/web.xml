@@ -8,6 +8,7 @@
   <servlet>
     <servlet-name>SkiersServlet</servlet-name>
     <servlet-class>Server.SkiersServlet</servlet-class>
+    <async-supported>true</async-supported>
   </servlet>
 
   <servlet-mapping>
@@ -18,6 +19,7 @@
   <servlet>
     <servlet-name>ResortsServlet</servlet-name>
     <servlet-class>Server.ResortsServlet</servlet-class>
+    <async-supported>true</async-supported>
   </servlet>
 
   <servlet-mapping>

@@ -6,17 +6,21 @@ import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import javax.servlet.AsyncContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class SkierGetEvaluator implements Runnable {
 
     private HttpServletResponse response;
-    private HttpServletRequest request;
+    private AsyncContext asyncContext;
+    private String urlPath;
+    private String query;
     private String resortId = null;
-    private ArrayList<String> seasonIds = null;
+    private ArrayList<String> seasonIds;
     private String dayId = null;
     private String skierId = null;
     private String resortName = null;
@@ -25,9 +29,12 @@ public class SkierGetEvaluator implements Runnable {
     // message later to inform the client what was incorrect
     private PrintWriter printWriter;
 
-    public SkierGetEvaluator(HttpServletRequest request, HttpServletResponse response){
+    public SkierGetEvaluator(HttpServletRequest request, HttpServletResponse response, AsyncContext asyncContext){
         this.response = response;
-        this.request = request;
+        this.asyncContext = asyncContext;
+        this.urlPath = request.getPathInfo();
+        this.query = request.getQueryString();
+        this.seasonIds = new ArrayList<>();
         try {
             this.printWriter = response.getWriter();
         } catch (IOException e) {
@@ -47,16 +54,15 @@ public class SkierGetEvaluator implements Runnable {
      */
     @Override
     public void run() {
-        this.response.setContentType("application/json");
-        String urlPath = this.request.getPathInfo();
+        this.response.setContentType("text/plain");
         // check we have a URL!
-        if (urlPath == null || urlPath.isEmpty()) {
+        if (this.urlPath == null || this.urlPath.isEmpty()) {
             StatusCodes.setIncorrectPath(this.response);
             this.writeToClient(MISSING_PARAM);
             return;
         }
 
-        String[] urlParts = urlPath.split("/");
+        String[] urlParts = this.urlPath.split("/");
         // and now validate url path and return the response status code
         // (and maybe also some value if input is valid)
 
@@ -91,26 +97,24 @@ public class SkierGetEvaluator implements Runnable {
 
     private void errorInvalidParameters() {
         StatusCodes.setInvalidInputs(this.response);
-        this.writeToClient( new Gson().toJson(INVALID_PARAM));
+        this.writeToClient(INVALID_PARAM);
     }
 
     private void errorMissingParameters() {
         StatusCodes.setIncorrectPath(this.response);
-        this.writeToClient(new Gson().toJson(MISSING_PARAM));
+        this.writeToClient(MISSING_PARAM);
     }
     private void doVerticalDayGet() {
         Integer DUMMY_VERT = 697;
         StatusCodes.setRequestSuccess(this.response);
-        this.response.setCharacterEncoding("UTF-8");
-        String answer = new Gson().toJson(DUMMY_VERT);
+        String answer = DUMMY_VERT.toString();
         this.writeToClient(answer);
     }
 
     private void doVerticalSeasonGet(){
         Integer DUMMY_VERT = 539504;
+        String answer = DUMMY_VERT.toString();
         StatusCodes.setRequestSuccess(this.response);
-        this.response.setCharacterEncoding("UTF-8");
-        String answer = new Gson().toJson(DUMMY_VERT);
         this.writeToClient(answer);
     }
 
@@ -131,6 +135,23 @@ public class SkierGetEvaluator implements Runnable {
         this.skierId = skierId;
     }
 
+    public HashMap<String,String> createQueryMap(String string) {
+        if (this.query == null || this.query.isEmpty() || this.query.isBlank()){
+            return null;
+        }
+        String[] queryParts = this.query.split("=");
+        HashMap<String,String> queryMap = new HashMap<>();
+        String curKey = "";
+        for (int i = 0; i < queryParts.length; i++) {
+            if (i % 2 == 0) {
+                curKey = queryParts[i];
+            } else {
+                queryMap.put(curKey,queryParts[i]);
+            }
+        }
+        return queryMap;
+    }
+
     public void setResortName(String resortName) {
         this.resortName = resortName;
     }
@@ -147,14 +168,17 @@ public class SkierGetEvaluator implements Runnable {
         int skierIdIndex = 1;
         String resortParamKey = "resort";
         String seasonParamKey = "season";
-        String resName = request.getParameter(resortParamKey);
-        this.setResortName(resName);
+        HashMap<String, String> queryMap = this.createQueryMap(this.query);
 
         if (
             ContentValidationUtility.isSkier(urlParts[skierIdIndex]) &&
-            this.resortName != null
+            queryMap != null &&
+            queryMap.containsKey(resortParamKey)
         ) {
-            this.addSeasonId(request.getParameter("season"));
+            this.setResortName(queryMap.get(resortParamKey));
+            if (queryMap.containsKey(seasonParamKey)) {
+            this.addSeasonId(queryMap.get(seasonParamKey));
+            }
             return true;
         }
         return false;
@@ -196,7 +220,8 @@ public class SkierGetEvaluator implements Runnable {
 
     private void writeToClient(String text) {
             this.printWriter.write(text);
-//            this.printWriter.flush();
+            this.printWriter.flush();
+            asyncContext.complete();
     }
 
 }

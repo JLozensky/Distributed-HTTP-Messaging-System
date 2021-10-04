@@ -1,5 +1,6 @@
 package SharedLibrary;
 
+import java.time.Year;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.util.Calendar;
@@ -19,7 +20,7 @@ public final class ContentValidationUtility {
             return false;
         }
         int seasonYear = Integer.parseInt(season);
-        int curYear = Calendar.YEAR;
+        int curYear = Year.now().getValue();
         if (seasonYear > curYear || seasonYear < 0) {
             return false;
         }
