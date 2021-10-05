@@ -1,8 +1,6 @@
 package Server;
 
-import SharedLibrary.StatusCodes;
-import java.io.PrintWriter;
-import java.util.Map;
+import java.util.concurrent.FutureTask;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
@@ -16,9 +14,8 @@ public class SkiersServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
         final AsyncContext asyncContext = request.startAsync(request, response);
-
-        SkierGetEvaluator evaluator = new SkierGetEvaluator(request, response, asyncContext);
-//        SkierGetEvaluator evaluator = new SkierGetEvaluator(request.getPathInfo(), request.getQueryString(), response);
+        SkiersGetEvaluator skiersGetEvaluator = new SkiersGetEvaluator(request, response, asyncContext);
+        FutureTask<Boolean> evaluator = new FutureTask<Boolean>(skiersGetEvaluator);
         threadPool.runOnThread(evaluator);
 //        response.setContentType("plain/text");
 //        response.setStatus(200);
@@ -32,12 +29,9 @@ public class SkiersServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
-
-    }
-
-    private boolean validUrl(String[] urlPath) {
-
-
-        return false;
+        final AsyncContext asyncContext = request.startAsync(request, response);
+        SkiersPostEvaluator skiersPostEvaluator = new SkiersPostEvaluator(request, response, asyncContext);
+        FutureTask<Boolean> evaluator = new FutureTask<Boolean>(skiersPostEvaluator);
+        threadPool.runOnThread(evaluator);
     }
 }
