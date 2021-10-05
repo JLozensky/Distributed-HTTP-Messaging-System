@@ -36,11 +36,10 @@ public class SkiersPostEvaluator extends SkiersEvaluator {
     private boolean validateWriteLiftRideBody() {
         try {
             this.liftRide = gson.fromJson(super.request.getReader(), LiftRide.class);
-            if (!this.liftRide.isValid()) {return false;}
+            return this.liftRide.isValid();
         } catch (Exception e) {
             return false;
         }
-        return true;
     }
 
     private boolean doWriteSkiDay() {
