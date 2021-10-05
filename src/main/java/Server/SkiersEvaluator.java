@@ -29,10 +29,9 @@ public abstract class SkiersEvaluator extends Evaluator {
      * @return true if it is a valid url request, otherwise false
      */
     protected boolean validateLiftRideAndSkierDay() {
-        if (super.urlParts.length < 8){
+        if (!super.validateUrlSize(8)){
             return false;
         }
-
         int resortIdIndex = 1;
         int seasonsText = 2;
         int seasonIdIndex = 3;
@@ -40,7 +39,6 @@ public abstract class SkiersEvaluator extends Evaluator {
         int dayIdIndex = 5;
         int skiersText = 6;
         int skierIdIndex = 7;
-
         if (
             ContentValidationUtility.isResort(super.urlParts[resortIdIndex]) &&
                 super.urlParts[seasonsText].equals("seasons") &&

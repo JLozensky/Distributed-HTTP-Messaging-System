@@ -2,18 +2,13 @@ package SharedLibrary;
 
 import java.util.ArrayList;
 
-public class Resort {
+public class ResortLite {
     private int resortId;
-    private ArrayList<String> seasons;
     private String resortName;
-    private int vertMeasure;
 
-    // do std dist between 500 and 4500 for vertMeasure
-    public Resort(String resortName, int resortId, ArrayList<String> seasons, int vertMeasure) {
+    public ResortLite(String resortName, int resortId) {
         this.resortName = resortName;
         this.resortId = resortId;
-        this.seasons = seasons;
-        this.vertMeasure = vertMeasure;
     }
 
     public String getResortName() {
@@ -23,4 +18,8 @@ public class Resort {
     public int getResortId() {
         return this.resortId;
     }
+
+    public void setResortName(String name) { this.resortName = name; }
+
+    public void setResortId(int id) { this.resortId = id; }
 }

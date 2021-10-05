@@ -34,7 +34,7 @@ public abstract class Evaluator implements Callable<Boolean> {
         }
 
         if (this.urlPath == null || this.urlPath.isEmpty()) {
-            this.errorMissingParameters();
+            this.urlParts = null;
         } else {
             this.urlParts = this.urlPath.split("/");
         }
@@ -91,6 +91,7 @@ public abstract class Evaluator implements Callable<Boolean> {
     }
 
     protected boolean validateUrlSize(int numSegmentsRequired) {
+        if (urlParts == null) {return numSegmentsRequired == 0;}
         if (this.urlParts.length == numSegmentsRequired) { return true; }
         if (this.urlParts.length < numSegmentsRequired) { return this.errorMissingParameters(); }
         return this.errorInvalidParameters();

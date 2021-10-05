@@ -25,9 +25,8 @@ public class SkiersPostEvaluator extends SkiersEvaluator {
      */
     @Override
     public Boolean call() {
-        if (!super.validateUrlSize(urlCountPostSkiDay)){ return false; }
+        if (!super.validateUrlSize(this.urlCountPostSkiDay)){ return false; }
         if (super.validateLiftRideAndSkierDay() && this.validateWriteLiftRideBody()) {
-
             return doWriteSkiDay();
         } else {
             return super.errorInvalidParameters();
@@ -36,9 +35,9 @@ public class SkiersPostEvaluator extends SkiersEvaluator {
 
     private boolean validateWriteLiftRideBody() {
         try {
-            super.request.getReader();
             this.liftRide = gson.fromJson(super.request.getReader(), LiftRide.class);
-        } catch (IOException e) {
+            if (!this.liftRide.isValid()) {return false;}
+        } catch (Exception e) {
             return false;
         }
         return true;

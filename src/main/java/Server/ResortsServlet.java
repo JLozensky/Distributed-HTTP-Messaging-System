@@ -15,8 +15,8 @@ public class ResortsServlet extends HttpServlet {
         throws ServletException, IOException {
         final AsyncContext asyncContext = request.startAsync(request, response);
 
-        ResortsPostEvaluator resortsPostEvaluator = new ResortsPostEvaluator(request, response, asyncContext);
-        FutureTask<Boolean> evaluator = new FutureTask<Boolean>(resortsPostEvaluator);
+        ResortsGetEvaluator resortsGetEvaluator = new ResortsGetEvaluator(request, response, asyncContext);
+        FutureTask<Boolean> evaluator = new FutureTask<Boolean>(resortsGetEvaluator);
         threadPool.runOnThread(evaluator);
     }
 
@@ -25,8 +25,8 @@ public class ResortsServlet extends HttpServlet {
         throws ServletException, IOException {
         final AsyncContext asyncContext = request.startAsync(request, response);
 
-        SkiersPostEvaluator skiersPostEvaluator = new SkiersPostEvaluator(request, response, asyncContext);
-        FutureTask<Boolean> evaluator = new FutureTask<Boolean>(skiersPostEvaluator);
+        ResortsPostEvaluator resortsPostEvaluator = new ResortsPostEvaluator(request, response, asyncContext);
+        FutureTask<Boolean> evaluator = new FutureTask<Boolean>(resortsPostEvaluator);
         threadPool.runOnThread(evaluator);
     }
 }

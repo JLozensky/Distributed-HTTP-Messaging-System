@@ -1,10 +1,10 @@
 package SharedLibrary;
 
 public class LiftRide {
-    private int time;
-    private int liftID;
+    private Integer time;
+    private Integer liftID;
 
-    public LiftRide(int time, int liftID) {
+    public LiftRide(Integer time, Integer liftID) {
         this.time = time;
         this.liftID = liftID;
     }
@@ -23,5 +23,10 @@ public class LiftRide {
 
     public void setLiftID(int liftID) {
         this.liftID = liftID;
+    }
+
+    public boolean isValid(){
+        if (this.liftID == null || this.time == null){ return false; }
+        return true;
     }
 }
