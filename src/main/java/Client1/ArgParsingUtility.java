@@ -5,8 +5,6 @@ import java.io.Console;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.function.Consumer;
-import java.util.function.Supplier;
 
 public class ArgParsingUtility {
     private static final int THREAD_MAX= 256;
@@ -52,7 +50,7 @@ public class ArgParsingUtility {
         this.put("-p","");
     }};
 
-    public static Client makeClient(String[] args){
+    public static ClientOne makeClient(String[] args){
         // Create default values list
         HashMap<String, String> clientValues = ArgParsingUtility.getStartingValues();
 
@@ -88,16 +86,17 @@ public class ArgParsingUtility {
             }
         }
 
-        return new Client(clientValues.get("-t"),clientValues.get("-s"),clientValues.get("-l"),clientValues.get("-ml")
-            ,clientValues.get("-ip"),clientValues.get("-p"));
+        return new ClientOne(Integer.parseInt(clientValues.get("-t")) ,Integer.parseInt(clientValues.get("-s")),
+            Integer.parseInt(clientValues.get("-l")) ,Integer.parseInt(clientValues.get("-ml")),
+            clientValues.get("-ip"), clientValues.get("-p"));
     }
 
 
-    public static HashMap<String,String> getStartingValues(){
+    private static HashMap<String,String> getStartingValues(){
         return startingValues;
     }
 
-    public static String errorMessageGenerator(){
+    private static String errorMessageGenerator(){
         StringBuilder sb = new StringBuilder();
         sb.append("One or more arguments were entered incorrectly.\nBelow is the full list of flags, only one "
                       + "argument is accepted per flag:\n\n");
@@ -109,7 +108,7 @@ public class ArgParsingUtility {
     }
 
 
-    public static String errorMessageGenerator(String flag, String curArg){
+    private static String errorMessageGenerator(String flag, String curArg){
         StringBuilder sb = new StringBuilder();
         if (curArg != null) {
             sb.append("The value ");
@@ -123,17 +122,16 @@ public class ArgParsingUtility {
         sb.append(errorMessages.get(flag));
         sb.append('\n');
         return sb.toString();
-
     }
 
 
-    public static boolean validateEntry(String flag, String arg){
+    private static boolean validateEntry(String flag, String arg){
         switch(flag) {
-            case "-nt":
+            case "-t":
                 return ContentValidationUtility.numInRange(arg,1,THREAD_MAX);
-            case "-ns":
+            case "-s":
                 return ContentValidationUtility.numInRange(arg,1,SKIER_MAX); // numSkier
-            case "-nl":
+            case "-l":
                 return ContentValidationUtility.numInRange(arg,LIFT_MIN,LIFT_MAX); // numLifts
             case "-ml":
                 return ContentValidationUtility.numInRange(arg,1,MEAN_LIFT_MAX); // meanLifts

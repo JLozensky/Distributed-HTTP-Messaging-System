@@ -61,6 +61,9 @@ public final class ContentValidationUtility {
         return validator.isValid(ip);
     }
 
+    public static boolean divisibleBy(int dividend, int divisor){
+        return dividend % divisor == 0;
+    }
 
     public static boolean validatePort(String port) {
         return numInRange(port,0,65535);
