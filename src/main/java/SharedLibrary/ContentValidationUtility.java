@@ -5,6 +5,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.util.Calendar;
 import jdk.jfr.StackTrace;
+import org.apache.commons.validator.routines.InetAddressValidator;
 
 public final class ContentValidationUtility {
 
@@ -31,18 +32,19 @@ public final class ContentValidationUtility {
         return isInt(skierId);
     }
 
-    public static boolean isDayId(String day){
-        int MAX_DAYS = 366;
-
-        if (!isInt(day)) {
+    public static boolean numInRange(String num, int mini, int maxi){
+        if (!isInt(num)) {
             return false;
         }
-
-        int dayInt = Integer.parseInt(day);
-        if (dayInt < 1 || dayInt > MAX_DAYS) {
+        int numInt = Integer.parseInt(num);
+        if (numInt < mini || numInt > maxi) {
             return false;
         }
         return true;
+    }
+
+    public static boolean isDayId(String day){
+        return numInRange(day,1,366);
     }
 
 
@@ -54,7 +56,13 @@ public final class ContentValidationUtility {
         }
         return true;
     }
+    public static boolean validateIP(String ip) {
+        InetAddressValidator validator = InetAddressValidator.getInstance();
+        return validator.isValid(ip);
+    }
 
 
-
+    public static boolean validatePort(String port) {
+        return numInRange(port,0,65535);
+    }
 }
