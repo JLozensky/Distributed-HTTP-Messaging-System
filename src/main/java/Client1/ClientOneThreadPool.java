@@ -23,7 +23,7 @@ public class ClientOneThreadPool {
         return instance;
     }
 
-    public void runOnPhaseOne(Runnable runnable) {
+    public void run (Runnable runnable) {
         this.threadPoolExecutor.execute(runnable);
     }
 

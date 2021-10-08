@@ -57,6 +57,8 @@ public final class ContentValidationUtility {
         return true;
     }
     public static boolean validateIP(String ip) {
+        if (ip.equals("localhost")) {return true;}
+
         InetAddressValidator validator = InetAddressValidator.getInstance();
         return validator.isValid(ip);
     }

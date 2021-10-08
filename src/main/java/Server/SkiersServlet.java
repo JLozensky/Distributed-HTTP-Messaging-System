@@ -17,13 +17,7 @@ public class SkiersServlet extends HttpServlet {
         SkiersGetEvaluator skiersGetEvaluator = new SkiersGetEvaluator(request, response, asyncContext);
         FutureTask<Boolean> evaluator = new FutureTask<Boolean>(skiersGetEvaluator);
         threadPool.runOnThread(evaluator);
-//        response.setContentType("plain/text");
-//        response.setStatus(200);
-//        String boo = request.getParameter("oooo");
-//        String yay = request.getParameter("resort");
-//        PrintWriter printWriter = response.getWriter();
-//        printWriter.print(yay);
-//        printWriter.flush();
+
     }
 
     @Override
