@@ -1,9 +1,8 @@
 package Client1;
 
-import Server.ThreadPool;
-import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 public class ClientOneThreadPool {
     private static ClientOneThreadPool instance = null;
@@ -12,7 +11,6 @@ public class ClientOneThreadPool {
 
 
     private ClientOneThreadPool(int numThreads) {
-        // TODO write the instantiation of a thread pool
         this.threadPoolExecutor = (ThreadPoolExecutor) Executors.newFixedThreadPool(numThreads);
 
     }
@@ -29,5 +27,17 @@ public class ClientOneThreadPool {
 
     public int getQSize() {
         return this.threadPoolExecutor.getQueue().size();
+    }
+
+    public boolean close(){
+        this.threadPoolExecutor.shutdown();
+        try {
+            return this.threadPoolExecutor.awaitTermination(1, TimeUnit.MINUTES);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            this.threadPoolExecutor.shutdownNow();
+        } finally {
+            return this.threadPoolExecutor.isShutdown();
+        }
     }
 }

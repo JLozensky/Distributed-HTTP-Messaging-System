@@ -7,11 +7,11 @@ import java.util.concurrent.ThreadPoolExecutor;
 public class ThreadPool {
     private static ThreadPool instance = null;
     private ThreadPoolExecutor threadPoolExecutor;
-    private static int NUM_THREADS = 10000;
+    private static int NUM_THREADS = 10;
 
     private ThreadPool() {
-        // TODO write the instantiation of a thread pool
-        this.threadPoolExecutor = (ThreadPoolExecutor) Executors.newFixedThreadPool(NUM_THREADS);
+//        this.threadPoolExecutor = (ThreadPoolExecutor) Executors.newFixedThreadPool(NUM_THREADS);
+        this.threadPoolExecutor = (ThreadPoolExecutor) Executors.newCachedThreadPool();
 
     }
     public static ThreadPool getInstance(){

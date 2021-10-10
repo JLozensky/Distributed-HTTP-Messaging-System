@@ -1,9 +1,11 @@
 package Client1;
 
 import java.sql.Timestamp;
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.atomic.AtomicInteger;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpConnectionManager;
@@ -40,6 +42,7 @@ public class ClientOne {
     private ClientOneThreadPool threadPool;
     private AtomicInteger successfulRequests = new AtomicInteger();
     private AtomicInteger unsuccessfulRequests = new AtomicInteger();
+    private int threadcounter = 0;
 
 
     public ClientOne(int numThreads, int numSkiers, int numLifts, int numRuns,
@@ -71,8 +74,35 @@ public class ClientOne {
         HttpConnectionManagerParams params = new HttpConnectionManagerParams();
         params.setDefaultMaxConnectionsPerHost(MAX_HOST_CONNECTIONS);
         params.setMaxTotalConnections(MAX_TOTAL_CONNECTIONS);
+
         this.client.getHttpConnectionManager().setParams(params);
 
+
+    }
+
+    @Override
+    public String toString() {
+        return "ClientOne{" +
+                   "totalThreads=" + totalThreads +
+                   ", peakThreads=" + peakThreads +
+                   ", numLifts=" + numLifts +
+                   ", ipAddress='" + ipAddress + '\'' +
+                   ", port='" + port + '\'' +
+                   ", nonPeakThreads=" + nonPeakThreads +
+                   ", peakSkiersPerThread=" + peakSkiersPerThread +
+                   ", nonPeakSkiersPerThread=" + nonPeakSkiersPerThread +
+                   ", tenPercentPeakThreads=" + tenPercentPeakThreads +
+                   ", tenPercentNonPeakThreads=" + tenPercentNonPeakThreads +
+                   ", peakPostNum=" + peakPostNum +
+                   ", nonPeakPostNum=" + nonPeakPostNum +
+                   ", phaseOneGate=" + phaseOneGate +
+                   ", phaseTwoGate=" + phaseTwoGate +
+                   ", finalGate=" + finalGate +
+                   ", client=" + client +
+                   ", threadPool=" + threadPool +
+                   ", successfulRequests=" + successfulRequests +
+                   ", unsuccessfulRequests=" + unsuccessfulRequests +
+                   '}';
     }
 
     private void setGates() {
@@ -101,13 +131,15 @@ public class ClientOne {
             countGate,waitGate, this.finalGate,
 
            // ipAddress and port to send the requests to
-           this.ipAddress, this.port, this.client
+           this.ipAddress, this.port, this.client, this.threadcounter
        );
     }
 
     public CountDownLatch getFinalGate() {
         return this.finalGate;
     }
+
+    public ClientOneThreadPool getThreadPool() { return this.threadPool;}
 
     private int getSuccessfulTotal() {
         return this.successfulRequests.get();
@@ -118,6 +150,7 @@ public class ClientOne {
     }
 
     public void startPhaseOne() {
+        System.out.println(this.toString());
         int skierStart = 0;
         int skierEnd = 0;
 
@@ -130,6 +163,7 @@ public class ClientOne {
                     skierStart, skierEnd, 1, PHASE_ONE_END, this.nonPeakPostNum,this.phaseOneGate,null
                 )
             );
+            this.threadcounter += 1;
         }
     }
 
@@ -148,6 +182,7 @@ public class ClientOne {
                     this.phaseOneGate
                 )
             );
+            this.threadcounter += 1;
         }
 
 
@@ -166,13 +201,10 @@ public class ClientOne {
                     skierStart, skierEnd, startTime, SKI_DAY_MINUTES, this.nonPeakPostNum, null, this.phaseTwoGate
                 )
             );
+            this.threadcounter += 1;
         }
     }
 
-    private void makeThreads(int skierGap, int startTime, int endTime, int numPosts, CountDownLatch countGate,
-        CountDownLatch waitGate) {
-
-    }
 
 
     public static void main(String args[]){
@@ -199,9 +231,11 @@ public class ClientOne {
         // take ending timestamp
         LocalDateTime endTime = LocalDateTime.now();
 
-        System.out.println(endTime.compareTo(startTime));
-        System.out.println("successful total" + client.getSuccessfulTotal());
-        System.out.println("unsuccessful total" + client.getUnsuccessfulTotal());
+        System.out.println("successful total: " + client.getSuccessfulTotal());
+        System.out.println("unsuccessful total: " + client.getUnsuccessfulTotal());
+        System.out.println(Duration.between(startTime,endTime).toMillis());
+        client.getThreadPool().close();
+        System.exit(0);
 
     }
 
