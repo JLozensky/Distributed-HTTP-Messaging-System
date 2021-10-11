@@ -1,18 +1,16 @@
-package Client1;
+package Client2;
 
-import java.sql.Timestamp;
+import Client1.ArgParsingUtility;
+import Client1.ClientOneThreadPool;
 import java.time.Duration;
 import java.time.LocalDateTime;
-import java.util.Calendar;
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.atomic.AtomicInteger;
 import org.apache.commons.httpclient.HttpClient;
-import org.apache.commons.httpclient.HttpConnectionManager;
 import org.apache.commons.httpclient.MultiThreadedHttpConnectionManager;
 import org.apache.commons.httpclient.params.HttpConnectionManagerParams;
 
-public class ClientOne {
+public class ClientTwo {
 
 
 
@@ -45,7 +43,7 @@ public class ClientOne {
     private int threadcounter = 0;
 
 
-    public ClientOne(int numThreads, int numSkiers, int numLifts, int numRuns,
+    public ClientTwo(int numThreads, int numSkiers, int numLifts, int numRuns,
         String ipAddress, String port){
 
         this.peakThreads = numThreads;
@@ -82,7 +80,7 @@ public class ClientOne {
 
     @Override
     public String toString() {
-        return "ClientOne{" +
+        return "ClientTwo{" +
                    "totalThreads=" + totalThreads +
                    ", peakThreads=" + peakThreads +
                    ", numLifts=" + numLifts +
@@ -111,9 +109,9 @@ public class ClientOne {
         this.finalGate = new CountDownLatch(this.totalThreads);
     }
 
-    private LiftPostingRunnable makeLiftPoster(int skierStart, int skierEnd, int startTime, int endTime, int numPosts,
+    private ClientTwoLiftPostingRunnable makeLiftPoster(int skierStart, int skierEnd, int startTime, int endTime, int numPosts,
         CountDownLatch countGate, CountDownLatch waitGate) {
-        return new LiftPostingRunnable
+        return new ClientTwoLiftPostingRunnable
        (
             // skierID range
             skierStart, skierEnd,
@@ -211,7 +209,7 @@ public class ClientOne {
 
         for (int i=0;i<1;i++) {
             // create client from provided args
-            ClientOne client = ArgParsingUtility.makeClient(args);
+            ClientTwo client = ClientTwoArgParsingUtility.makeClient(args);
 
             // get the gate that only releases once all threads finish
             CountDownLatch finalGate = client.getFinalGate();

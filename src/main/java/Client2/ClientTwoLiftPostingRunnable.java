@@ -1,26 +1,20 @@
-package Client1;
+package Client2;
 
 
 import SharedLibrary.LiftRide;
 import com.google.gson.Gson;
-
 import java.io.IOException;
-import java.io.InputStream;
-
 import java.io.UnsupportedEncodingException;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicInteger;
 import org.apache.commons.httpclient.DefaultHttpMethodRetryHandler;
 import org.apache.commons.httpclient.HttpClient;
-
-
-
 import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.httpclient.methods.StringRequestEntity;
 import org.apache.commons.httpclient.params.HttpMethodParams;
 
-public class LiftPostingRunnable implements Runnable{
+public class ClientTwoLiftPostingRunnable implements Runnable{
     private final int skierStart;
     private final int skierEnd;
     private final int startTime;
@@ -52,7 +46,7 @@ public class LiftPostingRunnable implements Runnable{
 
     private final int threadNum;
 
-    public LiftPostingRunnable(int skierStart, int skierEnd, int startTime, int endTime, int numPosts,
+    public ClientTwoLiftPostingRunnable(int skierStart, int skierEnd, int startTime, int endTime, int numPosts,
         int numLifts, AtomicInteger successfulRequests, AtomicInteger unsuccessfulRequests, CountDownLatch countGate,
         CountDownLatch waitGate, CountDownLatch finalGate, String ipAddress, String port, HttpClient client, int threadNum) {
 
