@@ -26,7 +26,7 @@ public class RequestData {
         this.numDatapoints = 0;
     }
 
-    public RequestData merge(RequestData data) {
+    public synchronized RequestData merge(RequestData data) {
         if (!data.hasData()) {
             return this;
         }

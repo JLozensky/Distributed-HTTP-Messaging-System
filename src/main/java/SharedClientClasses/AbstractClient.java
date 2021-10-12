@@ -91,6 +91,7 @@ public abstract class AbstractClient {
                    ", peakThreads=" + peakThreads +
                    ", numLifts=" + numLifts +
                    ", ipAddress='" + ipAddress + '\'' +
+                   ", port='" + port + '\'' +
                    ", nonPeakThreads=" + nonPeakThreads +
                    ", peakSkiersPerThread=" + peakSkiersPerThread +
                    ", nonPeakSkiersPerThread=" + nonPeakSkiersPerThread +
@@ -98,10 +99,14 @@ public abstract class AbstractClient {
                    ", tenPercentNonPeakThreads=" + tenPercentNonPeakThreads +
                    ", peakPostNum=" + peakPostNum +
                    ", nonPeakPostNum=" + nonPeakPostNum +
-                   ", phaseOneGate=" + phaseOneGate.getCount() +
-                   ", phaseTwoGate=" + phaseTwoGate.getCount() +
-                   ", finalGate=" + finalGate.getCount() +
-                   '}' + "\n\n";
+                   ", phaseOneGate=" + phaseOneGate +
+                   ", phaseTwoGate=" + phaseTwoGate +
+                   ", finalGate=" + finalGate +
+                   ", client=" + client +
+                   ", threadPool=" + threadPool +
+                   ", successfulRequests=" + successfulRequests +
+                   ", unsuccessfulRequests=" + unsuccessfulRequests +
+                   "}\n\n";
     }
 
     protected void setGates() {
@@ -130,7 +135,7 @@ public abstract class AbstractClient {
     }
 
     public void startPhaseOne() {
-        System.out.println(this.toString());
+//        System.out.println(this.toString());
         int skierStart = 0;
         int skierEnd = 0;
 

@@ -1,12 +1,19 @@
 package Client1;
 
+
+
 import SharedClientClasses.AbstractClient;
 import SharedClientClasses.ArgParsingUtility;
+import SharedClientClasses.BarChartMaker;
 import SharedClientClasses.Gates;
-import com.github.sh0nk.matplotlib4j.Plot;
+import java.lang.reflect.InvocationTargetException;
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.CountDownLatch;
+import javax.swing.SwingUtilities;
+import javax.swing.WindowConstants;
 import org.apache.commons.httpclient.params.HttpConnectionManagerParams;
 
 public class ClientOne extends AbstractClient {
@@ -42,48 +49,90 @@ public class ClientOne extends AbstractClient {
     }
 
 
-    public static void main(String args[]){
+    public static long singleTestDriver(String args[]) {
 
-        for (int i=0;i<1;i++) {
-            // create client from provided args
-            ClientOne client = (ClientOne) ArgParsingUtility.makeClient(args, 1);
+        // create client from provided args
+        ClientOne client = (ClientOne) ArgParsingUtility.makeClient(args, 1);
 
-            // get the gate that only releases once all threads finish
-            CountDownLatch finalGate = client.getFinalGate();
+        // get the gate that only releases once all threads finish
+        CountDownLatch finalGate = client.getFinalGate();
 
-            // take starting timestamp
-            LocalDateTime startTime = LocalDateTime.now();
+        // take starting timestamp
+        LocalDateTime startTime = LocalDateTime.now();
 
-            // run all three phases, there are gates within the client that will control thread timing
-            client.startPhaseOne();
-            client.startPhaseTwo();
-            client.startPhaseThree();
+        // run all three phases, there are gates within the client that will control thread timing
+        client.startPhaseOne();
+        client.startPhaseTwo();
+        client.startPhaseThree();
 
-            try {
-                finalGate.await();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+        try {
+            finalGate.await();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        // take ending timestamp
+        LocalDateTime endTime = LocalDateTime.now();
+
+        long duration = Duration.between(startTime, endTime).toMillis();
+
+        float requestsPerSecond =
+            (client.getSuccessfulTotal() + client.getUnsuccessfulTotal()) / (duration / 1000f);
+        System.out.println("Start time was: " + client.makeTime(startTime) + " | End time was: " + client.makeTime(endTime));
+        System.out.println("successful total: " + client.getSuccessfulTotal());
+        System.out.println("unsuccessful total: " + client.getUnsuccessfulTotal());
+        System.out.printf("requests per second: %.1f\n\n\n", requestsPerSecond);
+
+
+        return duration;
+    }
+
+
+    public static void main(String args[]) {
+
+        // if not running the comparison for the assignment, do a single run
+        if (! args[0].equals("assignmentMode")) {
+            System.out.printf("time taken in milliseconds: %d", singleTestDriver(args));
+        } else {
+
+            // here we do the four runs for the assignment and put together the chart
+            final String hardcodedIP = "34.230.45.118";
+            final String SKIER_NUM = "200";
+            final String LIFT_NUM = "40";
+            final String PORT_NUM = "8080";
+            final int[] THREAD_NUMS = {32, 64, 128, 256};
+
+
+            BarChartMaker bcm = new BarChartMaker("ClientOne Thread Count Comparison", "NumThreads","Time Taken");
+
+
+
+            for (int threadNum:THREAD_NUMS) {
+                String[] arguments = {
+                    "-t", String.valueOf(threadNum),
+                    "-s", SKIER_NUM,
+                    "-l", LIFT_NUM,
+                    "-p", PORT_NUM,
+                    "-ip", hardcodedIP
+                };
+                System.out.println(threadNum + "-thread test results: \n");
+                bcm.addDatapoint(singleTestDriver(arguments),"CompletionTime", String.valueOf(threadNum));
             }
 
-            // take ending timestamp
-            LocalDateTime endTime = LocalDateTime.now();
-
-            long duration = Duration.between(startTime, endTime).toMillis();
-
-            float requestsPerSecond =
-                (client.getSuccessfulTotal() + client.getUnsuccessfulTotal()) / (duration / 1000f);
-            System.out.println("Start time was: " + client.makeTime(startTime));
-            System.out.println("End time was: " + client.makeTime(endTime));
-            System.out.println("successful total: " + client.getSuccessfulTotal());
-            System.out.println("unsuccessful total: " + client.getUnsuccessfulTotal());
-            System.out.println("time taken in milliseconds: " + duration);
-            System.out.printf("requests per second: %.1f", requestsPerSecond);
-
-            Plot plt = Plot.create();
-            plt.hist();
-
+            try {
+                SwingUtilities.invokeAndWait(()-> {
+                    bcm.makeChart();
+                    bcm.setSize(800, 400);
+                    bcm.setLocationRelativeTo(null);
+                    bcm.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+                    bcm.setVisible(true);
+                });
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            }
         }
-        System.exit(0);
 
     }
 
@@ -91,3 +140,4 @@ public class ClientOne extends AbstractClient {
 
 
 }
+

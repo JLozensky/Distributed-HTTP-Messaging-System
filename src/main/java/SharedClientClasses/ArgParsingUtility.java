@@ -73,8 +73,8 @@ public class ArgParsingUtility {
 
         Console console = System.console();
         if (console == null) {
-            System.out.println("This program was run from a non-interactive platform. If any of the required "
-                                   + "parameters are missing or incorrect the program will shut down");
+//            System.out.println("This program was run from a non-interactive platform. If any of the required "
+//                                   + "parameters are missing or incorrect the program will shut down");
         }
 
         // iterate through the flags, for each attempt to validate the corresponding value
