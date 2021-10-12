@@ -170,7 +170,7 @@ public class ClientOne extends AbstractClient {
 
             // here we do the four runs for the assignment and put together the chart
             // define values for args for each run
-            final String hardcodedIP = "54.161.134.5";
+            final String hardcodedIP = "localhost";
             final String SKIER_NUM = "20000";
             final String LIFT_NUM = "40";
             final String PORT_NUM = "8080";
@@ -196,6 +196,8 @@ public class ClientOne extends AbstractClient {
 
                 // add the datapoint of time taken to the graph
                 bcm.addDatapoint(singleTestDriver(arguments, testLatency),"CompletionTime", String.valueOf(threadNum));
+
+                // set to false so we only test latency once
                 testLatency = false;
             }
 
