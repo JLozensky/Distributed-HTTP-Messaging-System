@@ -25,7 +25,7 @@ public class ClientTwo extends AbstractClient {
     }
 
 
-    public RequestData singleThreadLatencyMeasure(int numPosts) {
+    public float singleThreadLatencyMeasure(int numPosts) {
         RequestData results = new RequestData();
         CountDownLatch gate = new CountDownLatch(numPosts);
         Gates gates = new Gates(null, null, gate);
@@ -35,7 +35,8 @@ public class ClientTwo extends AbstractClient {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return results;
+        results.calculateMetrics();
+        return results.getAvgLatency();
     }
 
     protected ClientTwoLiftPostingRunnable makeLiftPoster(int skierStart, int skierEnd, int startTime, int endTime,

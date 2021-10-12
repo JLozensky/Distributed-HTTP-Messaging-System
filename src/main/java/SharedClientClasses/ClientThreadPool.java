@@ -17,6 +17,8 @@ public class ClientThreadPool {
     public static ClientThreadPool getInstance(int numThreads){
         if (instance == null){
             instance = new ClientThreadPool(numThreads);
+        } else {
+            instance.threadPoolExecutor.setMaximumPoolSize(numThreads);
         }
         return instance;
     }

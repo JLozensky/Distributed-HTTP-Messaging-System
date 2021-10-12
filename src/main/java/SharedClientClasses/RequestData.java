@@ -18,6 +18,7 @@ public class RequestData {
     private String alternateDelimiter = null;
     private int numDatapoints;
     private int numUnsuccessfulDatapoints;
+    private float avgLatency;
 
     public RequestData() {
         this.root = new RequestDatum();
@@ -140,6 +141,13 @@ public class RequestData {
 
         return"";
 
+    }
+
+    public float getAvgLatency() {
+        return this.avgLatency;
+    }
+
+    public void calculateMetrics() {
     }
 
 
