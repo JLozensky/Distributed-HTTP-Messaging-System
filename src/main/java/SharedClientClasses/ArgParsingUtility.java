@@ -1,5 +1,6 @@
-package Client1;
+package SharedClientClasses;
 
+import Client1.ClientOne;
 import SharedLibrary.ContentValidationUtility;
 import java.io.Console;
 import java.util.ArrayList;
@@ -50,7 +51,7 @@ public class ArgParsingUtility {
         this.put("-p","");
     }};
 
-    public static ClientOne makeClient(String[] args){
+    public static AbstractClient makeClient(String[] args){
         // Create default values list
         HashMap<String, String> clientValues = ArgParsingUtility.getStartingValues();
 

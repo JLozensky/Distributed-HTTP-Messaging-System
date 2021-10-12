@@ -1,6 +1,8 @@
-package Client2;
+package SharedClientClasses;
 
+import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Comparator;
 import org.apache.commons.httpclient.HttpMethod;
 
 public class RequestData {
@@ -14,11 +16,14 @@ public class RequestData {
     private RequestDatum nullTail;
     private static final String delimiter = ",";
     private String alternateDelimiter = null;
+    private int numDatapoints;
+    private int numUnsuccessfulDatapoints;
 
     public RequestData() {
         this.root = new RequestDatum();
         this.nullTail = this.root;
         this.fullTail = null;
+        this.numDatapoints = 0;
     }
 
     public RequestData merge(RequestData data) {
@@ -31,6 +36,7 @@ public class RequestData {
         this.fullTail.setNext(data.getRoot());
         this.fullTail = data.getFullTail();
         this.nullTail = data.getNullTail();
+        this.numDatapoints += data.getNumDatapoints();
 
         return this;
     }
@@ -42,6 +48,8 @@ public class RequestData {
     private RequestDatum getFullTail() {
         return this.fullTail;
     }
+
+    private int getNumDatapoints(){ return this.numDatapoints; }
 
     public static RequestData merge(ArrayList<RequestData> dataList) {
         if ( dataList == null || dataList.size() == 0 ) {
@@ -58,15 +66,25 @@ public class RequestData {
         return this.root;
     }
 
-    public void addRecord(HttpMethod postType, int responseCode, int startTime, int endTime){
+    public String addRecord(HttpMethod postType, int responseCode, Instant startTime, Instant endTime){
         // todo implement start and end time validation and throw error
+        int latency = Math.toIntExact(endTime.toEpochMilli() - startTime.toEpochMilli());
+        this.numDatapoints += 1;
+        if (responseCode != 200 && responseCode != 201) {
+            this.numUnsuccessfulDatapoints += 1;
+        }
+        return this.addRecord(postType.getName(),responseCode,startTime,latency);
 
-        this.nullTail.recordRequest(postType.toString(), responseCode,startTime,endTime);
+    }
+
+    private String addRecord(String postType, int responseCode, Instant startTime, int latency){
+
+        this.nullTail.recordRequest(postType, responseCode,startTime,latency);
         RequestDatum newTail = new RequestDatum();
         this.nullTail.setNext(newTail);
         this.fullTail = this.nullTail;
         this.nullTail = newTail;
-
+        return this.fullTail.toString();
     }
 
     public void setDelimiter(String newDelimiter) {
@@ -111,10 +129,22 @@ public class RequestData {
         return sb.toString();
     }
 
+    public String getMetrics() {
+        long totalLatency;
+        int meanResponseTime;
+        int medianResponseTime;
+        float throughput;
+        int latencyPercentile99;
+        int maxResponseTime;
+
+
+        return"";
+
+    }
 
 
     private class RequestDatum{
-        private int start;
+        private Instant start;
         private String requestType;
         private int latency;
         private RequestDatum next;
@@ -127,30 +157,26 @@ public class RequestData {
             this.requestType = null;
         }
 
-        public void recordRequest(String requestType, int responseCode, int startTime, int endTime) {
+        public void recordRequest(String requestType, int responseCode, Instant startTime, int latency) {
             this.requestType = requestType;
             this.responseCode = responseCode;
             this.start = startTime;
-            this.latency = endTime - startTime;
+            this.latency = latency;
             this.dataEntered = true;
 
         }
 
 
         public boolean dataEntered(){
-            return dataEntered;
+            return this.dataEntered;
         }
 
-        public int getStart() {
-            return start;
-        }
-
-        public int getEndTime() {
-            return this.start + this.latency;
+        public Instant getStart() {
+            return this.start;
         }
 
         public String getRequestType() {
-            return requestType;
+            return this.requestType;
         }
 
         public void setRequestType(String requestType) {
@@ -158,7 +184,7 @@ public class RequestData {
         }
 
         public int getLatency() {
-            return latency;
+            return this.latency;
         }
 
         public void setLatency(int latency) {
@@ -166,7 +192,7 @@ public class RequestData {
         }
 
         public RequestDatum getNext() {
-            return next;
+            return this.next;
         }
 
         public boolean hasNext() {
@@ -197,6 +223,25 @@ public class RequestData {
             return sb.toString();
         }
 
+    }
+
+    private static class RequestComparator implements Comparator<RequestDatum> {
+
+        /**
+         * Compares its two arguments for order.  Returns a negative integer, zero, or a positive integer as the first
+         * argument is less than, equal to, or greater than the second.<p>
+         *
+         * @param o1 the first object to be compared.
+         * @param o2 the second object to be compared.
+         * @return a negative integer, zero, or a positive integer as the first argument is less than, equal to, or
+         * greater than the second.
+         * @throws NullPointerException if an argument is null and this comparator does not permit null arguments
+         * @throws ClassCastException   if the arguments' types prevent them from being compared by this comparator.
+         */
+        @Override
+        public int compare(RequestDatum o1, RequestDatum o2) {
+            return o1.getLatency() - o2.getLatency();
+        }
     }
 
 }

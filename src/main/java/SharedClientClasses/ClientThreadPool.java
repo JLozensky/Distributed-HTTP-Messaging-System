@@ -1,22 +1,22 @@
-package Client1;
+package SharedClientClasses;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-public class ClientOneThreadPool {
-    private static ClientOneThreadPool instance = null;
+public class ClientThreadPool {
+    private static ClientThreadPool instance = null;
     private ThreadPoolExecutor threadPoolExecutor;
 
 
 
-    private ClientOneThreadPool(int numThreads) {
+    private ClientThreadPool(int numThreads) {
         this.threadPoolExecutor = (ThreadPoolExecutor) Executors.newFixedThreadPool(numThreads);
 
     }
-    public static ClientOneThreadPool getInstance(int numThreads){
+    public static ClientThreadPool getInstance(int numThreads){
         if (instance == null){
-            instance = new ClientOneThreadPool(numThreads);
+            instance = new ClientThreadPool(numThreads);
         }
         return instance;
     }
