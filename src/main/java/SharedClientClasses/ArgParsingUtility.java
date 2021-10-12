@@ -1,6 +1,7 @@
 package SharedClientClasses;
 
 import Client1.ClientOne;
+import Client2.ClientTwo;
 import SharedLibrary.ContentValidationUtility;
 import java.io.Console;
 import java.util.ArrayList;
@@ -51,7 +52,7 @@ public class ArgParsingUtility {
         this.put("-p","");
     }};
 
-    public static AbstractClient makeClient(String[] args){
+    public static AbstractClient makeClient(String[] args, int clientSwitch){
         // Create default values list
         HashMap<String, String> clientValues = ArgParsingUtility.getStartingValues();
 
@@ -87,9 +88,17 @@ public class ArgParsingUtility {
             }
         }
 
-        return new ClientOne(Integer.parseInt(clientValues.get("-t")) ,Integer.parseInt(clientValues.get("-s")),
-            Integer.parseInt(clientValues.get("-l")) ,Integer.parseInt(clientValues.get("-ml")),
-            clientValues.get("-ip"), clientValues.get("-p"));
+        if (clientSwitch == 1) {
+            return new ClientOne(Integer.parseInt(clientValues.get("-t")) ,Integer.parseInt(clientValues.get("-s")),
+                Integer.parseInt(clientValues.get("-l")) ,Integer.parseInt(clientValues.get("-ml")),
+                clientValues.get("-ip"), clientValues.get("-p"));
+        } else {
+            return new ClientTwo(Integer.parseInt(clientValues.get("-t")) ,Integer.parseInt(clientValues.get("-s")),
+                Integer.parseInt(clientValues.get("-l")) ,Integer.parseInt(clientValues.get("-ml")),
+                clientValues.get("-ip"), clientValues.get("-p"));
+
+        }
+
     }
 
 

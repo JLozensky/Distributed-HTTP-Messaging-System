@@ -42,23 +42,24 @@ public class ClientTwo extends AbstractClient {
         int numPosts, Gates gates) {
         return new ClientTwoLiftPostingRunnable
        (
-            // skierID range
-            skierStart, skierEnd,
 
-            // start and end time in minutes
-            startTime, endTime,
+           // skierID range
+           skierStart, skierEnd,
 
-            // the number of posts to make and the max lift id
-            numPosts, this.numLifts,
+           // start and end time in minutes
+           startTime, endTime,
 
-            // the atomic integers for tracking successful and unsuccessful posts
-           this.successfulRequests, this.unsuccessfulRequests,
+           // the number of posts to make and the max lift id
+           numPosts, super.getNumLifts(),
 
-            // Gate the thread increments on finish, gate the thread waits on, gate all threads increment on finish
-            gates,
+           // the atomic integers for tracking successful and unsuccessful posts
+           super.getSuccessfulRequests(), super.getUnsuccessfulRequests(),
+
+           // Gate the thread increments on finish, gate the thread waits on, gate all threads increment on finish
+           gates,
 
            // ipAddress and port to send the requests to
-           this.ipAddress, this.port, this.client, this.requestDataRepository, this.runLocally
+           super.ipAddress, super.port, super.client, this.requestDataRepository, super.runLocally
        );
     }
 
@@ -68,7 +69,7 @@ public class ClientTwo extends AbstractClient {
 
         for (int i=0;i<1;i++) {
             // create client from provided args
-            ClientTwo client = (ClientTwo) ArgParsingUtility.makeClient(args);
+            ClientTwo client = (ClientTwo) ArgParsingUtility.makeClient(args, 2);
 
             // get the gate that only releases once all threads finish
             CountDownLatch finalGate = client.getFinalGate();
@@ -90,11 +91,16 @@ public class ClientTwo extends AbstractClient {
             // take ending timestamp
             LocalDateTime endTime = LocalDateTime.now();
 
+            long duration = Duration.between(startTime, endTime).toMillis();
+
+            float requestsPerSecond =
+                (client.getSuccessfulTotal() + client.getUnsuccessfulTotal()) / (duration / 1000f);
+            System.out.println("Start time was: " + client.makeTime(startTime));
+            System.out.println("End time was: " + client.makeTime(endTime));
             System.out.println("successful total: " + client.getSuccessfulTotal());
             System.out.println("unsuccessful total: " + client.getUnsuccessfulTotal());
-            System.out.println(Duration.between(startTime, endTime).toMillis());
-
-
+            System.out.println("time taken in milliseconds: " + duration);
+            System.out.printf("requests per second: %.1f", requestsPerSecond);
         }
         System.exit(0);
 

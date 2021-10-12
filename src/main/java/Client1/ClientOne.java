@@ -20,23 +20,24 @@ public class ClientOne extends AbstractClient {
         int numPosts, Gates gates) {
         return new ClientOneLiftPostingRunnable
        (
-            // skierID range
-            skierStart, skierEnd,
 
-            // start and end time in minutes
-            startTime, endTime,
+           // skierID range
+           skierStart, skierEnd,
 
-            // the number of posts to make and the max lift id
-            numPosts, super.getNumLifts(),
+           // start and end time in minutes
+           startTime, endTime,
 
-            // the atomic integers for tracking successful and unsuccessful posts
-            super.getSuccessfulRequests(), super.getUnsuccessfulRequests(),
+           // the number of posts to make and the max lift id
+           numPosts, super.getNumLifts(),
 
-            // Gates object with relevant CountDownLatches
-            gates,
+           // the atomic integers for tracking successful and unsuccessful posts
+           super.getSuccessfulRequests(), super.getUnsuccessfulRequests(),
 
-            // ipAddress and port to send the requests to
-            this.ipAddress, this.port, this.client, this.runLocally
+           // Gates object with relevant CountDownLatches
+           gates,
+
+           // ipAddress and port to send the requests to
+           super.client, super.ipAddress, super.port,  super.runLocally
        );
     }
 
@@ -45,7 +46,7 @@ public class ClientOne extends AbstractClient {
 
         for (int i=0;i<1;i++) {
             // create client from provided args
-            ClientOne client = (ClientOne) ArgParsingUtility.makeClient(args);
+            ClientOne client = (ClientOne) ArgParsingUtility.makeClient(args, 1);
 
             // get the gate that only releases once all threads finish
             CountDownLatch finalGate = client.getFinalGate();
@@ -71,7 +72,8 @@ public class ClientOne extends AbstractClient {
 
             float requestsPerSecond =
                 (client.getSuccessfulTotal() + client.getUnsuccessfulTotal()) / (duration / 1000f);
-
+            System.out.println("Start time was: " + client.makeTime(startTime));
+            System.out.println("End time was: " + client.makeTime(endTime));
             System.out.println("successful total: " + client.getSuccessfulTotal());
             System.out.println("unsuccessful total: " + client.getUnsuccessfulTotal());
             System.out.println("time taken in milliseconds: " + duration);

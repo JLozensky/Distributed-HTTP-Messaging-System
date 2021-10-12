@@ -66,6 +66,7 @@ public class ClientTwoLiftPostingRunnable extends AbstractLiftPosterRunnable {
                     e.printStackTrace();
                 }
             }
+            super.incrementLocalResult(success);
         }
 
         this.requestDataRepository.add(this.requestData);

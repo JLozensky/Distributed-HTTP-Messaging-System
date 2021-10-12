@@ -91,7 +91,6 @@ public abstract class AbstractClient {
                    ", peakThreads=" + peakThreads +
                    ", numLifts=" + numLifts +
                    ", ipAddress='" + ipAddress + '\'' +
-                   ", port='" + port + '\'' +
                    ", nonPeakThreads=" + nonPeakThreads +
                    ", peakSkiersPerThread=" + peakSkiersPerThread +
                    ", nonPeakSkiersPerThread=" + nonPeakSkiersPerThread +
@@ -99,14 +98,10 @@ public abstract class AbstractClient {
                    ", tenPercentNonPeakThreads=" + tenPercentNonPeakThreads +
                    ", peakPostNum=" + peakPostNum +
                    ", nonPeakPostNum=" + nonPeakPostNum +
-                   ", phaseOneGate=" + phaseOneGate +
-                   ", phaseTwoGate=" + phaseTwoGate +
-                   ", finalGate=" + finalGate +
-                   ", client=" + client +
-                   ", threadPool=" + threadPool +
-                   ", successfulRequests=" + successfulRequests +
-                   ", unsuccessfulRequests=" + unsuccessfulRequests +
-                   '}';
+                   ", phaseOneGate=" + phaseOneGate.getCount() +
+                   ", phaseTwoGate=" + phaseTwoGate.getCount() +
+                   ", finalGate=" + finalGate.getCount() +
+                   '}' + "\n\n";
     }
 
     protected void setGates() {
@@ -189,7 +184,7 @@ public abstract class AbstractClient {
     }
 
     public String makeTime(LocalDateTime time) {
-        return String.format("Start time was: %d:%d:%d", time.getHour(), time.getMinute(), time.getSecond());
+        return String.format("%d:%d:%d", time.getHour(), time.getMinute(), time.getSecond());
     }
 
     protected int getNumLifts() {
