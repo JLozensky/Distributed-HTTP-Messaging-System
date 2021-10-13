@@ -17,11 +17,10 @@ public class SkiersServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
-        final AsyncContext asyncContext = request.startAsync(request, response);
-        SkiersGetEvaluator skiersGetEvaluator = new SkiersGetEvaluator(request, response, asyncContext);
-        FutureTask<Boolean> evaluator = new FutureTask<Boolean>(skiersGetEvaluator);
-        threadPool.runOnThread(evaluator);
 
+        SkiersGetEvaluator skiersGetEvaluator = new SkiersGetEvaluator(request.getPathInfo(), response,
+            request.getQueryString());
+        skiersGetEvaluator.run();
     }
 
     @Override

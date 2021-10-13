@@ -3,8 +3,6 @@ package Server;
 import SharedLibrary.StatusCodes;
 import SharedLibrary.ContentValidationUtility;
 import java.util.HashMap;
-import javax.servlet.AsyncContext;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class SkiersGetEvaluator extends SkiersEvaluator {
@@ -13,8 +11,9 @@ public class SkiersGetEvaluator extends SkiersEvaluator {
     private HashMap<String, String> queryMap;
     private String resortName;
 
-    public SkiersGetEvaluator(HttpServletRequest request, HttpServletResponse response, AsyncContext asyncContext){
-        super(request, response, asyncContext);
+    public SkiersGetEvaluator(String urlPath, HttpServletResponse response, String queryString){
+        super(urlPath, response);
+        this.query = queryString;
     }
 
     /**
@@ -22,7 +21,7 @@ public class SkiersGetEvaluator extends SkiersEvaluator {
      * @return Boolean true if successful operation performed else false
      */
     @Override
-    public Boolean call() {
+    public void run() {
         if (super.urlParts.length < 3) {
             super.errorMissingParameters();
         }
@@ -31,28 +30,27 @@ public class SkiersGetEvaluator extends SkiersEvaluator {
             case "seasons":
 
                 if (validateLiftRideAndSkierDay()){
-                    return doSkierDayVertical();
+                    doSkierDayVertical();
                 } else {
-                    return errorInvalidParameters();
+                    errorInvalidParameters();
                 }
 
             case "vertical":
 
-                this.query = super.request.getQueryString();
                 this.queryMap = super.createQueryMap(this.query);
                 if (this.queryMap == null) {
-                    return errorMissingParameters();
+                    errorMissingParameters();
                 }
 
                 if (validateSkierResortTotals(super.urlParts)){
-                    return doSkierResortTotals();
+                    doSkierResortTotals();
                 } else {
-                    return super.errorInvalidParameters();
+                    super.errorInvalidParameters();
                 }
 
             default:
 
-                return super.errorInvalidParameters();
+                super.errorInvalidParameters();
         }
     }
 

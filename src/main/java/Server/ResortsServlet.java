@@ -13,20 +13,19 @@ public class ResortsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
-        final AsyncContext asyncContext = request.startAsync(request, response);
 
-        ResortsGetEvaluator resortsGetEvaluator = new ResortsGetEvaluator(request, response, asyncContext);
-        FutureTask<Boolean> evaluator = new FutureTask<Boolean>(resortsGetEvaluator);
-        threadPool.runOnThread(evaluator);
+        ResortsGetEvaluator resortsGetEvaluator = new ResortsGetEvaluator(request.getPathInfo(), response);
+        resortsGetEvaluator.run();
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
-        final AsyncContext asyncContext = request.startAsync(request, response);
 
-        ResortsPostEvaluator resortsPostEvaluator = new ResortsPostEvaluator(request, response, asyncContext);
-        FutureTask<Boolean> evaluator = new FutureTask<Boolean>(resortsPostEvaluator);
-        threadPool.runOnThread(evaluator);
+
+        ResortsPostEvaluator resortsPostEvaluator = new ResortsPostEvaluator(request.getPathInfo(), response,
+            request.getQueryString());
+        resortsPostEvaluator.run();
+
     }
 }

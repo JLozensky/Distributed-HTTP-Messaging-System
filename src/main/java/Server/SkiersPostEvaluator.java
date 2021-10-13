@@ -12,10 +12,8 @@ public class SkiersPostEvaluator extends SkiersEvaluator {
     private static int urlCountPostSkiDay = 8;
     private LiftRide liftRide;
 
-    public SkiersPostEvaluator(HttpServletRequest request,
-        HttpServletResponse response,
-        AsyncContext asyncContext) {
-        super(request, response, asyncContext);
+    public SkiersPostEvaluator(String urlPath, HttpServletResponse response, String body) {
+        super(urlPath,response, body);
     }
 
     /**
@@ -24,18 +22,18 @@ public class SkiersPostEvaluator extends SkiersEvaluator {
      * @return true if a successful endpoint was reached else false
      */
     @Override
-    public Boolean call() {
-        if (!super.validateUrlSize(this.urlCountPostSkiDay)){ return false; }
+    public void run() {
+        if (!super.validateUrlSize(this.urlCountPostSkiDay)){ return; }
         if (super.validateLiftRideAndSkierDay() && this.validateWriteLiftRideBody()) {
-            return doWriteSkiDay();
+            doWriteSkiDay();
         } else {
-            return super.errorInvalidParameters();
+            super.errorInvalidParameters();
         }
         }
 
     private boolean validateWriteLiftRideBody() {
         try {
-            this.liftRide = gson.fromJson(super.request.getReader(), LiftRide.class);
+            this.liftRide = gson.fromJson(super.body, LiftRide.class);
             return this.liftRide.isValid();
         } catch (Exception e) {
             return false;

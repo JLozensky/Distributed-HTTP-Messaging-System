@@ -2,8 +2,6 @@ package Server;
 
 import SharedLibrary.ContentValidationUtility;
 import java.util.ArrayList;
-import javax.servlet.AsyncContext;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public abstract class SkiersEvaluator extends Evaluator {
@@ -12,9 +10,13 @@ public abstract class SkiersEvaluator extends Evaluator {
     private String dayId = null;
     private String skierId = null;
 
-    public SkiersEvaluator(HttpServletRequest request, HttpServletResponse response,
-        AsyncContext asyncContext) {
-        super(request, response, asyncContext);
+    public SkiersEvaluator(String urlPath, HttpServletResponse response) {
+        super(urlPath,response);
+        this.seasonIds = new ArrayList<>();
+    }
+
+    public SkiersEvaluator(String urlPath, HttpServletResponse response, String body) {
+        super(urlPath,response, body);
         this.seasonIds = new ArrayList<>();
     }
 

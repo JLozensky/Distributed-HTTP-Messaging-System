@@ -1,16 +1,19 @@
 package Server;
 
 import SharedLibrary.ContentValidationUtility;
-import javax.servlet.AsyncContext;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public abstract class ResortsEvaluator extends Evaluator{
     private String resortId = null;
 
-    public ResortsEvaluator(HttpServletRequest request, HttpServletResponse response,
-        AsyncContext asyncContext) {
-        super(request, response, asyncContext);
+    public ResortsEvaluator(String urlPath, HttpServletResponse response) {
+        super(urlPath,response);
+
+    }
+
+    public ResortsEvaluator(String urlPath, HttpServletResponse response, String body) {
+        super(urlPath,response, body);
+
     }
 
     protected boolean validateResortSeasonsRequest() {

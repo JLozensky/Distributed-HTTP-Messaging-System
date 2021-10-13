@@ -10,8 +10,8 @@ public class ResortsPostEvaluator extends ResortsEvaluator {
 
     private Season season;
 
-    public ResortsPostEvaluator(HttpServletRequest request, HttpServletResponse response, AsyncContext asyncContext) {
-        super(request, response, asyncContext);
+    public ResortsPostEvaluator(String url, HttpServletResponse response, String body) {
+        super(url, response, body);
     }
 
     /**
@@ -21,14 +21,14 @@ public class ResortsPostEvaluator extends ResortsEvaluator {
      * @throws Exception if unable to compute a result
      */
     @Override
-    public Boolean call() throws Exception {
+    public void run() {
         if (!super.validateResortSeasonsRequest()){
-            return false;
+            return;
         }
         if (this.validateSeasonValue()){
-            return this.doAddSeason();
+            this.doAddSeason();
         } else {
-            return super.errorInvalidParameters();
+            super.errorInvalidParameters();
         }
         }
 
@@ -40,7 +40,7 @@ public class ResortsPostEvaluator extends ResortsEvaluator {
 
     private boolean validateSeasonValue() {
         try {
-            this.season = gson.fromJson(super.request.getReader(), Season.class);
+            this.season = gson.fromJson(super.body, Season.class);
             System.out.println(this.season.getYear());
             return this.season.isValid();
         } catch (Exception e) {

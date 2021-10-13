@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 public class ResortsGetEvaluator extends ResortsEvaluator {
 
 
-    public ResortsGetEvaluator(HttpServletRequest request, HttpServletResponse response, AsyncContext asyncContext) {
-        super(request, response, asyncContext);
+    public ResortsGetEvaluator(String urlPath, HttpServletResponse response) {
+        super(urlPath,response);
     }
 
     /**
@@ -20,14 +20,13 @@ public class ResortsGetEvaluator extends ResortsEvaluator {
      * @throws Exception if unable to compute a result
      */
     @Override
-    public Boolean call() throws Exception {
+    public void run()  {
         if (super.urlParts == null) {
-            return this.doGetResorts();
+            this.doGetResorts();
         }
         else if (super.validateResortSeasonsRequest()){
-            return doGetResortSeasons();
+            doGetResortSeasons();
         }
-        return false;
     }
 
     private Boolean doGetResortSeasons() {

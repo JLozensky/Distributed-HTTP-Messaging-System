@@ -2,31 +2,44 @@ package Server;
 
 import SharedLibrary.StatusCodes;
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.concurrent.Callable;
-import javax.servlet.AsyncContext;
-import javax.servlet.http.HttpServletRequest;
+
 import javax.servlet.http.HttpServletResponse;
 
-public abstract class Evaluator implements Callable<Boolean> {
+public abstract class Evaluator implements Runnable {
     protected HttpServletResponse response;
-    protected HttpServletRequest request;
     protected String urlPath;
-    protected AsyncContext asyncContext;
     protected PrintWriter printWriter;
     protected String MISSING_PARAM ="The request is missing parameters";
     protected String INVALID_PARAM = "The supplied parameters are invalid";
     protected String[] urlParts;
     protected Gson gson =new Gson();
+    protected String body;
 
-    public Evaluator(HttpServletRequest request, HttpServletResponse response, AsyncContext asyncContext){
+    public Evaluator(String urlPath, HttpServletResponse response){
         this.response = response;
-        this.asyncContext = asyncContext;
-        this.request = request;
-        this.urlPath = request.getPathInfo();
+        this.urlPath = urlPath;
+        try {
+            this.printWriter = response.getWriter();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        if (this.urlPath == null || this.urlPath.isEmpty()) {
+            this.urlParts = null;
+        } else {
+            this.urlParts = this.urlPath.split("/");
+        }
+    }
+
+    public Evaluator(String urlPath, HttpServletResponse response, String body){
+        this.response = response;
+        this.body = body;
+        this.urlPath = urlPath;
         try {
             this.printWriter = response.getWriter();
         } catch (IOException e) {
@@ -65,12 +78,10 @@ public abstract class Evaluator implements Callable<Boolean> {
         this.response.setContentType("application/json");
         this.printWriter.write(text);
         this.printWriter.flush();
-        this.asyncContext.complete();
     }
 
     protected void respondToClient() {
         this.printWriter.flush();
-        this.asyncContext.complete();
     }
 
     public HashMap<String,String> createQueryMap(String string) {
