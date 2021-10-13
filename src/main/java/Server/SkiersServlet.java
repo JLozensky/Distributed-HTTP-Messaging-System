@@ -27,14 +27,16 @@ public class SkiersServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
-        final AsyncContext asyncContext = request.startAsync(request, response);
-        SkiersPostEvaluator skiersPostEvaluator = new SkiersPostEvaluator(request, response, asyncContext);
-        FutureTask<Boolean> evaluator = new FutureTask<Boolean>(skiersPostEvaluator);
-        threadPool.runOnThread(evaluator);
+//        final AsyncContext asyncContext = request.startAsync(request, response);
+//        SkiersPostEvaluator skiersPostEvaluator = new SkiersPostEvaluator(request, response, asyncContext);
+//        FutureTask<Boolean> evaluator = new FutureTask<Boolean>(skiersPostEvaluator);
+//        threadPool.runOnThread(evaluator);
+//        evaluator.run();
 
 
-//        PrintWriter writer = response.getWriter();
-//        StatusCodes.setWriteSuccess(response);
-//        writer.flush();
+
+        PrintWriter writer = response.getWriter();
+        StatusCodes.setWriteSuccess(response);
+        writer.flush();
     }
 }

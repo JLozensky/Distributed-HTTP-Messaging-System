@@ -3,6 +3,7 @@ package SharedClientClasses;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.PriorityQueue;
 import org.apache.commons.httpclient.HttpMethod;
 
 public class RequestData {
@@ -14,11 +15,11 @@ public class RequestData {
     private final RequestDatum root;
     private RequestDatum fullTail;
     private RequestDatum nullTail;
-    private static final String delimiter = ",";
+    private static final String delimiter = "|";
     private String alternateDelimiter = null;
     private int numDatapoints;
-    private int numUnsuccessfulDatapoints;
     private float avgLatency;
+    private PriorityQueue<RequestDatum> percentileTracker;
 
     public RequestData() {
         this.root = new RequestDatum();
@@ -71,9 +72,6 @@ public class RequestData {
         // todo implement start and end time validation and throw error
         int latency = Math.toIntExact(endTime.toEpochMilli() - startTime.toEpochMilli());
         this.numDatapoints += 1;
-        if (responseCode != 200 && responseCode != 201) {
-            this.numUnsuccessfulDatapoints += 1;
-        }
         return this.addRecord(postType.getName(),responseCode,startTime,latency);
 
     }
@@ -88,6 +86,10 @@ public class RequestData {
         return this.fullTail.toString();
     }
 
+    /**
+     * Allows setting an alternate delimeter for return strings
+     * @param newDelimiter
+     */
     public void setDelimiter(String newDelimiter) {
         this.alternateDelimiter = newDelimiter;
     }
@@ -105,39 +107,33 @@ public class RequestData {
         }
     }
 
-    public String toDelimitedString() {
-        if (!this.hasData()){
-            return null;
-        }
-
-        String delim = getDelimiter();
-        if (this.alternateDelimiter != null){
-            delim = this.alternateDelimiter;
-        } else {
-            delim = delimiter;
-        }
-
-        StringBuilder sb = new StringBuilder();
-        sb.append(root.getRecordHeader());
-        RequestDatum curNode = root;
-        while(curNode.dataEntered()) {
-            sb.append(curNode);
-            sb.append(delim);
-            curNode = curNode.getNext();
-        }
-        // remove final comma
-        sb.setLength(sb.length()-1);
-        return sb.toString();
-    }
 
     public String getMetrics() {
-        long totalLatency;
+        long totalLatency = 0;
         int meanResponseTime;
         int medianResponseTime;
         float throughput;
-        int latencyPercentile99;
-        int maxResponseTime;
+        long latency99Percentile  =  Math.round(.99 * this.numDatapoints);
+        int maxResponseTime = 0;
+        this.percentileTracker = new PriorityQueue<>();
 
+        // set the current node to root
+        RequestDatum curNode = this.root;
+
+        // Iterate through all nodes to sum the total latency and also find the target percentile
+        while(curNode.dataEntered){
+            int curLatency = curNode.getLatency();
+            totalLatency += curLatency;
+            if (this.percentileTracker.size() < latency99Percentile){
+                this.percentileTracker.add(curNode);
+                if (curLatency > maxResponseTime) {maxResponseTime = curLatency;}
+            } else if
+             (curNode.getLatency() > this.percentileTracker.peek().getLatency()){
+                percentileTracker.poll();
+                percentileTracker.add(curNode);
+//                if (curLatency)
+            }
+        }
 
         return"";
 
