@@ -1,22 +1,21 @@
-package Server;
+package SharedLibrary;
 
-import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 
-public class ThreadPool {
-    private static ThreadPool instance = null;
+public class CachedThreadPool {
+    private static CachedThreadPool instance = null;
     private ThreadPoolExecutor threadPoolExecutor;
     private static int NUM_THREADS = 10;
 
-    private ThreadPool() {
+    private CachedThreadPool() {
 //        this.threadPoolExecutor = (ThreadPoolExecutor) Executors.newFixedThreadPool(NUM_THREADS);
         this.threadPoolExecutor = (ThreadPoolExecutor) Executors.newCachedThreadPool();
 
     }
-    public static ThreadPool getInstance(){
+    public static CachedThreadPool getInstance(){
         if (instance == null){
-            instance = new ThreadPool();
+            instance = new CachedThreadPool();
         }
         return instance;
     }

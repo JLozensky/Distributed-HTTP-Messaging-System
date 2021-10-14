@@ -15,11 +15,11 @@ import org.apache.commons.httpclient.params.HttpMethodParams;
 
 public abstract class AbstractLiftPosterRunnable implements Runnable {
 
-    private static final int RESORT_ID = 1;
-    private static final int SEASON_ID = 2021;
-    private static final int DAY_ID = 42;
-    private static final String LOCAL_HOST = "LozenskysScalableSkiStore_war_exploded";
-    private static final String EC2_HOST = "LozenskysScalableSkiStore_war";
+    private final int RESORT_ID = 1;
+    private final int SEASON_ID = 2021;
+    private final int DAY_ID = 42;
+    private final String LOCAL_HOST = "LozenskysScalableSkiStore_war_exploded";
+    private final String EC2_HOST = "LozenskysScalableSkiStore_war";
     protected final int skierStart;
     protected final int skierEnd;
     protected final int startTime;

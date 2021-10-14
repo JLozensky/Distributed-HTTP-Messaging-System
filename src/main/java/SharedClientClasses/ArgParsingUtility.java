@@ -2,7 +2,7 @@ package SharedClientClasses;
 
 import Client1.ClientOne;
 import Client2.ClientTwo;
-import SharedLibrary.ContentValidationUtility;
+import Server.ContentValidationUtility;
 import java.io.Console;
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -22,4 +22,9 @@ public class Seasons {
     public void setSeasons(ArrayList<String> seasons) {
         this.seasons = seasons;
     }
+
+    public static Seasons makeDummySeasons(){
+        String[] seasons = {"1991", "1996", "2009", "2014"};
+        return new Seasons(seasons);
+    }
 }

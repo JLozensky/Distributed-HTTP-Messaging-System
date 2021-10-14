@@ -30,7 +30,7 @@ public class ClientThreadPool {
         if (instance == null){
             instance = new ClientThreadPool(numThreads);
         } else {
-            instance.threadPoolExecutor.setMaximumPoolSize(numThreads);
+            instance.threadPoolExecutor.setMaximumPoolSize(Math.min(100,numThreads));
         }
         return instance;
     }
