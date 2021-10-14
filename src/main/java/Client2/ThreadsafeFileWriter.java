@@ -18,7 +18,7 @@ public class ThreadsafeFileWriter {
     private static String filename = "output.txt";
 
 
-    private ThreadsafeFileWriter() {
+    private static void initVariables() {
         queue = new ConcurrentLinkedQueue<>();
         writeLock = new ReentrantLock();
         try {
@@ -29,6 +29,7 @@ public class ThreadsafeFileWriter {
             // fileWriter will always overwrite a file of the given name
             writer = new BufferedWriter(new FileWriter(filename, false));
 
+            writeToFile();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -42,11 +43,12 @@ public class ThreadsafeFileWriter {
         return false;
     }
 
-    public static ThreadsafeFileWriter getInstance(){
+    public static ThreadsafeFileWriter startInstance(){
         if (instance == null) {
             createDestroyLock.lock();
-            instance = new ThreadsafeFileWriter();
+            ThreadsafeFileWriter.initVariables();
             createDestroyLock.unlock();
+
         }
         return instance;
     }
@@ -54,29 +56,37 @@ public class ThreadsafeFileWriter {
     public static void addRecord(String s){
         if (queue == null) {return;}
         queue.add(s);
-        if (!thread.isAlive() && writeLock.tryLock()) {
-            writeToFile(queue);
-            writeLock.unlock();
-        }
+    }
+    private static String pollQ(){
+        return queue.poll();
     }
 
-    private synchronized static void writeToFile(ConcurrentLinkedQueue<String> q) {
+    private static synchronized void writeToFile() {
         thread = new Thread(
             ()->{
-                ConcurrentLinkedQueue<String> localReferenceQ = q;
-                if (localReferenceQ == null) { return; }
-                String record = localReferenceQ.poll();
-                while(record != null) {
 
+                while (true){
+                String record = pollQ();
+                if (record == null) {
                     try {
-                        writer.write(record);
-                        writer.newLine();
-                    } catch (IOException e) {
-                        e.printStackTrace();
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        break;
                     }
-
-                    record = localReferenceQ.poll();
                 }
+
+                    while(record != null) {
+
+                        try {
+                            writer.write(record);
+                            writer.newLine();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+
+                        record = pollQ();
+                    }
+            }
             }
         );
         thread.start();
@@ -87,8 +97,7 @@ public class ThreadsafeFileWriter {
         createDestroyLock.lock();
 
         // get the reference to the current queue and then set it to null so no more can be added
-        ConcurrentLinkedQueue<String> localQ = queue;
-        queue = null;
+//        ConcurrentLinkedQueue<String> localQ = queue;
 
         // set the current instance to null so that a new one will be created the next time get instance is called
         instance = null;
@@ -100,11 +109,12 @@ public class ThreadsafeFileWriter {
         try {
             // if the current write thread is alive wait for it to die
             if (thread.isAlive()) {
+                thread.interrupt();
                 thread.join();
             }
             // if there is anything left in the old Q finish flushing to file
-            if (localQ.peek() != null){
-                writeToFile(localQ);
+            if (queue.peek() != null){
+                writeToFile();
                 thread.join();
             }
         } catch (InterruptedException e) {}

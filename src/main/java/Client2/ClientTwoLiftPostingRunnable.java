@@ -12,7 +12,6 @@ import org.apache.commons.httpclient.HttpClient;
 
 public class ClientTwoLiftPostingRunnable extends AbstractLiftPosterRunnable {
 
-
     private RequestData requestData;
     private ConcurrentLinkedQueue<RequestData> requestDataRepository;
 
@@ -24,7 +23,6 @@ public class ClientTwoLiftPostingRunnable extends AbstractLiftPosterRunnable {
 
         super(skierStart, skierEnd, startTime, endTime, numPosts, numLifts, successfulRequests, unsuccessfulRequests,
             gates, client, ipAddress, port, runLocally);
-
         this.requestData = new RequestData();
         this.requestDataRepository = requestDataRepository;
 
@@ -56,7 +54,7 @@ public class ClientTwoLiftPostingRunnable extends AbstractLiftPosterRunnable {
                     super.getPostMethod().getResponseBodyAsStream();
                     super.getPostMethod().releaseConnection();
 
-                    this.requestData.addRecord(super.getPostMethod(),statusCode,start,end);
+                    ThreadsafeFileWriter.addRecord(this.requestData.addRecord(super.getPostMethod(),statusCode,start,end));
 
                     if (statusCode == 201) {
                         success = true;

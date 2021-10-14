@@ -91,7 +91,7 @@ public abstract class AbstractClient {
      * required to move past phase one and the 10% for phase two)
      */
     protected void setThreadPool() {
-        this.threadPool = ClientThreadPool.getInstance(
+        this.threadPool = new ClientThreadPool(
             this.totalThreads - this.tenPercentNonPeakThreads - this.tenPercentPeakThreads
         );
     }

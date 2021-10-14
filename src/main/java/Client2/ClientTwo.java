@@ -35,7 +35,7 @@ public class ClientTwo extends AbstractClient {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        results.calculateMetrics();
+        results.getMetrics();
         return results.getAvgLatency();
     }
 
@@ -67,7 +67,8 @@ public class ClientTwo extends AbstractClient {
     private ConcurrentLinkedQueue<RequestData> getRequestDataRepository() { return this.requestDataRepository; }
 
     public static void main(String args[]){
-
+        ThreadsafeFileWriter.setFilename("pineapple");
+        ThreadsafeFileWriter.startInstance();
         for (int i=0;i<1;i++) {
             // create client from provided args
             ClientTwo client = (ClientTwo) ArgParsingUtility.makeClient(args, 2);
@@ -102,7 +103,13 @@ public class ClientTwo extends AbstractClient {
             System.out.println("unsuccessful total: " + client.getUnsuccessfulTotal());
             System.out.println("time taken in milliseconds: " + duration);
             System.out.printf("requests per second: %.1f", requestsPerSecond);
+            RequestData head = client.requestDataRepository.poll();
+            client.requestDataRepository.forEach(x->head.merge(x));
+            head.getMetrics();
         }
+
+        ThreadsafeFileWriter.finish();
+
         System.exit(0);
 
     }

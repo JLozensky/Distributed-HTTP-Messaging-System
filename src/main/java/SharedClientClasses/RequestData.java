@@ -1,6 +1,11 @@
 package SharedClientClasses;
 
+import java.sql.Time;
+import java.time.Duration;
 import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.PriorityQueue;
@@ -70,13 +75,18 @@ public class RequestData {
 
     public String addRecord(HttpMethod postType, int responseCode, Instant startTime, Instant endTime){
         // todo implement start and end time validation and throw error
-        int latency = Math.toIntExact(endTime.toEpochMilli() - startTime.toEpochMilli());
+        LocalDateTime start = this.makeLocalDate(startTime);
+        long latency = Duration.between(startTime,endTime).toMillis();
         this.numDatapoints += 1;
-        return this.addRecord(postType.getName(),responseCode,startTime,latency);
+        return this.addRecord(postType.getName(),responseCode,start,(int)latency);
 
     }
 
-    private String addRecord(String postType, int responseCode, Instant startTime, int latency){
+    private LocalDateTime makeLocalDate(Instant i) {
+        return LocalDateTime.ofInstant(i, ZoneId.systemDefault());
+    }
+
+    private String addRecord(String postType, int responseCode, LocalDateTime startTime, int latency){
 
         this.nullTail.recordRequest(postType, responseCode,startTime,latency);
         RequestDatum newTail = new RequestDatum();
@@ -110,12 +120,13 @@ public class RequestData {
 
     public String getMetrics() {
         long totalLatency = 0;
-        int meanResponseTime;
+        long meanResponseTime;
         int medianResponseTime;
         float throughput;
         long latency99Percentile  =  Math.round(.99 * this.numDatapoints);
         int maxResponseTime = 0;
-        this.percentileTracker = new PriorityQueue<>();
+        RequestComparator comparator = new RequestComparator();
+        this.percentileTracker = new PriorityQueue<>(comparator);
 
         // set the current node to root
         RequestDatum curNode = this.root;
@@ -128,12 +139,21 @@ public class RequestData {
                 this.percentileTracker.add(curNode);
                 if (curLatency > maxResponseTime) {maxResponseTime = curLatency;}
             } else if
-             (curNode.getLatency() > this.percentileTracker.peek().getLatency()){
+             (curLatency < this.percentileTracker.peek().getLatency()){
                 percentileTracker.poll();
                 percentileTracker.add(curNode);
-//                if (curLatency)
+                if (curLatency > maxResponseTime) {maxResponseTime = curLatency;}
             }
+            curNode = curNode.next;
         }
+
+        System.out.println("\ntotal requests " + this.numDatapoints + "\n");
+        System.out.println("total latency " + totalLatency + "ms\n");
+        System.out.println("time taken in ms " + (totalLatency / 256) + "\n");
+        System.out.println("max response time " + maxResponseTime + " ms\n");
+        System.out.println("mean latency " + (totalLatency / this.numDatapoints) + " ms\n");
+        System.out.println("throughput requests/sec " + (this.numDatapoints / ((totalLatency / 1000) /256)));
+        System.out.println("99 percentile in ms " + percentileTracker.poll().getLatency() + " ms\n");
 
         return"";
 
@@ -143,12 +163,10 @@ public class RequestData {
         return this.avgLatency;
     }
 
-    public void calculateMetrics() {
-    }
 
 
     private class RequestDatum{
-        private Instant start;
+        private LocalDateTime start;
         private String requestType;
         private int latency;
         private RequestDatum next;
@@ -161,7 +179,7 @@ public class RequestData {
             this.requestType = null;
         }
 
-        public void recordRequest(String requestType, int responseCode, Instant startTime, int latency) {
+        public void recordRequest(String requestType, int responseCode, LocalDateTime startTime, int latency) {
             this.requestType = requestType;
             this.responseCode = responseCode;
             this.start = startTime;
@@ -175,7 +193,7 @@ public class RequestData {
             return this.dataEntered;
         }
 
-        public Instant getStart() {
+        public LocalDateTime getStart() {
             return this.start;
         }
 
@@ -244,7 +262,7 @@ public class RequestData {
          */
         @Override
         public int compare(RequestDatum o1, RequestDatum o2) {
-            return o1.getLatency() - o2.getLatency();
+            return o2.getLatency() - o1.getLatency();
         }
     }
 

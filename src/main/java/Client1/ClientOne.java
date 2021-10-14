@@ -154,6 +154,9 @@ public class ClientOne extends AbstractClient {
         System.out.println("unsuccessful total: " + client.getUnsuccessfulTotal());
         System.out.printf("requests per second: %.1f\n\n\n", requestsPerSecond);
 
+        //
+        System.out.println(client.threadPool.close());
+
         // returning duration is used for graphing purposes per the assignment specs
         return duration;
     }
