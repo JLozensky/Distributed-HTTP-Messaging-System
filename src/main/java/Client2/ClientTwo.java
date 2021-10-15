@@ -43,7 +43,6 @@ public class ClientTwo extends AbstractClient {
         int numPosts, Gates gates) {
         return new ClientTwoLiftPostingRunnable
        (
-
            // skierID range
            skierStart, skierEnd,
 
@@ -66,49 +65,44 @@ public class ClientTwo extends AbstractClient {
 
     private ConcurrentLinkedQueue<RequestData> getRequestDataRepository() { return this.requestDataRepository; }
 
-    public static void main(String args[]){
-        ThreadsafeFileWriter.setFilename("pineapple");
+    private void SingleTestRun(String args[], String filename) {
+        ThreadsafeFileWriter.setFilename(filename);
         ThreadsafeFileWriter.startInstance();
-        for (int i=0;i<1;i++) {
-            // create client from provided args
-            ClientTwo client = (ClientTwo) ArgParsingUtility.makeClient(args, 2);
 
-            // get the gate that only releases once all threads finish
-            CountDownLatch finalGate = client.getFinalGate();
+        // create client from provided args
+        ClientTwo client = (ClientTwo) ArgParsingUtility.makeClient(args, 2);
 
-            // take starting timestamp
-            LocalDateTime startTime = LocalDateTime.now();
+        // get the gate that only releases once all threads finish
+        CountDownLatch finalGate = client.getFinalGate();
 
-            // run all three phases, there are gates within the client that will control thread timing
-            client.startPhaseOne();
-            client.startPhaseTwo();
-            client.startPhaseThree();
 
-            try {
-                finalGate.await();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+        // run all three phases, there are gates within the client that will control thread timing
+        client.startPhaseOne();
+        client.startPhaseTwo();
+        client.startPhaseThree();
 
-            // take ending timestamp
-            LocalDateTime endTime = LocalDateTime.now();
-
-            long duration = Duration.between(startTime, endTime).toMillis();
-
-            float requestsPerSecond =
-                (client.getSuccessfulTotal() + client.getUnsuccessfulTotal()) / (duration / 1000f);
-            System.out.println("Start time was: " + client.makeTime(startTime));
-            System.out.println("End time was: " + client.makeTime(endTime));
-            System.out.println("successful total: " + client.getSuccessfulTotal());
-            System.out.println("unsuccessful total: " + client.getUnsuccessfulTotal());
-            System.out.println("time taken in milliseconds: " + duration);
-            System.out.printf("requests per second: %.1f", requestsPerSecond);
-            RequestData head = client.requestDataRepository.poll();
-            client.requestDataRepository.forEach(x->head.merge(x));
-            head.getMetrics();
+        try {
+            finalGate.await();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
 
+        // take ending timestamp
+        LocalDateTime endTime = LocalDateTime.now();
+
+
+
+
+        RequestData head = client.requestDataRepository.poll();
+        client.requestDataRepository.forEach(x->head.merge(x));
+        head.getMetrics();
+
         ThreadsafeFileWriter.finish();
+    }
+
+
+    public static void main(String args[]){
+        // design chart throughput and mean response time against number of threads
 
         System.exit(0);
 

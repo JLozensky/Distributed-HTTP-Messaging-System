@@ -9,6 +9,8 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.PriorityQueue;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import org.apache.commons.httpclient.HttpMethod;
 
 public class RequestData {
@@ -23,14 +25,27 @@ public class RequestData {
     private static final String delimiter = "|";
     private String alternateDelimiter = null;
     private int numDatapoints;
+    private long meanResponseTime;
+    private int medianResponseTime;
+    private float throughput;
+    private int maxResponseTime;
+    private int p99ResponseTime;
+    private RequestDatum earliestNode;
+    private RequestDatum latestNode;
+    private final RequestComparator comparator = new RequestComparator();
+    private int numLists;
+
+
+
     private float avgLatency;
-    private PriorityQueue<RequestDatum> percentileTracker;
 
     public RequestData() {
         this.root = new RequestDatum();
         this.nullTail = this.root;
         this.fullTail = null;
         this.numDatapoints = 0;
+        this.earliestNode = this.root;
+        this.numLists = 1;
     }
 
     public synchronized RequestData merge(RequestData data) {
@@ -40,6 +55,16 @@ public class RequestData {
         if (!this.hasData()) {
             return data;
         }
+        this.numLists += data.numLists;
+
+        if (data.getRoot().getStart().isBefore(this.earliestNode.getStart())){
+            this.earliestNode = data.getRoot();
+        }
+        if (data.getFullTail().getStart().isAfter(this.getFullTail().getStart())) {
+            this.latestNode = data.getFullTail();
+        }
+
+
         this.fullTail.setNext(data.getRoot());
         this.fullTail = data.getFullTail();
         this.nullTail = data.getNullTail();
@@ -119,45 +144,92 @@ public class RequestData {
 
 
     public String getMetrics() {
+
+        this.maxResponseTime = 0;
+        long latencyMedianPercentileIndex = Math.round(.5 * this.numDatapoints);
+        long numDataTo99Percentile  =  Math.round(.99 * this.numDatapoints) - latencyMedianPercentileIndex;
+        PriorityQueue<RequestDatum> percentileTracker = new PriorityQueue<>(this.comparator);
+
+        ArrayList<ArrayList<Integer>> latencyPlotData = this.createLatencyLists();
+        ArrayList<Integer> avgLatencyPlotData = this.calculateAverages(latencyPlotData);
+
+
+
+        long totalLatency = this.getTotalLatency(percentileTracker, latencyMedianPercentileIndex, latencyPlotData);
+        this.calculatePercentileValues(percentileTracker,numDataTo99Percentile);
+
+
+
+        System.out.println("\nmean response time (ms): " + this.meanResponseTime + "\n");
+        System.out.println("median response time (ms): " + this.medianResponseTime + "\n");
+        System.out.println("throughput requests/sec " + (this.numDatapoints / ((totalLatency / 1000) /this.numLists)));
+        System.out.println("99 percentile in ms " + this.p99ResponseTime + " ms\n");
+        System.out.println("max response time " + maxResponseTime + " ms\n");
+
+        return"";
+
+    }
+
+    private ArrayList<ArrayList<Integer>> createLatencyLists() {
+        ArrayList<ArrayList<Integer>> latencyPlotData = new ArrayList<>();
+        long numSecondsWalltime = Duration.between(this.earliestNode.getStart(),this.latestNode.getStart()).toSeconds();
+        for (int i = 0; i < numSecondsWalltime; i++) {
+            latencyPlotData.add(new ArrayList<>());
+        }
+        return latencyPlotData;
+    }
+
+    private ArrayList<Integer> calculateAverages(ArrayList<ArrayList<Integer>> latencyPlotData) {
+        ArrayList<Integer> avgLatencyPlotData = new ArrayList<>();
+        for (int i = 0; i < latencyPlotData.size(); i++) {
+            Integer totalLatency = latencyPlotData.get(i).stream().mapToInt(Integer::intValue).sum();
+            avgLatencyPlotData.add(totalLatency/latencyPlotData.get(i).size());
+        }
+        return avgLatencyPlotData;
+    }
+
+    private long getTotalLatency(
+        PriorityQueue<RequestDatum> percentileTracker, long latencyMedianPercentileIndex,
+        ArrayList<ArrayList<Integer>> latencyPlotData) {
         long totalLatency = 0;
-        long meanResponseTime;
-        int medianResponseTime;
-        float throughput;
-        long latency99Percentile  =  Math.round(.99 * this.numDatapoints);
-        int maxResponseTime = 0;
-        RequestComparator comparator = new RequestComparator();
-        this.percentileTracker = new PriorityQueue<>(comparator);
+        LocalDateTime startTime = this.earliestNode.getStart();
 
         // set the current node to root
         RequestDatum curNode = this.root;
 
         // Iterate through all nodes to sum the total latency and also find the target percentile
-        while(curNode.dataEntered){
+        while(curNode.dataEntered()){
             int curLatency = curNode.getLatency();
+            int timeSinceStart = (int) Duration.between(startTime, curNode.getStart()).toSeconds();
+            latencyPlotData.get(timeSinceStart).add(Integer.valueOf(curNode.getLatency()));
+
             totalLatency += curLatency;
-            if (this.percentileTracker.size() < latency99Percentile){
-                this.percentileTracker.add(curNode);
-                if (curLatency > maxResponseTime) {maxResponseTime = curLatency;}
+            if (percentileTracker.size() < latencyMedianPercentileIndex){
+                percentileTracker.add(curNode);
+                if (curLatency > this.maxResponseTime) {this.maxResponseTime = curLatency;}
             } else if
-             (curLatency < this.percentileTracker.peek().getLatency()){
+            (curLatency < percentileTracker.peek().getLatency()){
                 percentileTracker.poll();
                 percentileTracker.add(curNode);
                 if (curLatency > maxResponseTime) {maxResponseTime = curLatency;}
             }
             curNode = curNode.next;
         }
-
-        System.out.println("\ntotal requests " + this.numDatapoints + "\n");
-        System.out.println("total latency " + totalLatency + "ms\n");
-        System.out.println("time taken in ms " + (totalLatency / 256) + "\n");
-        System.out.println("max response time " + maxResponseTime + " ms\n");
-        System.out.println("mean latency " + (totalLatency / this.numDatapoints) + " ms\n");
-        System.out.println("throughput requests/sec " + (this.numDatapoints / ((totalLatency / 1000) /256)));
-        System.out.println("99 percentile in ms " + percentileTracker.poll().getLatency() + " ms\n");
-
-        return"";
-
+        return totalLatency;
     }
+
+    private void calculatePercentileValues(PriorityQueue<RequestDatum> percentileTracker, long numDataTo99Percentile) {
+
+        this.medianResponseTime = percentileTracker.poll().getLatency();
+        for (int i = 0; i <= (numDataTo99Percentile); i++){
+            if (i == numDataTo99Percentile) {
+                this.p99ResponseTime = percentileTracker.poll().getLatency();
+            } else {
+                percentileTracker.poll();
+            }
+        }
+    }
+
 
     public float getAvgLatency() {
         return this.avgLatency;

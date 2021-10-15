@@ -36,8 +36,9 @@ public class ThreadsafeFileWriter {
     }
 
     public static boolean setFilename(String string) {
-        if (instance == null && createDestroyLock.tryLock()) {
-                filename = string + ".txt";
+        if (instance == null) {
+                createDestroyLock.lock();
+                filename = string + ".csv";
                 createDestroyLock.unlock();
         }
         return false;
@@ -64,7 +65,6 @@ public class ThreadsafeFileWriter {
     private static synchronized void writeToFile() {
         thread = new Thread(
             ()->{
-
                 while (true){
                 String record = pollQ();
                 if (record == null) {
@@ -74,16 +74,13 @@ public class ThreadsafeFileWriter {
                         break;
                     }
                 }
-
                     while(record != null) {
-
                         try {
                             writer.write(record);
                             writer.newLine();
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
-
                         record = pollQ();
                     }
             }
@@ -106,17 +103,18 @@ public class ThreadsafeFileWriter {
         writeLock.lock();
 
 
+
         try {
-            // if the current write thread is alive wait for it to die
+            // while there are still entries in the queue wait for them to finish
+            while(queue.size() > 0) {
+                Thread.sleep(1000);
+            }
+            // if the current write thread is alive interrupt it and wait for it to die
             if (thread.isAlive()) {
                 thread.interrupt();
                 thread.join();
             }
-            // if there is anything left in the old Q finish flushing to file
-            if (queue.peek() != null){
-                writeToFile();
-                thread.join();
-            }
+
         } catch (InterruptedException e) {}
 
         // close the writer object
