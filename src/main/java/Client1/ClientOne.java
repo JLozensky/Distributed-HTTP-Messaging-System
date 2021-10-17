@@ -20,11 +20,14 @@ import javax.swing.WindowConstants;
 
 public class ClientOne extends AbstractClient {
 
+    private int numThreads;
+
     /**
      * Constructor matching super
      */
     public ClientOne(int numThreads, int numSkiers, int numLifts, int numRuns, String ipAddress, String port) {
         super(numThreads, numSkiers, numLifts,numRuns,ipAddress,port);
+        this.numThreads = numThreads;
     }
 
     /**
@@ -61,6 +64,8 @@ public class ClientOne extends AbstractClient {
            super.client, super.ipAddress, super.port,  super.runLocally
        );
     }
+
+    public int getNumThreads(){return this.numThreads;}
 
     /**
      * Measures latency for a single thread using wall time
@@ -114,10 +119,13 @@ public class ClientOne extends AbstractClient {
 
         // If testing latency is true test the latency and print the results
         if (testLatency) {
-            int latencyRequests = 500;
+            int latencyRequests = 1000;
             latency = client.singleThreadLatencyCalc(latencyRequests);
             System.out.printf("Average Latency in ms (single thread %d requests): %.1f\n", latencyRequests, latency);
         }
+
+        // print which number of threads the results will be from
+        System.out.println(client.getNumThreads() + "-thread test results: \n");
 
         // get the gate that only releases once all threads finish
         CountDownLatch finalGate = client.getFinalGate();
@@ -155,7 +163,7 @@ public class ClientOne extends AbstractClient {
         System.out.printf("requests per second: %.1f\n\n\n", requestsPerSecond);
 
         //
-        System.out.println(client.threadPool.close());
+        client.threadPool.close();
 
         // returning duration is used for graphing purposes per the assignment specs
         return duration;
@@ -169,11 +177,11 @@ public class ClientOne extends AbstractClient {
             System.out.printf("time taken in milliseconds: %d", singleTestDriver(args,false));
         } else {
 
-            boolean testLatency = false;
+            boolean testLatency = true;
 
             // here we do the four runs for the assignment and put together the chart
             // define values for args for each run
-            final String hardcodedIP = "localhost";
+            final String hardcodedIP = "3.91.230.49";
             final String SKIER_NUM = "20000";
             final String LIFT_NUM = "40";
             final String PORT_NUM = "8080";
@@ -194,8 +202,7 @@ public class ClientOne extends AbstractClient {
                     "-ip", hardcodedIP
                 };
 
-                // print which number of threads the results will be from
-                System.out.println(threadNum + "-thread test results: \n");
+
 
                 // add the datapoint of time taken to the graph
                 bcm.addDatapoint(singleTestDriver(arguments, testLatency),"CompletionTime", String.valueOf(threadNum));

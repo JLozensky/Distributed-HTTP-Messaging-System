@@ -27,13 +27,13 @@ public class RequestData {
     private int numDatapoints;
     private long meanResponseTime;
     private int medianResponseTime;
-    private float throughput;
     private int maxResponseTime;
     private int p99ResponseTime;
     private RequestDatum earliestNode;
     private RequestDatum latestNode;
     private final RequestComparator comparator = new RequestComparator();
     private int numLists;
+    private long totalTime;
 
 
 
@@ -144,7 +144,7 @@ public class RequestData {
 
 
     public long getMetrics() {
-
+        this.totalTime = Duration.between(this.earliestNode.getStart(),this.latestNode.getStart()).toMillis();
         this.maxResponseTime = 0;
         long latencyMedianPercentileIndex = Math.round(.5 * this.numDatapoints);
         long numDataTo99Percentile  =  Math.round(.99 * this.numDatapoints) - latencyMedianPercentileIndex;
@@ -160,11 +160,14 @@ public class RequestData {
         this.meanResponseTime = totalLatency/ this.numDatapoints;
 
         LineChartMaker lcm = new LineChartMaker("Mean Latency over time", "Seconds", "Average Latency");
+        int numThreads = this.numLists * 2 / 3;
 
-        System.out.println(this.numLists + "-thread test results: \n");
-        System.out.println("\nmean response time (ms): " + this.meanResponseTime + "\n");
+
+        System.out.println("\n\n" + numThreads + "-thread test results: \n");
+        System.out.println("Total time (ms): " + this.totalTime + "\n");
+        System.out.println("mean response time (ms): " + this.meanResponseTime + "\n");
         System.out.println("median response time (ms): " + this.medianResponseTime + "\n");
-        System.out.println("throughput requests/sec " + (this.numDatapoints / ((totalLatency / 1000) /this.numLists)));
+        System.out.println("throughput requests/sec " + (this.numDatapoints / (this.totalTime/1000)) + "\n");
         System.out.println("99 percentile in ms " + this.p99ResponseTime + " ms\n");
         System.out.println("max response time " + maxResponseTime + " ms\n");
 
@@ -175,7 +178,7 @@ public class RequestData {
                 lcm.makeChart();
                 lcm.setSize(800, 400);
                 lcm.setLocationRelativeTo(null);
-                lcm.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+                lcm.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
                 lcm.setVisible(true);
             });
         } catch (InterruptedException e) {
@@ -192,14 +195,13 @@ public class RequestData {
         }
 
 
-        return Duration.between(this.earliestNode.getStart(),this.latestNode.getStart()).toMillis();
+        return this.totalTime;
 
     }
 
     private ArrayList<ArrayList<Integer>> createLatencyLists() {
         ArrayList<ArrayList<Integer>> latencyPlotData = new ArrayList<>();
-        long numSecondsWallTime =
-            Duration.between(this.earliestNode.getStart(),this.latestNode.getStart()).toSeconds() +1;
+        long numSecondsWallTime = (this.totalTime/1000) +1;
         for (int i = 0; i < numSecondsWallTime; i++) {
             latencyPlotData.add(new ArrayList<>());
         }
@@ -262,8 +264,8 @@ public class RequestData {
     }
 
 
-    public float getAvgLatency() {
-        return this.avgLatency;
+    public float getMeanResponseTime() {
+        return this.meanResponseTime;
     }
 
     private class RequestDatum{

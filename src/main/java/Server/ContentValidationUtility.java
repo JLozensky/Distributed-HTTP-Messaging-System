@@ -106,9 +106,7 @@ public final class ContentValidationUtility {
      * @return true if it is a valid url request, otherwise false
      */
     public static boolean validateLiftRideAndSkierDay(String[] urlParts) {
-        if (!validateUrlSize(8, urlParts)){
-            return false;
-        }
+
         int resortIdIndex = 1;
         int seasonsText = 2;
         int seasonIdIndex = 3;

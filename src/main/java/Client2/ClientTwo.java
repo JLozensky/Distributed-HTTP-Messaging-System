@@ -14,12 +14,12 @@ import javax.swing.WindowConstants;
 public class ClientTwo extends AbstractClient {
 
 
-    private final ConcurrentLinkedQueue<RequestData> requestDataRepository;
+    private ConcurrentLinkedQueue<RequestData> requestDataRepository;
 
 
     public ClientTwo(int numThreads, int numSkiers, int numLifts, int numRuns, String ipAddress, String port){
 
-        super(numThreads, numSkiers, numLifts,numRuns,ipAddress,port);
+        super(numThreads, numSkiers, numLifts, numRuns, ipAddress, port);
 
         this.requestDataRepository = new ConcurrentLinkedQueue<>();
     }
@@ -36,7 +36,8 @@ public class ClientTwo extends AbstractClient {
             e.printStackTrace();
         }
         results.getMetrics();
-        return results.getAvgLatency();
+
+        return results.getMeanResponseTime();
     }
 
     protected ClientTwoLiftPostingRunnable makeLiftPoster(int skierStart, int skierEnd, int startTime, int endTime,
@@ -69,8 +70,14 @@ public class ClientTwo extends AbstractClient {
         ThreadsafeFileWriter.setFilename(filename);
         ThreadsafeFileWriter.startInstance();
 
+
+
         // create client from provided args
         ClientTwo client = (ClientTwo) ArgParsingUtility.makeClient(args, 2);
+
+        if (measureLatency) {
+            client.singleThreadLatencyMeasure(1000);
+        }
 
         // get the gate that only releases once all threads finish
         CountDownLatch finalGate = client.getFinalGate();
@@ -91,6 +98,9 @@ public class ClientTwo extends AbstractClient {
         client.requestDataRepository.forEach(x->head.merge(x));
         long wallTime = head.getMetrics();
 
+        System.out.println("successful total: " + client.getSuccessfulTotal());
+        System.out.println("unsuccessful total: " + client.getUnsuccessfulTotal());
+
         ThreadsafeFileWriter.finish();
 
         return wallTime;
@@ -107,7 +117,7 @@ public class ClientTwo extends AbstractClient {
 
             // here we do the four runs for the assignment and put together the chart
             // define values for args for each run
-            final String hardcodedIP = "localhost";
+            final String hardcodedIP = "3.91.230.49";
             final String SKIER_NUM = "20000";
             final String LIFT_NUM = "40";
             final String PORT_NUM = "8080";

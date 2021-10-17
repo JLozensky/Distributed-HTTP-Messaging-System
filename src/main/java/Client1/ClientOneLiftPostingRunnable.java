@@ -42,6 +42,7 @@ public class ClientOneLiftPostingRunnable extends AbstractLiftPosterRunnable {
                 try {
                     int statusCode = super.getClient().executeMethod(super.getPostMethod());
                     super.getPostMethod().getResponseBodyAsStream();
+//                    System.out.println(super.getPostMethod().getResponseBodyAsString());
                     super.getPostMethod().releaseConnection();
 
                     if (statusCode == 201) {

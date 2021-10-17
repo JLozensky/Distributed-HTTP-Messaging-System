@@ -4,6 +4,10 @@ import static Server.ContentValidationUtility.*;
 import static Server.ReadWriteUtility.*;
 
 import SharedLibrary.LiftRide;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.HashMap;
 import javax.servlet.*;
@@ -64,7 +68,7 @@ public class SkiersServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
         // set number of required segments inclusive of "skiers" segment
-        final int SEGMENT_COUNT = 7;
+        final int SEGMENT_COUNT = 8;
 
         // get the remaining parts of the http request url and make a response Writer
         String[] urlParts = request.getPathInfo().split("/");

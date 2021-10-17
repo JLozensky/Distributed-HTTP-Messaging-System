@@ -15,7 +15,7 @@ public class ThreadsafeFileWriter {
     private static Thread thread;
     private static ReentrantLock writeLock;
     private static ReentrantLock createDestroyLock = new ReentrantLock();
-    private static String filename = "output.txt";
+    private static String filename = "output.csv";
 
 
     private static void initVariables() {
