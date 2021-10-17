@@ -1,16 +1,16 @@
 package SharedClientClasses;
 
-import java.sql.Time;
+import java.lang.reflect.InvocationTargetException;
 import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.time.temporal.ChronoUnit;
+import javax.swing.SwingUtilities;
+import javax.swing.WindowConstants;
+import org.jfree.ui.RefineryUtilities;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.PriorityQueue;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 import org.apache.commons.httpclient.HttpMethod;
 
 public class RequestData {
@@ -83,7 +83,7 @@ public class RequestData {
 
     private int getNumDatapoints(){ return this.numDatapoints; }
 
-    public static RequestData merge(ArrayList<RequestData> dataList) {
+    public RequestData merge(ArrayList<RequestData> dataList) {
         if ( dataList == null || dataList.size() == 0 ) {
             return new RequestData();
         }
@@ -143,7 +143,7 @@ public class RequestData {
     }
 
 
-    public String getMetrics() {
+    public long getMetrics() {
 
         this.maxResponseTime = 0;
         long latencyMedianPercentileIndex = Math.round(.5 * this.numDatapoints);
@@ -151,29 +151,56 @@ public class RequestData {
         PriorityQueue<RequestDatum> percentileTracker = new PriorityQueue<>(this.comparator);
 
         ArrayList<ArrayList<Integer>> latencyPlotData = this.createLatencyLists();
-        ArrayList<Integer> avgLatencyPlotData = this.calculateAverages(latencyPlotData);
-
-
 
         long totalLatency = this.getTotalLatency(percentileTracker, latencyMedianPercentileIndex, latencyPlotData);
+
+        ArrayList<Integer> avgLatencyPlotData = this.calculateAverages(latencyPlotData);
         this.calculatePercentileValues(percentileTracker,numDataTo99Percentile);
 
+        this.meanResponseTime = totalLatency/ this.numDatapoints;
 
+        LineChartMaker lcm = new LineChartMaker("Mean Latency over time", "Seconds", "Average Latency");
 
+        System.out.println(this.numLists + "-thread test results: \n");
         System.out.println("\nmean response time (ms): " + this.meanResponseTime + "\n");
         System.out.println("median response time (ms): " + this.medianResponseTime + "\n");
         System.out.println("throughput requests/sec " + (this.numDatapoints / ((totalLatency / 1000) /this.numLists)));
         System.out.println("99 percentile in ms " + this.p99ResponseTime + " ms\n");
         System.out.println("max response time " + maxResponseTime + " ms\n");
 
-        return"";
+        lcm.fillDataset(avgLatencyPlotData);
+
+        try {
+            SwingUtilities.invokeAndWait(()-> {
+                lcm.makeChart();
+                lcm.setSize(800, 400);
+                lcm.setLocationRelativeTo(null);
+                lcm.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+                lcm.setVisible(true);
+            });
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
+        while (lcm.isVisible()) {
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+        return Duration.between(this.earliestNode.getStart(),this.latestNode.getStart()).toMillis();
 
     }
 
     private ArrayList<ArrayList<Integer>> createLatencyLists() {
         ArrayList<ArrayList<Integer>> latencyPlotData = new ArrayList<>();
-        long numSecondsWalltime = Duration.between(this.earliestNode.getStart(),this.latestNode.getStart()).toSeconds();
-        for (int i = 0; i < numSecondsWalltime; i++) {
+        long numSecondsWallTime =
+            Duration.between(this.earliestNode.getStart(),this.latestNode.getStart()).toSeconds() +1;
+        for (int i = 0; i < numSecondsWallTime; i++) {
             latencyPlotData.add(new ArrayList<>());
         }
         return latencyPlotData;
@@ -182,8 +209,12 @@ public class RequestData {
     private ArrayList<Integer> calculateAverages(ArrayList<ArrayList<Integer>> latencyPlotData) {
         ArrayList<Integer> avgLatencyPlotData = new ArrayList<>();
         for (int i = 0; i < latencyPlotData.size(); i++) {
-            Integer totalLatency = latencyPlotData.get(i).stream().mapToInt(Integer::intValue).sum();
-            avgLatencyPlotData.add(totalLatency/latencyPlotData.get(i).size());
+            if (latencyPlotData.get(i).isEmpty()) {
+                avgLatencyPlotData.add(null);
+            } else {
+                Integer totalLatency = latencyPlotData.get(i).stream().mapToInt(Integer::intValue).sum();
+                avgLatencyPlotData.add(totalLatency / latencyPlotData.get(i).size());
+            }
         }
         return avgLatencyPlotData;
     }
@@ -208,7 +239,7 @@ public class RequestData {
                 percentileTracker.add(curNode);
                 if (curLatency > this.maxResponseTime) {this.maxResponseTime = curLatency;}
             } else if
-            (curLatency < percentileTracker.peek().getLatency()){
+            (curLatency > percentileTracker.peek().getLatency()){
                 percentileTracker.poll();
                 percentileTracker.add(curNode);
                 if (curLatency > maxResponseTime) {maxResponseTime = curLatency;}
@@ -234,8 +265,6 @@ public class RequestData {
     public float getAvgLatency() {
         return this.avgLatency;
     }
-
-
 
     private class RequestDatum{
         private LocalDateTime start;
@@ -334,7 +363,7 @@ public class RequestData {
          */
         @Override
         public int compare(RequestDatum o1, RequestDatum o2) {
-            return o2.getLatency() - o1.getLatency();
+            return o1.getLatency() - o2.getLatency();
         }
     }
 
