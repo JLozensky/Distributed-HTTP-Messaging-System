@@ -1,4 +1,4 @@
-package ServerLibrary;
+package Server;
 
 import javax.servlet.http.HttpServletResponse;
 

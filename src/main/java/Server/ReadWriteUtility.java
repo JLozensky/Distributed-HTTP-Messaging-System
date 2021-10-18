@@ -4,7 +4,6 @@ import ServerLibrary.LiftRide;
 import ServerLibrary.Resorts;
 import ServerLibrary.Season;
 import ServerLibrary.Seasons;
-import ServerLibrary.StatusCodes;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
 import javax.servlet.http.HttpServletResponse;

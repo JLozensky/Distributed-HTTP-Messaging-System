@@ -3,7 +3,6 @@ package Client2;
 
 import SharedClientClasses.AbstractLiftPosterRunnable;
 import SharedClientClasses.Gates;
-import SharedClientClasses.RequestData;
 import java.io.IOException;
 import java.time.Instant;
 import java.util.concurrent.ConcurrentLinkedQueue;

@@ -1,5 +1,6 @@
-package SharedClientClasses;
+package Client2;
 
+import SharedClientClasses.LineChartMaker;
 import java.lang.reflect.InvocationTargetException;
 import java.time.Duration;
 import java.time.Instant;

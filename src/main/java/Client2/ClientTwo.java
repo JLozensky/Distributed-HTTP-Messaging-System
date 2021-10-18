@@ -4,7 +4,6 @@ import SharedClientClasses.AbstractClient;
 import SharedClientClasses.ArgParsingUtility;
 import SharedClientClasses.BarChartMaker;
 import SharedClientClasses.Gates;
-import SharedClientClasses.RequestData;
 import java.lang.reflect.InvocationTargetException;
 import java.time.Duration;
 import java.time.LocalDateTime;
