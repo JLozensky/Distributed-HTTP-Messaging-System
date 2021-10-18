@@ -202,7 +202,7 @@ public class ClientTwo extends AbstractClient {
             final String SKIER_NUM = "20000";
             final String LIFT_NUM = "40";
             final String PORT_NUM = "8080";
-            final int[] THREAD_NUMS = {256};
+            final int[] THREAD_NUMS = {32, 64, 128, 256};
 
             // Set up charting tool
             BarChartMaker bcm = new BarChartMaker("ClientTwo Thread Count Comparison", "NumThreads","Time Taken");
