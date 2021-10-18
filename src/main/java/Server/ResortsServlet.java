@@ -7,7 +7,7 @@ import static Server.ReadWriteUtility.errorInvalidParameters;
 import static Server.ReadWriteUtility.readSeasonValue;
 import static Server.ReadWriteUtility.sendPostSuccess;
 
-import SharedLibrary.Season;
+import ServerLibrary.Season;
 import java.io.PrintWriter;
 import javax.servlet.*;
 import javax.servlet.http.*;

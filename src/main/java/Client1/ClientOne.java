@@ -181,7 +181,7 @@ public class ClientOne extends AbstractClient {
 
             // here we do the four runs for the assignment and put together the chart
             // define values for args for each run
-            final String hardcodedIP = "3.91.230.49";
+            final String hardcodedIP = "localhost";
             final String SKIER_NUM = "20000";
             final String LIFT_NUM = "40";
             final String PORT_NUM = "8080";

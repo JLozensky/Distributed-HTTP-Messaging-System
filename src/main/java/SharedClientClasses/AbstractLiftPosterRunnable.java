@@ -1,10 +1,8 @@
 package SharedClientClasses;
 
-import SharedLibrary.LiftRide;
+import ServerLibrary.LiftRide;
 import com.google.gson.Gson;
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicInteger;
 import org.apache.commons.httpclient.DefaultHttpMethodRetryHandler;

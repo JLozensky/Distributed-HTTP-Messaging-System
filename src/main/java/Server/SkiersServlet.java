@@ -3,11 +3,7 @@ package Server;
 import static Server.ContentValidationUtility.*;
 import static Server.ReadWriteUtility.*;
 
-import SharedLibrary.LiftRide;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
+import ServerLibrary.LiftRide;
 import java.io.PrintWriter;
 import java.util.HashMap;
 import javax.servlet.*;
@@ -85,5 +81,7 @@ public class SkiersServlet extends HttpServlet {
         } else {
             errorInvalidParameters(response,writer);
         }
+
+
     }
 }
