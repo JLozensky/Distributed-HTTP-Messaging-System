@@ -1,4 +1,4 @@
-package Server;
+package Assignment2.ServerA2;
 
 import java.time.Year;
 import java.util.HashMap;
@@ -29,8 +29,6 @@ public final class ContentValidationUtility {
         return isInt(skierId);
     }
 
-
-
     public static boolean numInRange(String num, int mini, int maxi){
         if (!isInt(num)) {
             return false;
@@ -46,6 +44,11 @@ public final class ContentValidationUtility {
         return numInRange(day,1,366);
     }
 
+    // placeholder for future validation
+    public static boolean isLiftId(Integer liftId) { return isInt(liftId.toString()); }
+
+    // placeholder for future validation
+    public static boolean isTime(Integer time) {return isInt(time.toString()); }
 
     private static boolean isInt(String value){
         try {
@@ -125,10 +128,7 @@ public final class ContentValidationUtility {
                 urlParts[skiersText].equals("skiers") &&
                 ContentValidationUtility.isSkier(urlParts[skierIdIndex])
         ) {
-//            this.setResortId(urlParts[resortIdIndex]);
-//            this.addSeasonId(urlParts[seasonIdIndex]);
-//            this.setDayId(urlParts[dayIdIndex]);
-//            this.setSkierId(urlParts[skierIdIndex]);
+
             return true;
         }
         return false;

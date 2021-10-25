@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--suppress ALL -->
 <web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
@@ -6,24 +7,24 @@
 
 
   <servlet>
-    <servlet-name>SkiersServlet</servlet-name>
-    <servlet-class>Server.SkiersServlet</servlet-class>
+    <servlet-name>SkiersServletA2</servlet-name>
+    <servlet-class>Assignment2.ServerA2.SkiersServletA2</servlet-class>
     <async-supported>true</async-supported>
   </servlet>
 
   <servlet-mapping>
-    <servlet-name>SkiersServlet</servlet-name>
+    <servlet-name>SkiersServletA2</servlet-name>
     <url-pattern>/skiers/*</url-pattern>
   </servlet-mapping>
 
   <servlet>
-    <servlet-name>ResortsServlet</servlet-name>
-    <servlet-class>Server.ResortsServlet</servlet-class>
+    <servlet-name>ResortsServletA2</servlet-name>
+    <servlet-class>Assignment2.ServerA2.ResortsServletA2</servlet-class>
     <async-supported>true</async-supported>
   </servlet>
 
   <servlet-mapping>
-    <servlet-name>ResortsServlet</servlet-name>
+    <servlet-name>ResortsServletA2</servlet-name>
     <url-pattern>/resorts/*</url-pattern>
   </servlet-mapping>
 

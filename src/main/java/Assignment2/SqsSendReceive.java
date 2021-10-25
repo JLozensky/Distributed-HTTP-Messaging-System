@@ -7,7 +7,7 @@ import com.amazonaws.services.sqs.AmazonSQSClientBuilder;
 import com.amazonaws.services.sqs.model.*;
 import software.amazon.awssdk.services.sqs.model.SqsException;
 
-public class SqsSend {
+public class SqsSendReceive {
 
 
 
