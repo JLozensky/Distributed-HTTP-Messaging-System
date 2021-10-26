@@ -1,37 +1,34 @@
-package Assignment2.ServerA2;
+package A1.Server;
 
-import static Assignment2.ServerA2.ReadWriteUtilityA2.*;
-import static Assignment2.ServerA2.ContentValidationUtilityA2.*;
+import static A1.Server.ContentValidationUtility.validateResortSeasonsRequest;
+import static A1.Server.ReadWriteUtility.doGetResortSeasons;
+import static A1.Server.ReadWriteUtility.doGetResorts;
+import static A1.Server.ReadWriteUtility.errorInvalidParameters;
+import static A1.Server.ReadWriteUtility.readSeasonValue;
+import static A1.Server.ReadWriteUtility.sendPostSuccess;
 
 import A1.ServerLibrary.Season;
-import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import javax.servlet.annotation.*;
+import java.io.IOException;
 
-@WebServlet(name = "ResortsServletA2", value = "/resorts", asyncSupported = true)
-public class ResortsServletA2 extends HttpServlet {
+@WebServlet(name = "ResortsServlet", value = "/resorts", asyncSupported = true)
+public class ResortsServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
 
         // get the remaining parts of the http request url and make a response Writer
-        String url = request.getPathInfo();
+        String[] urlParts = request.getPathInfo().split("/");
         PrintWriter writer = response.getWriter();
-        String[] urlParts= null;
-        if (url == null) {
+
+        if (urlParts == null) {
             doGetResorts(response, writer);
-        } else {
-            urlParts = url.split("/");
-        }
-        if (urlParts != null && validateResortSeasonsRequest(urlParts)) {
+        } else if (validateResortSeasonsRequest(urlParts)) {
             doGetResortSeasons(response, writer);
-        } else {
-            errorInvalidParameters(response,writer);
         }
     }
 

@@ -1,21 +1,19 @@
-package Assignment2.ServerA2;
+package A1.Server;
 
-import static Assignment2.ServerA2.ReadWriteUtilityA2.*;
-import static Assignment2.ServerA2.ContentValidationUtilityA2.*;
+import static A1.Server.ContentValidationUtility.*;
+import static A1.Server.ReadWriteUtility.*;
 
 import A1.ServerLibrary.LiftRide;
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import javax.servlet.annotation.*;
+import java.io.IOException;
 
 
-@WebServlet(name = "SkiersServletA2", value = "/skiers", asyncSupported = true)
-public class SkiersServletA2 extends HttpServlet {
+@WebServlet(name = "SkiersServlet", value = "/skiers", asyncSupported = true)
+public class SkiersServlet extends HttpServlet {
 
 
     @Override
@@ -30,7 +28,7 @@ public class SkiersServletA2 extends HttpServlet {
         PrintWriter writer = response.getWriter();
 
         // if there aren't enough url parts to be valid return
-        if (MIN_SEGMENT_COUNT > urlParts.length) {
+        if (validateUrlSize(MIN_SEGMENT_COUNT, urlParts)) {
             errorMissingParameters(response, writer);
         }
 
@@ -77,11 +75,11 @@ public class SkiersServletA2 extends HttpServlet {
         }
         if (validateLiftRideAndSkierDay(urlParts)) {
             LiftRide liftRide = readLiftRideBody(request.getReader());
-            if (liftRide == null || ! liftRide.isValid()) {
-                errorInvalidParameters(response,writer);
+            if (!(liftRide == null) && liftRide.isValid()) {
+                sendPostSuccess(response,writer);
             }
         } else {
-            sendPostSuccess(response,writer);
+            errorInvalidParameters(response,writer);
         }
 
 
