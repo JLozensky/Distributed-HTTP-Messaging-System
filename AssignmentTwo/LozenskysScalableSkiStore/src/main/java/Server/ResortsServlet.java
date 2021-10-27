@@ -2,7 +2,7 @@ package Server;
 
 import static Server.ReadWriteUtility.*;
 
-import A1.ServerLibrary.Season;
+import SharedLibrary.Season;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;

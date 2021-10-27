@@ -1,9 +1,9 @@
 package Server;
 
-import A1.ServerLibrary.LiftRide;
-import A1.ServerLibrary.Resorts;
-import A1.ServerLibrary.Season;
-import A1.ServerLibrary.Seasons;
+import SharedLibrary.LiftRide;
+import SharedLibrary.Resorts;
+import SharedLibrary.Season;
+import SharedLibrary.Seasons;
 import com.google.gson.Gson;
 import java.io.BufferedReader;
 import java.io.PrintWriter;

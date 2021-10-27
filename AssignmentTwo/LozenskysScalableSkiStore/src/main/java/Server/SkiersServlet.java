@@ -1,6 +1,6 @@
 package Server;
 
-import A1.ServerLibrary.LiftRide;
+import SharedLibrary.LiftRide;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
