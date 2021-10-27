@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 import java.util.concurrent.CountDownLatch;
 import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
+import SharedClientClasses.*;
 
 /**
  * Client implementation for part one of assignment one

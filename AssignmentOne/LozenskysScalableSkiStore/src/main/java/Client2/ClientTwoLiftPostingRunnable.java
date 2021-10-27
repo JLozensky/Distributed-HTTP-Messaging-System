@@ -1,11 +1,14 @@
 package Client2;
 
 
+import SharedClientClasses.AbstractLiftPosterRunnable;
+import SharedClientClasses.Gates;
 import java.io.IOException;
 import java.time.Instant;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 import org.apache.commons.httpclient.HttpClient;
+
 
 public class ClientTwoLiftPostingRunnable extends AbstractLiftPosterRunnable {
 

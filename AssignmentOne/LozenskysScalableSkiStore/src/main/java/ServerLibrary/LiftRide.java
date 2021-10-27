@@ -1,7 +1,7 @@
 package ServerLibrary;
 
 
-import Assignment2.ServerA2.ContentValidationUtilityA2;
+import Server.ContentValidationUtility;
 
 public class LiftRide {
     private Integer time;
@@ -30,10 +30,6 @@ public class LiftRide {
 
     public boolean isValid(){
         if (this.liftID == null || this.time == null){ return false; }
-        if (
-            ! ContentValidationUtilityA2.isLiftId(this.liftID) ||
-            ! ContentValidationUtilityA2.isTime(this.time)
-        ) { return false; }
         return true;
     }
 }

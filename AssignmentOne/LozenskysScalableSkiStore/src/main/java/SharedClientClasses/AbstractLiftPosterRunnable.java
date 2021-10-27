@@ -1,5 +1,6 @@
 package SharedClientClasses;
 
+import ServerLibrary.LiftRide;
 import com.google.gson.Gson;
 import java.io.UnsupportedEncodingException;
 import java.util.concurrent.ThreadLocalRandom;

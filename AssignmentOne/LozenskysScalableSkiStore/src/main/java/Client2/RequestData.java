@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 import org.apache.commons.httpclient.HttpMethod;
+import SharedClientClasses.*;
 
 /**
  * Linked list data structure to hold, merge, and evaluate latency data from server requests. Rather than make a

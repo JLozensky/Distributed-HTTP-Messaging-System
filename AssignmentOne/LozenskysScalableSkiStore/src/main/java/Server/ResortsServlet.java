@@ -1,10 +1,16 @@
 package Server;
 
+import static Server.ContentValidationUtility.validateResortSeasonsRequest;
+import static Server.ReadWriteUtility.doGetResorts;
+import static Server.ReadWriteUtility.*;
+
+import ServerLibrary.*;
 import java.io.PrintWriter;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+
 
 @WebServlet(name = "ResortsServlet", value = "/resorts", asyncSupported = true)
 public class ResortsServlet extends HttpServlet {
@@ -20,7 +26,7 @@ public class ResortsServlet extends HttpServlet {
         if (urlParts == null) {
             doGetResorts(response, writer);
         } else if (validateResortSeasonsRequest(urlParts)) {
-            doGetResortSeasons(response, writer);
+            ReadWriteUtility.doGetResortSeasons(response, writer);
         }
     }
 
@@ -33,7 +39,7 @@ public class ResortsServlet extends HttpServlet {
         PrintWriter writer = response.getWriter();
 
         if (! validateResortSeasonsRequest(urlParts)){
-            errorInvalidParameters(response,writer);
+            ReadWriteUtility.errorInvalidParameters(response,writer);
         }
         Season season = readSeasonValue(request.getReader());
         if (season.isValid()){

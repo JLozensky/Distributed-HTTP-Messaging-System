@@ -1,137 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="17a263ba-fc74-4761-94cc-0705c8606b2e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/artifacts/LozenskysScalableSkiStore_war.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/artifacts/LozenskysScalableSkiStore_war_exploded.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/aws.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/runConfigurations.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../128Threads.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../256Threads.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../32Threads.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../64Threads.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LozenskysScalableSkiStore.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war/LozenskysScalableSkiStore_war.war" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/META-INF/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Assignment2/ServerA2/ContentValidationUtility.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Assignment2/ServerA2/ErrorBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Assignment2/ServerA2/ReadWriteUtility.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Assignment2/ServerA2/ResortsServletA2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Assignment2/ServerA2/SkiersServletA2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Assignment2/ServerA2/StatusCodes.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Assignment2/SqsSendReceive.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Client1/ClientOne.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Client1/ClientOneLiftPostingRunnable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Client2/ClientTwo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Client2/ClientTwoLiftPostingRunnable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Client2/DataHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Client2/RequestData$RequestComparator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Client2/RequestData$RequestDatum.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Client2/RequestData.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Client2/ThreadsafeFileWriter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Server/ContentValidationUtility.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Server/ErrorBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Server/ReadWriteUtility.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Server/ResortsServlet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Server/SkiersServlet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Server/StatusCodes.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/ServerLibrary/LiftRide.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/ServerLibrary/Resort.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/ServerLibrary/ResortLite.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/ServerLibrary/Resorts.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/ServerLibrary/Season.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/ServerLibrary/Seasons.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/ServerLibrary/SkiDay.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/ServerLibrary/Skier.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedClientClasses/AbstractClient.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedClientClasses/AbstractLiftPosterRunnable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedClientClasses/ArgParsingUtility$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedClientClasses/ArgParsingUtility$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedClientClasses/ArgParsingUtility$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedClientClasses/ArgParsingUtility$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedClientClasses/ArgParsingUtility.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedClientClasses/BarChartMaker.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedClientClasses/ClientThreadPool.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedClientClasses/Gates.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedClientClasses/LineChartMaker.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedClientClasses/RequestData$RequestComparator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedClientClasses/RequestData$RequestDatum.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedClientClasses/RequestData.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedLibrary/CachedThreadPool.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedLibrary/LiftRide.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedLibrary/Resort.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedLibrary/ResortLite.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedLibrary/Resorts.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedLibrary/Season.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedLibrary/Seasons.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedLibrary/SkiDay.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedLibrary/Skier.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedLibrary/StatusCodes.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/lib/activation-1.1.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/lib/commons-codec-1.11.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/lib/commons-logging-1.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/lib/httpclient-4.5.13.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/lib/httpcore-4.4.13.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/lib/javax.annotation-api-1.3.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/lib/jaxb-core-2.2.11.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/lib/jaxb-impl-2.2.11.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/web.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/artifacts/LozenskysScalableSkiStore_war_exploded/index.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../output.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/A1/Client1/ClientOne.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/A1/Client1/ClientOneLiftPostingRunnable.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/A1/Client2/ClientTwo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/A1/Client2/ClientTwoLiftPostingRunnable.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/A1/Client2/RequestData.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/A1/Client2/ThreadsafeFileWriter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/A1/Server/ContentValidationUtility.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/A1/Server/ErrorBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/A1/Server/ReadWriteUtility.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/A1/Server/ResortsServlet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/A1/Server/SkiersServlet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/A1/Server/StatusCodes.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/A1/ServerLibrary/LiftRide.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/A1/ServerLibrary/Resort.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/A1/ServerLibrary/ResortLite.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/A1/ServerLibrary/Resorts.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/A1/ServerLibrary/Season.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/A1/ServerLibrary/Seasons.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/A1/ServerLibrary/SkiDay.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/A1/ServerLibrary/Skier.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/A1/SharedClientClasses/AbstractClient.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/A1/SharedClientClasses/AbstractLiftPosterRunnable.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/A1/SharedClientClasses/ArgParsingUtility.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/A1/SharedClientClasses/BarChartMaker.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/A1/SharedClientClasses/ClientThreadPool.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/A1/SharedClientClasses/Gates.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/A1/SharedClientClasses/LineChartMaker.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/Assignment2/ServerA2/ContentValidationUtilityA2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/Assignment2/ServerA2/ErrorBuilderA2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/Assignment2/ServerA2/ReadWriteUtilityA2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/Assignment2/ServerA2/ResortsServletA2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/Assignment2/ServerA2/SkiersServletA2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/Assignment2/ServerA2/StatusCodesA2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/Assignment2/ServerLibraryA2/LiftRide.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/Assignment2/ServerLibraryA2/Resort.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/Assignment2/ServerLibraryA2/ResortLite.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/Assignment2/ServerLibraryA2/Resorts.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/Assignment2/ServerLibraryA2/Season.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/Assignment2/ServerLibraryA2/Seasons.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/Assignment2/ServerLibraryA2/SkiDay.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/Assignment2/ServerLibraryA2/Skier.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/Assignment2/SqsSendReceive.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web/WEB-INF/web.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web/index.jsp" beforeDir="false" />
-    </list>
+    <list default="true" id="17a263ba-fc74-4761-94cc-0705c8606b2e" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -150,7 +20,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../AssignmentOne" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -161,6 +31,7 @@
       <option name="presentableId" value="Default" />
       <updated>1635292145367</updated>
       <workItem from="1635292146673" duration="385000" />
+      <workItem from="1635293872315" duration="199000" />
     </task>
     <servers />
   </component>

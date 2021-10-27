@@ -7,6 +7,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.CountDownLatch;
 import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
+import SharedClientClasses.*;
 
 public class ClientTwo extends AbstractClient {
 
