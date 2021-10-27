@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="LozenskysScalableSkiStore:war">
-    <output-path>$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war</output-path>
-    <root id="archive" name="LozenskysScalableSkiStore_war.war">
-      <element id="artifact" artifact-name="LozenskysScalableSkiStore:war exploded" />
-    </root>
-  </artifact>
-</component>
