@@ -1,5 +1,6 @@
 package Server;
 
+import SharedLibrary.InterfaceSkierDataObject;
 import SharedLibrary.LiftRide;
 import SharedLibrary.Resorts;
 import SharedLibrary.Season;
@@ -60,10 +61,21 @@ public class ReadWriteUtility {
         writer.close();
     }
 
-    public static void sendPostSuccess(HttpServletResponse response, PrintWriter writer) {
-        StatusCodes.setWriteSuccess(response);
-        writer.flush();
-        writer.close();
+    public static void sendPostSuccess(HttpServletResponse response, PrintWriter writer,
+        InterfaceSkierDataObject dataObject) {
+        if (SqsSend.getInstance().sendMessage(gson.toJson(dataObject))) {
+
+            StatusCodes.setWriteSuccess(response);
+            writer.flush();
+            writer.close();
+        }
+        else {
+            errorProcessing(response, writer);
+        }
+    }
+
+    private static void errorProcessing(HttpServletResponse response, PrintWriter writer) {
+
     }
 
     public static LiftRide readLiftRideBody(BufferedReader reader) {

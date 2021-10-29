@@ -8,7 +8,7 @@ public final class ContentValidationUtility {
 
     private ContentValidationUtility(){}
 
-    public static boolean isResort(String resortId) {
+    public static boolean isResortId(String resortId) {
         return isInt(resortId);
     }
 
@@ -120,7 +120,7 @@ public final class ContentValidationUtility {
         int skiersText = 6;
         int skierIdIndex = 7;
         if (
-            ContentValidationUtility.isResort(urlParts[resortIdIndex]) &&
+            ContentValidationUtility.isResortId(urlParts[resortIdIndex]) &&
                 urlParts[seasonsText].equals("seasons") &&
                 ContentValidationUtility.isSeason(urlParts[seasonIdIndex]) &&
                 urlParts[daysText].equals("days") &&
@@ -128,7 +128,6 @@ public final class ContentValidationUtility {
                 urlParts[skiersText].equals("skiers") &&
                 ContentValidationUtility.isSkier(urlParts[skierIdIndex])
         ) {
-
             return true;
         }
         return false;
@@ -141,7 +140,7 @@ public final class ContentValidationUtility {
         int seasonsTextIndex = 2;
 
         if (
-            ContentValidationUtility.isResort(urlParts[resortIdIndex]) &&
+            ContentValidationUtility.isResortId(urlParts[resortIdIndex]) &&
                 urlParts[seasonsTextIndex].equals("seasons")
         ) {
             return true;
@@ -175,5 +174,28 @@ public final class ContentValidationUtility {
     }
 
 
+    public static boolean isDayId(Integer dayId) {
+        return dayId > 0 && dayId < 367;
+    }
 
+    /**
+     * Placeholder for future validation of resortIds
+     * @param resortId
+     * @return
+     */
+    public static boolean isResortId(int resortId) {
+        return resortId > 0;
+    }
+
+    public static boolean isResortName(String resortName) {
+        return resortName != null;
+    }
+
+    public static boolean isVertMeasure(int vertMeasure) {
+        return vertMeasure > 0;
+    }
+
+    public static boolean isSkier(int skierId) {
+        return skierId > 0;
+    }
 }

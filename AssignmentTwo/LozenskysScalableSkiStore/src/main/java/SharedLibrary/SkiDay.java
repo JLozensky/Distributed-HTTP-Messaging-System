@@ -1,6 +1,8 @@
 package SharedLibrary;
 
-public class SkiDay {
+import Server.ContentValidationUtility;
+
+public class SkiDay implements InterfaceSkierDataObject {
     String season;
     Integer dayId;
 
@@ -19,5 +21,12 @@ public class SkiDay {
         }
         SkiDay sd = (SkiDay) o;
         return this.season.equals(sd.season) && this.dayId.equals(sd.dayId);
+    }
+
+    @Override
+    public boolean isValid() {
+        return ContentValidationUtility.isSeason(this.season)
+                && ContentValidationUtility.isDayId(this.dayId);
+
     }
 }

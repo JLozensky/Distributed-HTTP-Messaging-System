@@ -2,6 +2,7 @@ package SharedLibrary;
 
 import java.util.ArrayList;
 
+
 public class Resorts {
     private ArrayList<ResortLite> resortsList;
 

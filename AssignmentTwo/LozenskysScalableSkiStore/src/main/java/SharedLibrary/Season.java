@@ -2,7 +2,7 @@ package SharedLibrary;
 
 import Server.ContentValidationUtility;
 
-public class Season {
+public class Season implements InterfaceSkierDataObject {
 
     private String year;
 

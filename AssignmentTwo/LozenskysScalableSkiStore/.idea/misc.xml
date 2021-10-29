@@ -3,7 +3,8 @@
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
-        <option value="$PROJECT_DIR$/../LozenskysScalableSkiStore/AssignmentTwo/LozenskysScalableSkiStore/pom.xml" />
+        <option value="$PROJECT_DIR$/AssignmentTwo/LozenskysScalableSkiStore/pom.xml" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>

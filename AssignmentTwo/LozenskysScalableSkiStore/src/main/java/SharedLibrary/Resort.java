@@ -1,15 +1,15 @@
 package SharedLibrary;
 
-import java.util.ArrayList;
+import Server.ContentValidationUtility;
 
-public class Resort {
+public class Resort implements InterfaceSkierDataObject {
     private int resortId;
-    private ArrayList<String> seasons;
+    private String[] seasons;
     private String resortName;
     private int vertMeasure;
 
     // do std dist between 500 and 4500 for vertMeasure
-    public Resort(String resortName, int resortId, ArrayList<String> seasons, int vertMeasure) {
+    public Resort(String resortName, int resortId, String[] seasons, int vertMeasure) {
         this.resortName = resortName;
         this.resortId = resortId;
         this.seasons = seasons;
@@ -22,5 +22,13 @@ public class Resort {
 
     public int getResortId() {
         return this.resortId;
+    }
+
+    @Override
+    public boolean isValid() {
+        return ContentValidationUtility.isResortId(this.resortId)
+                && new Seasons(this.seasons).isValid()
+                && ContentValidationUtility.isResortName(this.resortName)
+                && ContentValidationUtility.isVertMeasure(this.vertMeasure);
     }
 }

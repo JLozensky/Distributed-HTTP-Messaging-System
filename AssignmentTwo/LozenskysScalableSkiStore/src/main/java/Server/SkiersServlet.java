@@ -72,15 +72,15 @@ public class SkiersServlet extends HttpServlet {
         if (!ContentValidationUtility.validateUrlSize(SEGMENT_COUNT, urlParts)){
             ReadWriteUtility.errorMissingParameters(response,writer);
         }
-        if (ContentValidationUtility.validateLiftRideAndSkierDay(urlParts)) {
-            LiftRide liftRide = ReadWriteUtility.readLiftRideBody(request.getReader());
-            if (liftRide == null || ! liftRide.isValid()) {
-                ReadWriteUtility.errorInvalidParameters(response,writer);
-            }
-        } else {
-            ReadWriteUtility.sendPostSuccess(response,writer);
+        if (!ContentValidationUtility.validateLiftRideAndSkierDay(urlParts)) {
+            ReadWriteUtility.errorInvalidParameters(response, writer);
         }
 
-
+        LiftRide liftRide = ReadWriteUtility.readLiftRideBody(request.getReader());
+        if (liftRide != null && liftRide.isValid()) {
+            ReadWriteUtility.sendPostSuccess(response, writer, liftRide);
+        } else {
+            ReadWriteUtility.errorInvalidParameters(response,writer);
+        }
     }
 }

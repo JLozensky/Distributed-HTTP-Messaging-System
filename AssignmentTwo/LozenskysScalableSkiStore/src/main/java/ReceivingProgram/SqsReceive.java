@@ -6,15 +6,10 @@ import java.util.List;
 import software.amazon.awssdk.services.sqs.model.Message;
 import software.amazon.awssdk.services.sqs.model.ReceiveMessageRequest;
 
-/**
- * Learned how to do most of this from the various guides contained in the AWS documentation:
- * https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide
- */
+
 
 /**
- * Need to refactor so child classes get a client per class
- *
- * num responses against answer time for the bonus charts
+ * num responses against answer time for the bonus charts TODO edit client
  *
  * Server validates request
  *      thread pool? probs not the different servers are the thread pool
@@ -44,15 +39,26 @@ import software.amazon.awssdk.services.sqs.model.ReceiveMessageRequest;
 public class SqsReceive extends AbstractSqsInteractor {
 
     private static final Integer BATCH_RECEIVE_NUM = 10;
+    private static SqsReceive instance = null;
 
-    public static List<Message> receiveMessage(){
+    public static SqsReceive getInstance() {
+        if (instance == null) {
+            return new SqsReceive();
+        } else {
+            return instance;
+        }
+    }
+
+    public List<Message> receiveMessage(){
         ReceiveMessageRequest receiveRequest = ReceiveMessageRequest.builder()
-            .queueUrl(qUrl)
+            .queueUrl(this.qUrl)
             .maxNumberOfMessages(BATCH_RECEIVE_NUM)
             .build();
         List<Message> messageList = sqsClient.receiveMessage(receiveRequest).messages();
         return messageList;
     }
+
+
 
 
 

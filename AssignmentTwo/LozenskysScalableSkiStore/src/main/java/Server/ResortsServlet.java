@@ -47,7 +47,7 @@ public class ResortsServlet extends HttpServlet {
         }
         Season season = readSeasonValue(request.getReader());
         if (season.isValid()){
-            sendPostSuccess(response, writer);
+            sendPostSuccess(response, writer, season);
         } else {
             errorInvalidParameters(response, writer);
         }

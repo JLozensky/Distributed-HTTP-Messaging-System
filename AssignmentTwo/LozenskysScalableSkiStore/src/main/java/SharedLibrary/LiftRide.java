@@ -3,7 +3,7 @@ package SharedLibrary;
 
 import Server.ContentValidationUtility;
 
-public class LiftRide {
+public class LiftRide implements InterfaceSkierDataObject {
     private Integer time;
     private Integer liftID;
 
@@ -29,11 +29,7 @@ public class LiftRide {
     }
 
     public boolean isValid(){
-        if (this.liftID == null || this.time == null){ return false; }
-        if (
-            ! ContentValidationUtility.isLiftId(this.liftID) ||
-            ! ContentValidationUtility.isTime(this.time)
-        ) { return false; }
-        return true;
+        return ContentValidationUtility.isLiftId(this.liftID)
+                   && ContentValidationUtility.isTime(this.time);
     }
 }

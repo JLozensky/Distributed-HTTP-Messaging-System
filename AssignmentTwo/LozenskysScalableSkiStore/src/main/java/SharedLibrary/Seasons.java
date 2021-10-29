@@ -1,9 +1,10 @@
 package SharedLibrary;
 
+import Server.ContentValidationUtility;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Seasons {
+public class Seasons implements InterfaceSkierDataObject{
 
     private ArrayList<String> seasons;
 
@@ -26,5 +27,13 @@ public class Seasons {
     public static Seasons makeDummySeasons(){
         String[] seasons = {"1991", "1996", "2009", "2014"};
         return new Seasons(seasons);
+    }
+
+    @Override
+    public boolean isValid() {
+        for (String season : this.seasons) {
+            if (!ContentValidationUtility.isSeason(season)) {return false;}
+        }
+        return true;
     }
 }
