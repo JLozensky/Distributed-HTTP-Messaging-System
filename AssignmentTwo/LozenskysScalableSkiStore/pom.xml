@@ -6,7 +6,11 @@
 
   <groupId>fyi.joshlozensky</groupId>
   <artifactId>LozenskysScalableSkiStore</artifactId>
+  <packaging>pom</packaging>
   <version>2.0</version>
+  <modules>
+    <module>ReceivingProgramModule</module>
+  </modules>
 
   <properties>
     <maven.compiler.source>11</maven.compiler.source>

@@ -6,14 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="ReceivingProgramModule" />
         <module name="LozenskysScalableSkiStore" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="AssignmentTwo" target="11" />
       <module name="LozenskysScalableSkiStore" target="11" />
-      <module name="ReceivingProgramModule" target="14" />
     </bytecodeTargetLevel>
   </component>
 </project>
