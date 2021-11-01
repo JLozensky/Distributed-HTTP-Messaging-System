@@ -2,6 +2,7 @@ package ReceivingProgram;
 
 
 import SharedLibrary.AbstractSqsInteractor;
+import java.time.Instant;
 import java.util.List;
 import software.amazon.awssdk.services.sqs.model.Message;
 import software.amazon.awssdk.services.sqs.model.ReceiveMessageRequest;
@@ -11,16 +12,9 @@ import software.amazon.awssdk.services.sqs.model.ReceiveMessageRequest;
 /**
  * num responses against answer time for the bonus charts TODO edit client
  *
- * Server validates request
- *      thread pool? probs not the different servers are the thread pool
- * Runs logic to submit to SQS if valid
- *         need to provide dedupe id because otherwise hash is generated on content so msgs with the same content
- *         would fail to be delivered by the Q
- * Upon confirmed receipt send success response to client
  *
- *          also consider batching
+ * Consider batching
  *
- *Split send receive into just send and then receive/delete classes
  *
  * SQS queue is being polled by receive program
  * receive program has multiple threads pulling messages
@@ -53,8 +47,13 @@ public class SqsReceive extends AbstractSqsInteractor {
         ReceiveMessageRequest receiveRequest = ReceiveMessageRequest.builder()
             .queueUrl(this.qUrl)
             .maxNumberOfMessages(BATCH_RECEIVE_NUM)
+            .waitTimeSeconds(20)
             .build();
+        Instant start = Instant.now();
         List<Message> messageList = sqsClient.receiveMessage(receiveRequest).messages();
+        Instant stop = Instant.now();
+        System.out.println("time taken: " + stop.compareTo(start)+ "\n");
+        System.out.println(messageList);
         return messageList;
     }
 

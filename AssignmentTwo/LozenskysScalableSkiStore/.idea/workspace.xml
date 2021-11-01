@@ -13,95 +13,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d0149cf1-9a74-42b9-9bd8-2745da022527" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/LozenskysScalableSkiStore.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/aws.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__com_google_code_gson_gson_2_8_5.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__com_sun_xml_bind_jaxb_core_2_2_11.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__com_sun_xml_bind_jaxb_impl_2_2_11.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__com_typesafe_netty_netty_reactive_streams_2_0_5.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__com_typesafe_netty_netty_reactive_streams_http_2_0_5.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__commons_beanutils_commons_beanutils_1_9_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__commons_codec_commons_codec_1_11.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__commons_collections_commons_collections_3_2_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__commons_digester_commons_digester_2_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__commons_httpclient_commons_httpclient_3_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__commons_logging_commons_logging_1_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__commons_validator_commons_validator_1_7.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__io_netty_netty_buffer_4_1_68_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__io_netty_netty_codec_4_1_68_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__io_netty_netty_codec_http2_4_1_68_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__io_netty_netty_codec_http_4_1_68_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__io_netty_netty_common_4_1_68_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__io_netty_netty_handler_4_1_68_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__io_netty_netty_resolver_4_1_68_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__io_netty_netty_transport_4_1_68_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__io_netty_netty_transport_native_epoll_linux_x86_64_4_1_68_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__io_netty_netty_transport_native_unix_common_4_1_68_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__javax_activation_activation_1_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__javax_activation_javax_activation_api_1_2_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__javax_annotation_javax_annotation_api_1_3_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__javax_servlet_javax_servlet_api_4_0_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__javax_xml_bind_jaxb_api_2_4_0_b180830_0359.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__log4j_log4j_1_2_17.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__net_bull_javamelody_javamelody_core_1_88_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__org_apache_httpcomponents_httpclient_4_5_13.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__org_apache_httpcomponents_httpcore_4_4_13.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__org_apiguardian_apiguardian_api_1_0_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__org_immutables_gson_2_8_8.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__org_jfree_jcommon_1_0_24.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__org_jfree_jfreechart_1_5_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__org_jrobin_jrobin_1_5_9.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_api_5_4_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_engine_5_4_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__org_junit_platform_junit_platform_commons_1_4_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__org_junit_platform_junit_platform_engine_1_4_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__org_junit_platform_junit_platform_launcher_1_4_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__org_opentest4j_opentest4j_1_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__org_reactivestreams_reactive_streams_1_0_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_25.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__org_slf4j_slf4j_log4j12_1_7_25.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__software_amazon_awssdk_annotations_2_17_46.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__software_amazon_awssdk_apache_client_2_17_46.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__software_amazon_awssdk_auth_2_17_46.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__software_amazon_awssdk_aws_core_2_17_46.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__software_amazon_awssdk_aws_query_protocol_2_17_46.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__software_amazon_awssdk_http_client_spi_2_17_46.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__software_amazon_awssdk_json_utils_2_17_46.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__software_amazon_awssdk_metrics_spi_2_17_46.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__software_amazon_awssdk_netty_nio_client_2_17_46.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__software_amazon_awssdk_profiles_2_17_46.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__software_amazon_awssdk_protocol_core_2_17_46.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__software_amazon_awssdk_regions_2_17_46.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__software_amazon_awssdk_sdk_core_2_17_46.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__software_amazon_awssdk_sqs_2_17_46.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__software_amazon_awssdk_third_party_jackson_core_2_17_46.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__software_amazon_awssdk_utils_2_17_46.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/libraries/Maven__software_amazon_eventstream_eventstream_1_0_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/runConfigurations.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ReceivingProgramModule/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/SharedLibrary/AbstractSqsInteractor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/SharedLibrary/ContentValidationUtility.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/SharedLibrary/InterfaceSkierDataObject.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/SharedLibrary/LiftRide.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/SharedLibrary/Resort.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/SharedLibrary/ResortLite.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/SharedLibrary/Resorts.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/SharedLibrary/Season.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/SharedLibrary/Seasons.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/SharedLibrary/SkiDay.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/SharedLibrary/Skier.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/LozenskysScalableSkiStore_war_exploded.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/ReceivingProgram/MessageProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/ReceivingProgram/MessageStorage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/ReceivingProgram/ReceiverMain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/ReceivingProgram/ThreadPool.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/AssignmentTwo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/AssignmentTwo.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ReceivingProgram/MessageReceiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/ReceivingProgram/MessageReceiver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ReceivingProgram/SqsDelete.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/ReceivingProgram/SqsDelete.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ReceivingProgram/SqsReceive.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/ReceivingProgram/SqsReceive.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReceivingProgramModule/ReceivingProgramModule.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ReceivingProgramModule/ReceivingProgramModule.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReceivingProgramModule/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ReceivingProgramModule/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/ReceivingProgram/MessageReceiver.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/ReceivingProgram/SqsReceive.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/ReceivingProgram/SqsReceive.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/SharedLibrary/LiftRide.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/SharedLibrary/LiftRide.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/SharedLibrary/Resort.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/SharedLibrary/Resort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/SharedLibrary/ResortLite.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/SharedLibrary/ResortLite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/SharedLibrary/Seasons.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/SharedLibrary/Seasons.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/SharedLibrary/SkiDay.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/SharedLibrary/SkiDay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/SharedLibrary/Skier.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/SharedLibrary/Skier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Server/ContentValidationUtility.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Server/ContentValidationUtility.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Server/ErrorBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Server/ErrorBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Server/ReadWriteUtility.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Server/ReadWriteUtility.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Server/ResortsServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Server/ResortsServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Server/SkiersServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Server/SkiersServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Server/StatusCodes.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Server/StatusCodes.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedLibrary/LiftRide.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedLibrary/LiftRide.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedLibrary/Resort.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedLibrary/Resort.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedLibrary/ResortLite.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedLibrary/ResortLite.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedLibrary/Resorts.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedLibrary/Resorts.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedLibrary/Season.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedLibrary/Season.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedLibrary/Seasons.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedLibrary/Seasons.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedLibrary/SkiDay.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedLibrary/SkiDay.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedLibrary/Skier.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedLibrary/Skier.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,8 +58,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -157,11 +101,11 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.1566081" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -183,62 +127,12 @@
       <recent name="Client2" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ClientOne">
-    <configuration name="AssignmentC1" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="A1.Client1.ClientOne" />
-      <module name="LozenskysScalableSkiStore" />
-      <option name="PROGRAM_PARAMETERS" value="assignmentMode" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AssignmentC2" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="A1.Client2.ClientTwo" />
-      <module name="LozenskysScalableSkiStore" />
-      <option name="PROGRAM_PARAMETERS" value="assignmentMode" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="C1 ec2" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="A1.Client1.ClientOne" />
-      <module name="LozenskysScalableSkiStore" />
-      <option name="PROGRAM_PARAMETERS" value="-t 256 -s 100000 -l 60 -ml 20 -ip 3.86.216.100 -p 8080" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ClientOne" type="Application" factoryName="Application" show_console_on_std_out="true">
-      <option name="MAIN_CLASS_NAME" value="A1.Client1.ClientOne" />
-      <module name="LozenskysScalableSkiStore" />
-      <option name="PROGRAM_PARAMETERS" value="-t 256 -s 1000 -l 40 -ml 10 -ip localhost -p 8080" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="A1.Client2.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ClientTwo" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="A1.Client2.ClientTwo" />
-      <module name="LozenskysScalableSkiStore" />
-      <option name="PROGRAM_PARAMETERS" value="-t 256 -s 1000 -l 40 -ml 10 -ip localhost -p 8080" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SqsReceive" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Assignment2.ReceivingProgram.SqsReceive" />
-      <module name="LozenskysScalableSkiStore" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Assignment2.ReceivingProgram.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
+  <component name="RunManager" selected="Application.MessageReceiver">
+    <configuration name="MessageReceiver" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="BUNDLED" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="ReceivingProgram.ReceiverMain" />
+      <module name="ReceivingProgramModule" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -254,6 +148,20 @@
     <configuration name="Scratch" type="Java Scratch" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Scratch" />
       <option name="SCRATCH_FILE_URL" value="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.java" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="TomeeConfiguration" factoryName="Remote" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="LOCAL" value="false" />
+      <deployment />
+      <server-settings>
+        <data>
+          <option name="transportHostId" />
+        </data>
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="TOMCAT_LOCALHOST_LOG_ID" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -346,7 +254,7 @@
       </ConfigurationWrapper>
       <method v="2">
         <option name="Make" enabled="true" />
-        <option name="BuildArtifacts" enabled="true" />
+        <option name="BuildArtifacts" enabled="false" />
       </method>
     </configuration>
     <configuration default="true" type="aws.lambda" factoryName="Local">
@@ -380,12 +288,7 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Application.ClientOne" />
-      <item itemvalue="Application.AssignmentC1" />
-      <item itemvalue="Application.ClientTwo" />
-      <item itemvalue="Application.AssignmentC2" />
-      <item itemvalue="Application.C1 ec2" />
-      <item itemvalue="Application.SqsReceive" />
+      <item itemvalue="Application.MessageReceiver" />
       <item itemvalue="JAR Application.gson-2.8.8.jar" />
       <item itemvalue="JAR Application.gson-2.8.8.jar (1)" />
       <item itemvalue="Java Scratch.Scratch" />
@@ -451,6 +354,7 @@
       <workItem from="1635296259125" duration="566000" />
       <workItem from="1635469518431" duration="13092000" />
       <workItem from="1635532638810" duration="4270000" />
+      <workItem from="1635709642413" duration="17345000" />
     </task>
     <servers />
   </component>

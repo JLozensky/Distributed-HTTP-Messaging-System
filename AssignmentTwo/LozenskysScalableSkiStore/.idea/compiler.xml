@@ -13,7 +13,7 @@
     <bytecodeTargetLevel>
       <module name="AssignmentTwo" target="11" />
       <module name="LozenskysScalableSkiStore" target="11" />
-      <module name="ReceivingProgramModule" target="14" />
+      <module name="ReceivingProgramModule" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

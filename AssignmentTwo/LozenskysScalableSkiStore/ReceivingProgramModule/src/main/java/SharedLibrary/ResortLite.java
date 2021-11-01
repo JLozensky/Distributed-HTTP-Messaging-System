@@ -1,7 +1,5 @@
 package SharedLibrary;
 
-import Server.ContentValidationUtility;
-
 public class ResortLite implements InterfaceSkierDataObject {
     private int resortId;
     private String resortName;

@@ -1,7 +1,5 @@
 package SharedLibrary;
 
-import Server.ContentValidationUtility;
-
 public class SkiDay implements InterfaceSkierDataObject {
     String season;
     Integer dayId;

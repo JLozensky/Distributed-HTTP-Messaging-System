@@ -1,8 +1,5 @@
 package SharedLibrary;
 
-
-import Server.ContentValidationUtility;
-
 public class LiftRide implements InterfaceSkierDataObject {
     private Integer time;
     private Integer liftID;

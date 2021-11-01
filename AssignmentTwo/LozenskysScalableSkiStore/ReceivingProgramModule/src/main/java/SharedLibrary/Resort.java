@@ -1,7 +1,5 @@
 package SharedLibrary;
 
-import Server.ContentValidationUtility;
-
 public class Resort implements InterfaceSkierDataObject {
     private int resortId;
     private String[] seasons;
