@@ -23,7 +23,7 @@ public class MessageProcessor implements Runnable {
         for (Message m : this.messages) {
             LiftRide liftRide = gson.fromJson(m.body(),LiftRide.class);
             if (liftRide.isValid() && MessageStorage.insertData(liftRide, m.messageId())) {
-                SqsDelete.getSqsDelete().deleteMessage(m.messageId());
+                SqsDelete.getSqsDelete().deleteMessage(m.receiptHandle());
             }
 
         }

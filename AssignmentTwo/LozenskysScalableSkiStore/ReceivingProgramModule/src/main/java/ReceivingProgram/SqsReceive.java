@@ -49,10 +49,10 @@ public class SqsReceive extends AbstractSqsInteractor {
             .maxNumberOfMessages(BATCH_RECEIVE_NUM)
             .waitTimeSeconds(20)
             .build();
-        Instant start = Instant.now();
+        Long start = Instant.now().toEpochMilli();
         List<Message> messageList = sqsClient.receiveMessage(receiveRequest).messages();
-        Instant stop = Instant.now();
-        System.out.println("time taken: " + stop.compareTo(start)+ "\n");
+        Long stop = Instant.now().toEpochMilli();
+        System.out.println("time taken: " + (stop - start) + "ms\n");
         System.out.println(messageList);
         return messageList;
     }

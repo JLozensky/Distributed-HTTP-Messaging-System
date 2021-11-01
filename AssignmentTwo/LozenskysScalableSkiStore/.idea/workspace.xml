@@ -13,39 +13,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d0149cf1-9a74-42b9-9bd8-2745da022527" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/LozenskysScalableSkiStore_war_exploded.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/ReceivingProgram/MessageProcessor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/ReceivingProgram/MessageStorage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/ReceivingProgram/ReceiverMain.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/ReceivingProgram/ThreadPool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/AssignmentTwo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/AssignmentTwo.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReceivingProgramModule/ReceivingProgramModule.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ReceivingProgramModule/ReceivingProgramModule.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReceivingProgramModule/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ReceivingProgramModule/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/ReceivingProgram/MessageReceiver.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/ReceivingProgram/MessageProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/ReceivingProgram/MessageProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/ReceivingProgram/SqsDelete.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/ReceivingProgram/SqsDelete.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/ReceivingProgram/SqsReceive.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/ReceivingProgram/SqsReceive.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/SharedLibrary/LiftRide.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/SharedLibrary/LiftRide.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/SharedLibrary/Resort.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/SharedLibrary/Resort.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/SharedLibrary/ResortLite.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/SharedLibrary/ResortLite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/SharedLibrary/Seasons.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/SharedLibrary/Seasons.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/SharedLibrary/SkiDay.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/SharedLibrary/SkiDay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/SharedLibrary/Skier.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/SharedLibrary/Skier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Server/ContentValidationUtility.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Server/ContentValidationUtility.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Server/ErrorBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Server/ErrorBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Server/ReadWriteUtility.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Server/ReadWriteUtility.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Server/ResortsServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Server/ResortsServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Server/SkiersServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Server/SkiersServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Server/StatusCodes.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Server/StatusCodes.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedLibrary/LiftRide.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedLibrary/LiftRide.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedLibrary/Resort.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedLibrary/Resort.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedLibrary/ResortLite.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedLibrary/ResortLite.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedLibrary/Resorts.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedLibrary/Resorts.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedLibrary/Season.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedLibrary/Season.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedLibrary/Seasons.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedLibrary/Seasons.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedLibrary/SkiDay.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedLibrary/SkiDay.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedLibrary/Skier.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedLibrary/Skier.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +72,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.1566081" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
@@ -354,7 +325,7 @@
       <workItem from="1635296259125" duration="566000" />
       <workItem from="1635469518431" duration="13092000" />
       <workItem from="1635532638810" duration="4270000" />
-      <workItem from="1635709642413" duration="17345000" />
+      <workItem from="1635709642413" duration="21059000" />
     </task>
     <servers />
   </component>
