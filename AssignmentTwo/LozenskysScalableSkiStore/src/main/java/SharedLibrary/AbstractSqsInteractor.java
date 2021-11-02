@@ -14,6 +14,9 @@ import software.amazon.awssdk.services.sqs.model.PurgeQueueResponse;
  */
 
 
+
+// Need to figure out how to send messages to the vpc endpoint url instead of the sqs url
+
 public abstract class AbstractSqsInteractor {
 
     protected  SqsClient sqsClient;
