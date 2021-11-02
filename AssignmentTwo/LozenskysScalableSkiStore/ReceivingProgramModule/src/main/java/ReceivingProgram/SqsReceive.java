@@ -52,8 +52,10 @@ public class SqsReceive extends AbstractSqsInteractor {
         Long start = Instant.now().toEpochMilli();
         List<Message> messageList = sqsClient.receiveMessage(receiveRequest).messages();
         Long stop = Instant.now().toEpochMilli();
-        System.out.println("time taken: " + (stop - start) + "ms\n");
-        System.out.println(messageList);
+        Long timeTaken = stop - start;
+        if (timeTaken > 20000) {
+            System.out.println("Num messages deleted = " + SqsDelete.getNumDeleted());
+        }
         return messageList;
     }
 

@@ -179,10 +179,10 @@ public class ClientOne extends AbstractClient {
             // here we do the four runs for the assignment and put together the chart
             // define values for args for each run
             final String hardcodedIP = "localhost";
-            final String SKIER_NUM = "20000";
-            final String LIFT_NUM = "40";
+            final String SKIER_NUM = "1000";
+            final String LIFT_NUM = "20";
             final String PORT_NUM = "8080";
-            final int[] THREAD_NUMS = {32,64,128,256};
+            final int[] THREAD_NUMS = {32,64};
 
             // Set up charting tool
             BarChartMaker bcm = new BarChartMaker("ClientOne Thread Count Comparison", "NumThreads","Time Taken");

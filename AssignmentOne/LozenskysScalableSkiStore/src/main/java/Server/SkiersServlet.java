@@ -9,7 +9,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 
 
-@WebServlet(name = "SkiersServlet", value = "/skiers", asyncSupported = true)
+@WebServlet(name = "SkiersServlet", value = "/skiers")
 public class SkiersServlet extends HttpServlet {
 
 

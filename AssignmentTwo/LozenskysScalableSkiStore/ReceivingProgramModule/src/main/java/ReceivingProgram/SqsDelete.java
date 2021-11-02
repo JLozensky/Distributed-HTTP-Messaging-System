@@ -29,4 +29,8 @@ public class SqsDelete extends AbstractSqsInteractor {
                 .receiptHandle(receiptHandle)
                 .build());
     }
+
+    public static int getNumDeleted() {
+        return numDeleted.get();
+    }
 }

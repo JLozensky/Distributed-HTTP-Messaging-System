@@ -5,6 +5,7 @@
   </component>
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
+      <artifact name="LozenskysScalableSkiStore:war" />
       <artifact name="LozenskysScalableSkiStore:war exploded" />
     </artifacts-to-build>
   </component>
@@ -13,10 +14,59 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d0149cf1-9a74-42b9-9bd8-2745da022527" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/.idea/artifacts/LozenskysScalableSkiStore_war.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/.idea/artifacts/LozenskysScalableSkiStore_war_exploded.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/32Threads.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/64Threads.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../AssignmentOne/output.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/.idea/AssignmentOne.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/.idea/AssignmentOne.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war/LozenskysScalableSkiStore_war.war" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war/LozenskysScalableSkiStore_war.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Client1/ClientOne.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Client1/ClientOne.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Client1/ClientOneLiftPostingRunnable.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Client1/ClientOneLiftPostingRunnable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Client2/ClientTwo.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Client2/ClientTwo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Client2/ClientTwoLiftPostingRunnable.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Client2/ClientTwoLiftPostingRunnable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Client2/RequestData$RequestComparator.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Client2/RequestData$RequestComparator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Client2/RequestData$RequestDatum.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Client2/RequestData$RequestDatum.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Client2/RequestData.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Client2/RequestData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Client2/ThreadsafeFileWriter.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Client2/ThreadsafeFileWriter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Server/ContentValidationUtility.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Server/ContentValidationUtility.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Server/ErrorBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Server/ErrorBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Server/ReadWriteUtility.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Server/ReadWriteUtility.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Server/ResortsServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Server/ResortsServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Server/SkiersServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Server/SkiersServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Server/StatusCodes.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Server/StatusCodes.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/ServerLibrary/LiftRide.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/ServerLibrary/LiftRide.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/ServerLibrary/Resort.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/ServerLibrary/Resort.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/ServerLibrary/ResortLite.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/ServerLibrary/ResortLite.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/ServerLibrary/Resorts.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/ServerLibrary/Resorts.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/ServerLibrary/Season.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/ServerLibrary/Season.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/ServerLibrary/Seasons.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/ServerLibrary/Seasons.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/ServerLibrary/SkiDay.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/ServerLibrary/SkiDay.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/ServerLibrary/Skier.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/ServerLibrary/Skier.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedClientClasses/AbstractClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedClientClasses/AbstractClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedClientClasses/AbstractLiftPosterRunnable.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedClientClasses/AbstractLiftPosterRunnable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedClientClasses/ArgParsingUtility$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedClientClasses/ArgParsingUtility$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedClientClasses/ArgParsingUtility$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedClientClasses/ArgParsingUtility$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedClientClasses/ArgParsingUtility$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedClientClasses/ArgParsingUtility$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedClientClasses/ArgParsingUtility$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedClientClasses/ArgParsingUtility$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedClientClasses/ArgParsingUtility.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedClientClasses/ArgParsingUtility.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedClientClasses/BarChartMaker.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedClientClasses/BarChartMaker.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedClientClasses/ClientThreadPool.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedClientClasses/ClientThreadPool.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedClientClasses/Gates.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedClientClasses/Gates.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedClientClasses/LineChartMaker.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedClientClasses/LineChartMaker.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/src/main/java/Client1/ClientOne.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/src/main/java/Client1/ClientOne.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/src/main/java/Client2/ClientTwo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/src/main/java/Client2/ClientTwo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/src/main/java/Server/ResortsServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/src/main/java/Server/ResortsServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/src/main/java/Server/SkiersServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/src/main/java/Server/SkiersServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/web/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/web/WEB-INF/web.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/ReceivingProgram/MessageProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/ReceivingProgram/MessageProcessor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/ReceivingProgram/SqsDelete.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/ReceivingProgram/SqsDelete.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/ReceivingProgram/SqsReceive.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/ReceivingProgram/SqsReceive.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war/LozenskysScalableSkiStore_war.war" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war/LozenskysScalableSkiStore_war.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,20 +173,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="TomeeConfiguration" factoryName="Remote" ALTERNATIVE_JRE_ENABLED="false">
-      <option name="LOCAL" value="false" />
-      <deployment />
-      <server-settings>
-        <data>
-          <option name="transportHostId" />
-        </data>
-      </server-settings>
-      <predefined_log_file enabled="true" id="Tomcat" />
-      <predefined_log_file enabled="true" id="TOMCAT_LOCALHOST_LOG_ID" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Tomcat 10.0.11" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.0.11" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true" show_console_on_std_err="true" show_console_on_std_out="true">
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
@@ -228,34 +264,12 @@
         <option name="BuildArtifacts" enabled="false" />
       </method>
     </configuration>
-    <configuration default="true" type="aws.lambda" factoryName="Local">
+    <configuration default="true" type="aws.lambda" factoryName="Remote">
       <option name="credentialProviderId" />
       <option name="regionId" />
-      <option name="debugHost" value="localhost" />
-      <option name="environmentVariables">
-        <map />
-      </option>
-      <option name="handler" />
-      <option name="image" value="false" />
-      <option name="logicalFunctionName" />
-      <option name="memorySize" value="128" />
-      <option name="pathMappings">
-        <list />
-      </option>
-      <option name="platform" />
-      <option name="runtime" />
-      <option name="templateFile" />
-      <option name="timeout" value="300" />
-      <option name="useTemplate" value="false" />
+      <option name="functionName" />
       <option name="input" />
       <option name="inputIsFile" value="false" />
-      <sam>
-        <option name="additionalBuildArgs" />
-        <option name="additionalLocalArgs" />
-        <option name="buildInContainer" value="false" />
-        <option name="dockerNetwork" />
-        <option name="skipImagePull" value="false" />
-      </sam>
       <method v="2" />
     </configuration>
     <list>
@@ -325,7 +339,8 @@
       <workItem from="1635296259125" duration="566000" />
       <workItem from="1635469518431" duration="13092000" />
       <workItem from="1635532638810" duration="4270000" />
-      <workItem from="1635709642413" duration="21059000" />
+      <workItem from="1635709642413" duration="25889000" />
+      <workItem from="1635815614779" duration="2677000" />
     </task>
     <servers />
   </component>

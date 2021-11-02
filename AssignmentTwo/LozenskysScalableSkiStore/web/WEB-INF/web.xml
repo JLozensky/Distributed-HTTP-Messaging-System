@@ -7,24 +7,24 @@
 
 
   <servlet>
-    <servlet-name>SkiersServletA2</servlet-name>
+    <servlet-name>SkiersServlet</servlet-name>
     <servlet-class>Server.SkiersServlet</servlet-class>
     <async-supported>true</async-supported>
   </servlet>
 
   <servlet-mapping>
-    <servlet-name>SkiersServletA2</servlet-name>
+    <servlet-name>SkiersServlet</servlet-name>
     <url-pattern>/skiers/*</url-pattern>
   </servlet-mapping>
 
   <servlet>
-    <servlet-name>ResortsServletA2</servlet-name>
+    <servlet-name>ResortsServlet</servlet-name>
     <servlet-class>Server.ResortsServlet</servlet-class>
     <async-supported>true</async-supported>
   </servlet>
 
   <servlet-mapping>
-    <servlet-name>ResortsServletA2</servlet-name>
+    <servlet-name>ResortsServlet</servlet-name>
     <url-pattern>/resorts/*</url-pattern>
   </servlet-mapping>
 
