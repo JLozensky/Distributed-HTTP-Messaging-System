@@ -13,7 +13,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d0149cf1-9a74-42b9-9bd8-2745da022527" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Server/HealthServlet.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Server/HealthServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReceivingProgramModule/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ReceivingProgramModule/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war/LozenskysScalableSkiStore_war.war" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war/LozenskysScalableSkiStore_war.war" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedLibrary/AbstractSqsInteractor$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedLibrary/AbstractSqsInteractor$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedLibrary/AbstractSqsInteractor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedLibrary/AbstractSqsInteractor.class" afterDir="false" />
@@ -67,7 +70,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/ReceivingProgramModule/src/main/java" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/ReceivingProgramModule/src/main/java" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/ReceivingProgramModule/src/main/resources" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -215,14 +218,6 @@
         <option name="BuildArtifacts" enabled="false" />
       </method>
     </configuration>
-    <configuration default="true" type="aws.lambda" factoryName="Remote">
-      <option name="credentialProviderId" />
-      <option name="regionId" />
-      <option name="functionName" />
-      <option name="input" />
-      <option name="inputIsFile" value="false" />
-      <method v="2" />
-    </configuration>
     <list>
       <item itemvalue="Application.MessageReceiver" />
       <item itemvalue="JAR Application.gson-2.8.8.jar" />
@@ -292,6 +287,7 @@
       <workItem from="1635532638810" duration="4270000" />
       <workItem from="1635709642413" duration="25889000" />
       <workItem from="1635815614779" duration="6611000" />
+      <workItem from="1636155114017" duration="6308000" />
     </task>
     <servers />
   </component>

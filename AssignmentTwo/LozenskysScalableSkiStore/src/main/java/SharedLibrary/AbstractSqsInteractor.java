@@ -3,6 +3,8 @@ package SharedLibrary;
 import software.amazon.awssdk.auth.credentials.DefaultCredentialsProvider;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.sqs.SqsClient;
+import software.amazon.awssdk.services.sqs.model.GetQueueUrlRequest;
+import software.amazon.awssdk.services.sqs.model.GetQueueUrlResponse;
 import software.amazon.awssdk.services.sqs.model.PurgeQueueRequest;
 import software.amazon.awssdk.services.sqs.model.PurgeQueueResponse;
 
@@ -47,10 +49,10 @@ public abstract class AbstractSqsInteractor {
 
     protected String makeQUrl() {
 
-//        GetQueueUrlResponse queueUrlResponse =
-//            this.sqsClient.getQueueUrl(GetQueueUrlRequest.builder().queueName(this.qName).build());
-//        return queueUrlResponse.queueUrl();
-        return "vpce-0d5cf062de8526722-vhthp6co-us-east-1d.sqs.us-east-1.vpce.amazonaws.com";
+        GetQueueUrlResponse queueUrlResponse =
+            this.sqsClient.getQueueUrl(GetQueueUrlRequest.builder().queueName(this.qName).build());
+        return queueUrlResponse.queueUrl();
+
 
     }
 
