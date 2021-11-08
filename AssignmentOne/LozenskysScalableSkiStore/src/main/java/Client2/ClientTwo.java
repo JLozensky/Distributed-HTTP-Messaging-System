@@ -191,15 +191,15 @@ public class ClientTwo extends AbstractClient {
             System.out.printf("time taken in milliseconds: %d", singleTestRun(args,"output",false));
         } else {
 
-            boolean testLatency = true;
+            boolean testLatency = false;
 
             // here we do the four runs for the assignment and put together the chart
             // define values for args for each run
-            final String hardcodedIP = "localhost";
-            final String SKIER_NUM = "1000";
-            final String LIFT_NUM = "20";
+            final String hardcodedIP = "networkLB-35aa919902f2375b.elb.us-east-1.amazonaws.com";
+            final String SKIER_NUM = "20000";
+            final String LIFT_NUM = "40";
             final String PORT_NUM = "8080";
-            final int[] THREAD_NUMS = {32, 64};
+            final int[] THREAD_NUMS = {64, 128, 256, 512};
 
             // Set up charting tool
             BarChartMaker bcm = new BarChartMaker("ClientTwo Thread Count Comparison", "NumThreads","Time Taken");

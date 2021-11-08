@@ -14,16 +14,6 @@ import software.amazon.awssdk.services.sqs.model.ReceiveMessageRequest;
  *
  *
  * Consider batching
- *
- *
- * SQS queue is being polled by receive program
- * receive program has multiple threads pulling messages
- * adds dedupe handle to thread safe set/hashmap
- * submits record to threadsafe file writer
- * on successful write to "database" receive handle is delivered for deletion
- *      need to see if deleting one at a time or in batches is better
- * on successful deletion from sqs we can remove msg handle from hashed set? Not sure if sqs promises to not resend
- * after deletion
  * keep last x number record files for debug purposes
  * will probably need to run tests independently which means storing results in file and modifying the logic on the
  * report builder

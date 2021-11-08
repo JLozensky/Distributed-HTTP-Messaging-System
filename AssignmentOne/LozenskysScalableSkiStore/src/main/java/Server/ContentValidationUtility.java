@@ -58,7 +58,8 @@ public final class ContentValidationUtility {
 
 
     public static boolean validateIP(String ip) {
-        if (ip.equals("localhost")) {return true;}
+        String LOAD_BALANCER_IP =  "networkLB-35aa919902f2375b.elb.us-east-1.amazonaws.com";
+        if (ip.equals("localhost") || ip.equals(LOAD_BALANCER_IP)) {return true;}
 
         InetAddressValidator validator = InetAddressValidator.getInstance();
         return validator.isValid(ip);

@@ -5,6 +5,8 @@ import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.Collections;
+import java.util.HashMap;
 import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 import java.util.ArrayList;
@@ -42,6 +44,7 @@ public class RequestData {
     private int p99ResponseTime;
     private int numLists;
     private long totalTime;
+    private HashMap<Integer,Integer> latencyCounts;
 
 
     /**
@@ -55,6 +58,7 @@ public class RequestData {
         this.earliestNode = this.root;
         this.numLists = 1;
         this.maxResponseTime = 0;
+        this.latencyCounts = new HashMap<>();
     }
 
 
@@ -247,6 +251,7 @@ public class RequestData {
         // Call helper to draw the graph of mean latency by time in seconds, blocks until the graph window is closed
         this.drawMeanLatencyLineChart(avgLatencyPlotData);
 
+        this.drawLatencyCounts();
         // Return the total wall time taken for use in comparing to other datasets
         return this.totalTime;
 
@@ -275,6 +280,48 @@ public class RequestData {
         }
         System.out.println("99 percentile in ms " + this.p99ResponseTime + " ms\n");
         System.out.println("max response time " + maxResponseTime + " ms\n");
+    }
+
+
+
+
+    private void drawLatencyCounts(){
+        // create new chart
+        LineChartMaker lcm = new LineChartMaker("Latency Counts", "Time in ms", "Message Count");
+
+        // add data to chart
+        lcm.fillDataset(this.latencyCounts, Collections.min(this.latencyCounts.keySet()),
+            Collections.max(this.latencyCounts.keySet()));
+
+        try {
+            SwingUtilities.invokeAndWait(()-> {
+
+                // apply the supplied data to the chart
+                lcm.makeChart();
+
+                // set the size and position on the screen for the window in which the chart will be displayed
+                lcm.setSize(800, 400);
+                lcm.setLocationRelativeTo(null);
+
+                // set the chart to be removed on closing the display window
+                lcm.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+
+                // show the chart
+                lcm.setVisible(true);
+            });
+        } catch (InterruptedException | InvocationTargetException e) {
+            e.printStackTrace();
+        }
+
+        // while the chart is visible i.e. the window hasn't been closed, block the thread to keep the chart
+        // displayed until the user closes it
+        while (lcm.isVisible()) {
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     /**
@@ -392,6 +439,13 @@ public class RequestData {
 
             // get the current node's latency value
             int curLatency = curNode.getLatency();
+
+            // if latency in Latency counts increment counter, else add the key of latency time
+            if (this.latencyCounts.containsKey(curLatency)){
+                this.latencyCounts.put(curLatency,this.latencyCounts.get(curLatency)+1);
+            } else {
+                this.latencyCounts.put(curLatency,1);
+            }
 
             // add cur latency to the total latency measure
             totalLatency += curLatency;
