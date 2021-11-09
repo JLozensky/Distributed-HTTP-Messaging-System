@@ -3,10 +3,25 @@ package ReceivingProgram;
 import SharedLibrary.LiftRide;
 import SharedLibrary.ResortLite;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class MessageStorage {
+
+    private static final int Q_MAX = 500;
+
     private static final ConcurrentHashMap<String, LiftRide> liftRideStorage =
         new ConcurrentHashMap();
+
+    private static final ConcurrentLinkedQueue<String> queue = makeQ();
+
+    private static ConcurrentLinkedQueue<String> makeQ() {
+        ConcurrentLinkedQueue<String> q = new ConcurrentLinkedQueue();
+        for (int i = 0; i < Q_MAX; i++){
+            q.add(String.valueOf(i));
+            liftRideStorage.put(String.valueOf(i),new LiftRide(1,1));
+        }
+        return q;
+    }
 
 
     public static boolean insertData(ResortLite resort) {
@@ -16,6 +31,8 @@ public class MessageStorage {
     public static boolean insertData(LiftRide liftRide, String messageId) {
         try {
             if (!liftRideStorage.containsKey(messageId)) {
+                liftRideStorage.remove(queue.poll());
+                queue.add(messageId);
                 liftRideStorage.put(messageId,liftRide);
             } else {
                 return false;

@@ -7,7 +7,7 @@ public class ThreadPool {
     private static ThreadPool instance = null;
 
         private ThreadPoolExecutor threadPoolExecutor;
-        private static int NUM_THREADS = 50;
+        private static int NUM_THREADS = 20;
 
         private ThreadPool() {
 

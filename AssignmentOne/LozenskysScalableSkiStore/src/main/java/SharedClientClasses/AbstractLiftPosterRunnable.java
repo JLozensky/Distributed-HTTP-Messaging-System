@@ -25,7 +25,7 @@ public abstract class AbstractLiftPosterRunnable implements Runnable {
     protected final int numPosts;
     protected final int numLifts;
     protected final Gates gates;
-    protected final HttpClient client;
+    protected HttpClient client;
     protected final String ipAddress;
     protected final String port;
     protected final AtomicInteger globalSuccessCount;
@@ -152,4 +152,5 @@ public abstract class AbstractLiftPosterRunnable implements Runnable {
     protected HttpClient getClient(){
         return this.client;
     }
+
 }

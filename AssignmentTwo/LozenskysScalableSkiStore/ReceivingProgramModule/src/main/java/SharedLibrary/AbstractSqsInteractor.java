@@ -24,10 +24,7 @@ public abstract class AbstractSqsInteractor {
     protected AbstractSqsInteractor(){
         this.sqsClient =  makeClient();
         this.qUrl = makeQUrl();
-
-
     }
-
 
     /**
 

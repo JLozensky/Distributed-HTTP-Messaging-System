@@ -117,6 +117,7 @@ public abstract class AbstractClient {
         HttpConnectionManagerParams params = new HttpConnectionManagerParams();
         params.setDefaultMaxConnectionsPerHost(MAX_HOST_CONNECTIONS);
         params.setMaxTotalConnections(MAX_TOTAL_CONNECTIONS);
+        params.setSoTimeout(300000);
 
         this.client.getHttpConnectionManager().setParams(params);
     }

@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ArgParsingUtility {
-    private static final int THREAD_MAX= 256;
+    private static final int THREAD_MAX= 512;
     private static final int SKIER_MAX= 100000;
     private static final int LIFT_MIN = 5;
     private static final int LIFT_MAX = 60;

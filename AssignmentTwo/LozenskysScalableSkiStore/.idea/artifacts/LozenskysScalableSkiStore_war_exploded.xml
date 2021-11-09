@@ -67,6 +67,7 @@
       </element>
       <element id="javaee-facet-resources" facet="AssignmentTwo/web/Web2" />
       <element id="javaee-facet-resources" facet="AssignmentTwo/web/Web" />
+      <element id="javaee-facet-resources" facet="AssignmentTwo/web/Web3" />
     </root>
   </artifact>
 </component>

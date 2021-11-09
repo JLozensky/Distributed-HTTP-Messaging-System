@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "ResortsServlet", value = "/resorts", asyncSupported = true)
+@WebServlet(name = "ResortsServlet", value = "/resorts")
 public class ResortsServlet extends HttpServlet {
 
     @Override

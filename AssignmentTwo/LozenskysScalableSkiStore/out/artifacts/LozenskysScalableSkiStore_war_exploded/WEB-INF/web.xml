@@ -9,7 +9,6 @@
   <servlet>
     <servlet-name>SkiersServlet</servlet-name>
     <servlet-class>Server.SkiersServlet</servlet-class>
-    <async-supported>true</async-supported>
   </servlet>
 
   <servlet-mapping>
@@ -20,12 +19,21 @@
   <servlet>
     <servlet-name>ResortsServlet</servlet-name>
     <servlet-class>Server.ResortsServlet</servlet-class>
-    <async-supported>true</async-supported>
   </servlet>
 
   <servlet-mapping>
     <servlet-name>ResortsServlet</servlet-name>
     <url-pattern>/resorts/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>HealthServlet</servlet-name>
+    <servlet-class>Server.HealthServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>HealthServlet</servlet-name>
+    <url-pattern>/health/*</url-pattern>
   </servlet-mapping>
 
 
