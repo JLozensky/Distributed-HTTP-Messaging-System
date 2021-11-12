@@ -3,6 +3,7 @@ package Client2;
 import java.lang.reflect.InvocationTargetException;
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.CountDownLatch;
 import javax.swing.SwingUtilities;
@@ -14,6 +15,12 @@ public class ClientTwo extends AbstractClient {
 
     private ConcurrentLinkedQueue<RequestData>  requestDataRepository;
 
+    private ArrayList<String> multiIP = new ArrayList<>(){{
+        add("3.83.228.124");
+        add("18.206.94.166");
+    }};
+
+    private int ipIndex = 0;
 
     public ClientTwo(int numThreads, int numSkiers, int numLifts, int numRuns, String ipAddress, String port){
 
@@ -21,6 +28,7 @@ public class ClientTwo extends AbstractClient {
 
         this.requestDataRepository = new ConcurrentLinkedQueue<>();
     }
+
 
     /**
      * Makes numPost requests from a single thread to test server latency
@@ -68,6 +76,7 @@ public class ClientTwo extends AbstractClient {
      */
     protected ClientTwoLiftPostingRunnable makeLiftPoster(int skierStart, int skierEnd, int startTime, int endTime,
         int numPosts, Gates gates) {
+        this.ipIndex = Math.abs(this.ipIndex - 1);
         return new ClientTwoLiftPostingRunnable
        (
            // skierID range
@@ -85,7 +94,7 @@ public class ClientTwo extends AbstractClient {
            // Gate the thread increments on finish, gate the thread waits on, gate all threads increment on finish
            gates,
 
-           // ipAddress and port to send the requests to
+           // ipAddress and port to send the requests to this.multiIP.get(this.ipIndex)
            super.ipAddress, super.port, super.client, this.requestDataRepository, super.runLocally
        );
     }
@@ -202,7 +211,7 @@ public class ClientTwo extends AbstractClient {
 
             // here we do the four runs for the assignment and put together the chart
             // define values for args for each run
-//            final String hardcodedIP = "networkLB-35aa919902f2375b.elb.us-east-1.amazonaws.com";
+//            final String hardcodedIP = "localhost";
             final String hardcodedIP = "ApplicationBalancer-1444355259.us-east-1.elb.amazonaws.com";
             final String SKIER_NUM = "20000";
             final String LIFT_NUM = "40";

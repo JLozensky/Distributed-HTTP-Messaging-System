@@ -13,18 +13,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d0149cf1-9a74-42b9-9bd8-2745da022527" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/128Threads.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/128Threads.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/256Threads.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/256Threads.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/512Threads.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/512Threads.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../AssignmentOne/64Threads.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/64Threads.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/src/main/java/Client2/ClientTwo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/src/main/java/Client2/ClientTwo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/src/main/java/Client2/ClientTwoLiftPostingRunnable.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/src/main/java/Client2/ClientTwoLiftPostingRunnable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/src/main/java/Client2/RequestData.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/src/main/java/Client2/RequestData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/src/main/java/SharedClientClasses/AbstractClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/src/main/java/SharedClientClasses/AbstractClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/src/main/java/SharedClientClasses/BarChartMaker.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/src/main/java/SharedClientClasses/BarChartMaker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/src/main/java/SharedClientClasses/LineChartMaker.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/src/main/java/SharedClientClasses/LineChartMaker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/src/main/java/Server/ContentValidationUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/src/main/java/Server/ContentValidationUtility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/output.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/output.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/ReceivingProgram/SqsDelete.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/ReceivingProgram/SqsDelete.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war/LozenskysScalableSkiStore_war.war" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war/LozenskysScalableSkiStore_war.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Server/SqsSend.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Server/SqsSend.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ReceivingProgramModule_jar/ReceivingProgramModule.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ReceivingProgramModule_jar/ReceivingProgramModule.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Server/SqsSend.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/SqsSend.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -108,7 +105,7 @@
       <recent name="Client2" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MessageReceiver">
+  <component name="RunManager" selected="Tomcat Server.Tomcat 10.0.11">
     <configuration name="MessageReceiver" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="BUNDLED" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -170,6 +167,21 @@
         </SHUTDOWN>
       </ConfigurationWrapper>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="JProfiler">
         <option name="USE_ENV_VARIABLES" value="true" />
         <STARTUP>
           <option name="USE_DEFAULT" value="true" />
@@ -300,7 +312,7 @@
       <workItem from="1636342096635" duration="982000" />
       <workItem from="1636414605613" duration="28539000" />
       <workItem from="1636662217740" duration="14586000" />
-      <workItem from="1636688246965" duration="383000" />
+      <workItem from="1636688246965" duration="4604000" />
     </task>
     <servers />
   </component>
