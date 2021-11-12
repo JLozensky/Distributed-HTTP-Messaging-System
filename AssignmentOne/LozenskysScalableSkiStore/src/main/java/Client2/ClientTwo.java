@@ -15,10 +15,6 @@ public class ClientTwo extends AbstractClient {
 
     private ConcurrentLinkedQueue<RequestData>  requestDataRepository;
 
-    private ArrayList<String> multiIP = new ArrayList<>(){{
-        add("3.83.228.124");
-        add("18.206.94.166");
-    }};
 
     private int ipIndex = 0;
 
@@ -94,7 +90,7 @@ public class ClientTwo extends AbstractClient {
            // Gate the thread increments on finish, gate the thread waits on, gate all threads increment on finish
            gates,
 
-           // ipAddress and port to send the requests to this.multiIP.get(this.ipIndex)
+           // ipAddress and port to send the requests to
            super.ipAddress, super.port, super.client, this.requestDataRepository, super.runLocally
        );
     }

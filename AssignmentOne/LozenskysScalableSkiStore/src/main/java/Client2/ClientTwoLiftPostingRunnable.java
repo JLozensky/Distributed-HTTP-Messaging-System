@@ -44,13 +44,13 @@ public class ClientTwoLiftPostingRunnable extends AbstractLiftPosterRunnable {
         super.initializeInstanceVariables();
         super.getGates().waitToStart();
 
-//        int exponentialBackoffMs = 200;
-
+        int exponentialBackoffMs = 100;
+        int exponentialBackoffCounter = 1;
 
         for (int i = 0; i < super.getNumPosts(); i++) {
             super.prepNextRequest();
             boolean success = false;
-//            int exponentialBackoffCounter = 1;
+
             for (int numTries = 5; numTries > 0; numTries--) {
                 try {
                     Instant start = Instant.now();
@@ -61,18 +61,18 @@ public class ClientTwoLiftPostingRunnable extends AbstractLiftPosterRunnable {
 
                     ThreadsafeFileWriter.addRecord(this.requestData.addRecord(super.getPostMethod(),statusCode,start,end));
 
-//                    if ( Duration.between(start,end).toMillis() > 250){
-//                        Thread.sleep(exponentialBackoffMs *exponentialBackoffCounter);
-//                        exponentialBackoffCounter *= 2;
-//                    } else {
-//                        exponentialBackoffCounter = 1;
-//                    }
+                    if ( Duration.between(start,end).toMillis() > 150){
+                        Thread.sleep(exponentialBackoffMs * exponentialBackoffCounter);
+                        exponentialBackoffCounter *= 2;
+                    } else {
+                        exponentialBackoffCounter = 1;
+                    }
                     if (statusCode == 201) {
                         success = true;
                         break;
                     }
 
-                } catch (IOException e) {
+                } catch (IOException | InterruptedException e) {
                     e.printStackTrace();
                 }
             }

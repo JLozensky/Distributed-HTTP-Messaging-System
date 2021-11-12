@@ -25,7 +25,7 @@ public class MessageProcessor implements Runnable {
         for (Message m : this.messages) {
             LiftRide liftRide = gson.fromJson(m.body(),LiftRide.class);
             if (liftRide.isValid() && MessageStorage.insertData(liftRide, m.messageId())) {
-//                ThreadsafeFileWriter.addRecord(m.body());
+                ThreadsafeFileWriter.addRecord(m.body());
                 messagesToDelete.add(m);
             }
         }

@@ -7,8 +7,8 @@ public class ReceiverMain {
     // main is endless loop grabbing messages
     public static void main(String[] args) {
         ThreadPool threadPool = ThreadPool.getInstance();
-//        ThreadsafeFileWriter.setFilename("output");
-//        ThreadsafeFileWriter.startInstance();
+        ThreadsafeFileWriter.setFilename("output");
+        ThreadsafeFileWriter.startInstance();
         int minDesiredRemainingCapacity = (int) Math.round(ThreadPool.getQCapacity() *.2);
 
         while (true){
