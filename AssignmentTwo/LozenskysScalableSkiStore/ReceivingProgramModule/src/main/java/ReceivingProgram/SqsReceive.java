@@ -23,14 +23,10 @@ import software.amazon.awssdk.services.sqs.model.ReceiveMessageRequest;
 public class SqsReceive extends AbstractSqsInteractor {
 
     private static final Integer BATCH_RECEIVE_NUM = 10;
-    private static SqsReceive instance = null;
+    private static SqsReceive instance = new SqsReceive();
 
     public static SqsReceive getInstance() {
-        if (instance == null) {
-            return new SqsReceive();
-        } else {
             return instance;
-        }
     }
 
     public List<Message> receiveMessage(){

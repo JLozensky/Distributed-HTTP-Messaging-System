@@ -7,11 +7,22 @@ public class ReceiverMain {
     // main is endless loop grabbing messages
     public static void main(String[] args) {
         ThreadPool threadPool = ThreadPool.getInstance();
+//        ThreadsafeFileWriter.setFilename("output");
+//        ThreadsafeFileWriter.startInstance();
+        int minDesiredRemainingCapacity = (int) Math.round(ThreadPool.getQCapacity() *.2);
+
         while (true){
-            List<Message> messageList = SqsReceive.getInstance().receiveMessage();
-            if (messageList != null) {
-                MessageProcessor processor = new MessageProcessor(messageList);
-                threadPool.runThread(processor);
+            while (ThreadPool.getRemainingCapacity() > minDesiredRemainingCapacity) {
+                List<Message> messageList = SqsReceive.getInstance().receiveMessage();
+                if (messageList != null) {
+                    threadPool.runThread(new MessageProcessor(messageList));
+                }
+            }
+            try {
+                System.out.println(SqsDelete.getNumDeleted());
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
 

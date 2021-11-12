@@ -191,11 +191,12 @@ public class ClientTwo extends AbstractClient {
             System.out.printf("time taken in milliseconds: %d", singleTestRun(args,"output",false));
         } else {
 
-            boolean testLatency = false;
+            boolean testLatency = true;
 
             // here we do the four runs for the assignment and put together the chart
             // define values for args for each run
-            final String hardcodedIP = "networkLB-35aa919902f2375b.elb.us-east-1.amazonaws.com";
+//            final String hardcodedIP = "networkLB-35aa919902f2375b.elb.us-east-1.amazonaws.com";
+            final String hardcodedIP = "ApplicationBalancer-1444355259.us-east-1.elb.amazonaws.com";
             final String SKIER_NUM = "20000";
             final String LIFT_NUM = "40";
             final String PORT_NUM = "8080";

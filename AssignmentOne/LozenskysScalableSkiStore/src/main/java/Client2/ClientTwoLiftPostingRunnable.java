@@ -4,6 +4,7 @@ package Client2;
 import SharedClientClasses.AbstractLiftPosterRunnable;
 import SharedClientClasses.Gates;
 import java.io.IOException;
+import java.time.Duration;
 import java.time.Instant;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -14,6 +15,7 @@ public class ClientTwoLiftPostingRunnable extends AbstractLiftPosterRunnable {
 
     private RequestData requestData;
     private ConcurrentLinkedQueue<RequestData> requestDataRepository;
+    private static AtomicInteger threadCounter = new AtomicInteger();
 
 
     public ClientTwoLiftPostingRunnable(int skierStart, int skierEnd, int startTime, int endTime, int numPosts,
@@ -41,7 +43,14 @@ public class ClientTwoLiftPostingRunnable extends AbstractLiftPosterRunnable {
     @Override
     public void run() {
         super.initializeInstanceVariables();
+        int threadNum = threadCounter.incrementAndGet();
+        System.out.println("thread" + threadNum + " initialized\n");
         super.getGates().waitToStart();
+        System.out.println("thread" + threadNum + " started\n");
+
+        int hitBackoff = 0;
+        int exponentialBackoffMs = 200;
+        int exponentialBackoffCounter = 1;
 
         for (int i = 0; i < super.getNumPosts(); i++) {
             super.prepNextRequest();
@@ -55,20 +64,27 @@ public class ClientTwoLiftPostingRunnable extends AbstractLiftPosterRunnable {
                     super.getPostMethod().releaseConnection();
 
                     ThreadsafeFileWriter.addRecord(this.requestData.addRecord(super.getPostMethod(),statusCode,start,end));
-
+                    
+                    if ( Duration.between(start,end).toMillis() > 100){
+                        Thread.sleep(exponentialBackoffMs *exponentialBackoffCounter);
+                        exponentialBackoffCounter *= 2;
+                        hitBackoff++;
+                    } else {
+                        exponentialBackoffCounter = 1;
+                    }
                     if (statusCode == 201) {
                         success = true;
                         break;
                     }
-                } catch (IOException e) {
+
+                } catch (IOException | InterruptedException e) {
                     e.printStackTrace();
                 }
             }
             super.incrementLocalResult(success);
         }
-
+        System.out.println("thread" + threadNum + " done backoff hit " + hitBackoff + " times\n");
         this.requestDataRepository.add(this.requestData);
-
         super.finished();
     }
 
