@@ -37,8 +37,8 @@ public abstract class AbstractClient {
     private CountDownLatch phaseOneGate;
     private CountDownLatch phaseTwoGate;
     private CountDownLatch finalGate;
-    private AtomicInteger successfulRequests = new AtomicInteger();
-    private AtomicInteger unsuccessfulRequests = new AtomicInteger();
+    private static AtomicInteger successfulRequests = new AtomicInteger();
+    private static AtomicInteger unsuccessfulRequests = new AtomicInteger();
 
     /**
      * Constructor that takes in the parameters parsed from command-line entry and converts them to the calculated
@@ -192,16 +192,16 @@ public abstract class AbstractClient {
      * Getter for the value of the AtomicInteger tracking successful requests
      * @return number of successful requests
      */
-    public int getSuccessfulTotal() {
-        return this.successfulRequests.get();
+    public static int getSuccessfulTotal() {
+        return successfulRequests.get();
     }
 
     /**
      * Getter for the value of the AtomicInteger tracking unsuccessful requests
      * @return number of unsuccessful requests
      */
-    public int getUnsuccessfulTotal() {
-        return this.unsuccessfulRequests.get();
+    public static int getUnsuccessfulTotal() {
+        return unsuccessfulRequests.get();
     }
 
     /**
@@ -288,8 +288,8 @@ public abstract class AbstractClient {
      * Getter for concurrent tracker of successful requests
      * @return The reference to the AtomicInteger tracking successful requests
      */
-    protected AtomicInteger getSuccessfulRequests() {
-        return this.successfulRequests;
+    protected static AtomicInteger getSuccessfulRequests() {
+        return successfulRequests;
     }
 
     /**
@@ -303,8 +303,8 @@ public abstract class AbstractClient {
     /**
      * resets request success and non-success trackers to 0
      */
-    protected void resetAtomicCounters() {
-        this.successfulRequests.set(0);
-        this.unsuccessfulRequests.set(0);
+    protected static void resetAtomicCounters() {
+        successfulRequests.set(0);
+        unsuccessfulRequests.set(0);
     }
 }

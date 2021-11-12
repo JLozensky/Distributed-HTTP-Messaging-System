@@ -5,7 +5,7 @@
   </component>
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="ReceivingProgramModule:jar" />
+      <artifact name="LozenskysScalableSkiStore:war" />
     </artifacts-to-build>
   </component>
   <component name="AutoImportSettings">
@@ -13,26 +13,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d0149cf1-9a74-42b9-9bd8-2745da022527" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/ReceivingProgram/ThreadsafeFileWriter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../AssignmentOne/64Threads.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/64Threads.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war/LozenskysScalableSkiStore_war.war" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war/LozenskysScalableSkiStore_war.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Client2/ClientTwo.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Client2/ClientTwo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Server/ContentValidationUtility.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Server/ContentValidationUtility.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedClientClasses/AbstractClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedClientClasses/AbstractClient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedClientClasses/AbstractLiftPosterRunnable.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedClientClasses/AbstractLiftPosterRunnable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedClientClasses/ArgParsingUtility$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedClientClasses/ArgParsingUtility$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedClientClasses/ArgParsingUtility.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/SharedClientClasses/ArgParsingUtility.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/src/main/java/Client2/ClientTwo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/src/main/java/Client2/ClientTwo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/src/main/java/Client2/ClientTwoLiftPostingRunnable.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/src/main/java/Client2/ClientTwoLiftPostingRunnable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/src/main/java/Server/ContentValidationUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/src/main/java/Server/ContentValidationUtility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/src/main/java/Client2/RequestData.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/src/main/java/Client2/RequestData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/src/main/java/SharedClientClasses/AbstractClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/src/main/java/SharedClientClasses/AbstractClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/src/main/java/SharedClientClasses/BarChartMaker.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/src/main/java/SharedClientClasses/BarChartMaker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/src/main/java/SharedClientClasses/LineChartMaker.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../AssignmentOne/LozenskysScalableSkiStore/src/main/java/SharedClientClasses/LineChartMaker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/ReceivingProgram/MessageProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/ReceivingProgram/MessageProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/ReceivingProgram/MessageStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/ReceivingProgram/MessageStorage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/ReceivingProgram/ReceiverMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/ReceivingProgram/ReceiverMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/ReceivingProgram/SqsDelete.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/ReceivingProgram/SqsDelete.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/ReceivingProgram/SqsReceive.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/ReceivingProgram/SqsReceive.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/ReceivingProgram/ThreadPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/ReceivingProgram/ThreadPool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war/LozenskysScalableSkiStore_war.war" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war/LozenskysScalableSkiStore_war.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Server/SqsSend.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/LozenskysScalableSkiStore_war_exploded/WEB-INF/classes/Server/SqsSend.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/ReceivingProgramModule_jar/ReceivingProgramModule.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ReceivingProgramModule_jar/ReceivingProgramModule.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Server/SqsSend.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/SqsSend.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -306,7 +299,8 @@
       <workItem from="1636341981475" duration="76000" />
       <workItem from="1636342096635" duration="982000" />
       <workItem from="1636414605613" duration="28539000" />
-      <workItem from="1636662217740" duration="12887000" />
+      <workItem from="1636662217740" duration="14586000" />
+      <workItem from="1636688246965" duration="383000" />
     </task>
     <servers />
   </component>

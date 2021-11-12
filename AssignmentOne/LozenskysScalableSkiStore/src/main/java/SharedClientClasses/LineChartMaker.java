@@ -6,6 +6,9 @@ import javax.swing.JFrame;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.NumberAxis;
+import org.jfree.chart.axis.NumberTickUnit;
+import org.jfree.chart.plot.XYPlot;
 import org.jfree.data.category.DefaultCategoryDataset;
 
 
@@ -28,7 +31,7 @@ public class LineChartMaker extends JFrame {
     }
 
     public void fillDataset(HashMap<Integer,Integer> data, int minEntry, int maxEntry) {
-        for (int i = minEntry; i <= maxEntry; i++) {
+        for (int i = minEntry; i <= maxEntry; i+=10) {
             if (data.containsKey(i)){
              this.categoryData.addValue(data.get(i),this.valueLabel,String.valueOf(i));
             }
@@ -45,7 +48,6 @@ public class LineChartMaker extends JFrame {
     public void makeChart(){;
         JFreeChart lineChart = ChartFactory.createLineChart(this.title, this.timeLabel, this.valueLabel,
             this.categoryData);
-
         ChartPanel chartPanel = new ChartPanel(lineChart);
         setContentPane(chartPanel);
     }

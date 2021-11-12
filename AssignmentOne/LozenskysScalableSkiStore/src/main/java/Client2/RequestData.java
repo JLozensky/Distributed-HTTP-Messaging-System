@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Objects;
 import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 import java.util.ArrayList;
@@ -44,7 +45,7 @@ public class RequestData {
     private int p99ResponseTime;
     private int numLists;
     private long totalTime;
-    private HashMap<Integer,Integer> latencyCounts;
+    private final HashMap<Integer,Integer> latencyCounts;
 
 
     /**
@@ -114,8 +115,8 @@ public class RequestData {
     }
 
     /**
-     * getter
-     * @return
+     * getter for the count of nodes in the list
+     * @return the number of datapoints in the list
      */
     private int getNumDatapoints(){ return this.numDatapoints; }
 
@@ -204,11 +205,7 @@ public class RequestData {
      * @return a String to be used as a delimiter between data entries
      */
     private String getDelimiter() {
-        if (this.alternateDelimiter != null){
-            return this.alternateDelimiter;
-        } else {
-            return delimiter;
-        }
+        return Objects.requireNonNullElse(this.alternateDelimiter, delimiter);
     }
 
     /**
@@ -280,6 +277,7 @@ public class RequestData {
         }
         System.out.println("99 percentile in ms " + this.p99ResponseTime + " ms\n");
         System.out.println("max response time " + maxResponseTime + " ms\n");
+
     }
 
 
@@ -439,12 +437,13 @@ public class RequestData {
 
             // get the current node's latency value
             int curLatency = curNode.getLatency();
+            int latencyGroup = getLatencyGroup(curLatency);
 
             // if latency in Latency counts increment counter, else add the key of latency time
-            if (this.latencyCounts.containsKey(curLatency)){
-                this.latencyCounts.put(curLatency,this.latencyCounts.get(curLatency)+1);
+            if (this.latencyCounts.containsKey(latencyGroup)){
+                this.latencyCounts.put(latencyGroup,this.latencyCounts.get(latencyGroup)+1);
             } else {
-                this.latencyCounts.put(curLatency,1);
+                this.latencyCounts.put(latencyGroup,1);
             }
 
             // add cur latency to the total latency measure
@@ -473,6 +472,10 @@ public class RequestData {
         }
         // calculate average response time per request
         this.meanResponseTime = totalLatency/ this.numDatapoints;
+    }
+
+    private int getLatencyGroup(int latency) {
+        return latency + (10 - (latency %10));
     }
 
     /**
@@ -555,16 +558,13 @@ public class RequestData {
         public String toString() {
             String delim = getDelimiter();
 
-            StringBuilder sb = new StringBuilder();
-
-            sb.append(this.requestType);
-            sb.append(delim);
-            sb.append(this.responseCode);
-            sb.append(delim);
-            sb.append(this.start);
-            sb.append(delim);
-            sb.append(this.latency);
-            return sb.toString();
+            return this.requestType
+                            + delim
+                            + this.responseCode
+                            + delim
+                            + this.start
+                            + delim
+                            + this.latency;
         }
 
     }

@@ -50,7 +50,7 @@ public class ClientTwo extends AbstractClient {
         results.getMetrics();
 
         // resets counters for actual tests
-        super.resetAtomicCounters();
+        resetAtomicCounters();
 
         // returns the avg latency
         return results.getMeanResponseTime();
@@ -108,7 +108,7 @@ public class ClientTwo extends AbstractClient {
 
         // measure single thread latency if needed
         if (measureLatency) {
-            int latencyRequests = 1000;
+            int latencyRequests = 200;
             float latency = client.singleThreadLatencyMeasure(latencyRequests);
             System.out.printf("Average Latency in ms (single thread %d requests): %.1f\n", latencyRequests, latency);
         }
@@ -145,6 +145,13 @@ public class ClientTwo extends AbstractClient {
 
         // merge all RequestData lists
         client.requestDataRepository.forEach(x->head.merge(x));
+
+        // print successful and unsuccessful requests
+        System.out.println("successful requests " + getSuccessfulTotal() + " ms\n");
+        System.out.println("unsuccessful requests " + getUnsuccessfulTotal() + " ms\n");
+
+        // reset request counters
+        resetAtomicCounters();
 
         // make the metrics, will block on displaying a line chart of mean latency over time (seconds)
         long wallTime = head.getMetrics();

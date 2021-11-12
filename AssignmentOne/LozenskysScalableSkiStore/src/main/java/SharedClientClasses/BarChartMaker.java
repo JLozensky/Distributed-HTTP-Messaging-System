@@ -1,5 +1,6 @@
 package SharedClientClasses;
 
+import java.util.HashMap;
 import javax.swing.JFrame;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -24,6 +25,14 @@ public class BarChartMaker extends JFrame {
         this.catagoryLabel = catagoryLabel;
         this.valueLabel = valueLabel;
         this.categoryData = new DefaultCategoryDataset();
+    }
+
+    public void fillDataset(HashMap<Integer,Integer> data, int minEntry, int maxEntry) {
+        for (int i = minEntry; i <= maxEntry; i+=10) {
+            if (data.containsKey(i)){
+                this.categoryData.addValue(data.get(i),this.valueLabel,String.valueOf(i));
+            }
+        }
     }
 
     public void makeChart(){

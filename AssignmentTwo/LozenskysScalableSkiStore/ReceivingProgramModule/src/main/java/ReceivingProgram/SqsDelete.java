@@ -28,7 +28,6 @@ public class SqsDelete extends AbstractSqsInteractor {
             .build();
 
         return this.sqsClient.deleteMessage(request);
-
     }
 
     private static DeleteMessageBatchRequest makeRequest(ArrayList<Message> messages) {
@@ -57,6 +56,7 @@ public class SqsDelete extends AbstractSqsInteractor {
     }
 
     public static int getNumDeleted() {
+        numDeleted.addAndGet(batchTotal.getAndSet(0));
         return numDeleted.get();
     }
 }
