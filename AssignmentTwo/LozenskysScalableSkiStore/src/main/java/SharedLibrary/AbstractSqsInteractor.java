@@ -13,10 +13,6 @@ import software.amazon.awssdk.services.sqs.model.PurgeQueueResponse;
  * https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide
  */
 
-
-
-// Need to figure out how to send messages to the vpc endpoint url instead of the sqs url
-
 public abstract class AbstractSqsInteractor {
 
     protected  SqsClient sqsClient;
@@ -30,8 +26,8 @@ public abstract class AbstractSqsInteractor {
     }
 
     /**
-
-     * @return a reference to the logged-in user's Queues
+     *
+     * @return a communication client to the logged-in user's SQS queue
      */
     protected static SqsClient makeClient() {
 
@@ -47,6 +43,10 @@ public abstract class AbstractSqsInteractor {
         return client;
     }
 
+    /**
+     * finds the SQS queue url and returns it as a String
+     * @return the url for the logged in user's queue
+     */
     protected String makeQUrl() {
 
         GetQueueUrlResponse queueUrlResponse =
@@ -56,6 +56,10 @@ public abstract class AbstractSqsInteractor {
 
     }
 
+    /**
+     * Empties the given SQS queue of all outstanding messages
+     * @return
+     */
     public PurgeQueueResponse purgeQ(){
         // send the signal to sqs to remove all messages from the Q
         PurgeQueueResponse purgeQueue =

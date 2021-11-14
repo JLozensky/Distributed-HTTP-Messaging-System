@@ -6,6 +6,10 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
+/**
+ * Simply returns true to any doGet or doPost requests, used as a health check for the load balancer
+ */
+
 @WebServlet(name = "HealthServlet", value = "/health")
 public class HealthServlet extends HttpServlet {
 

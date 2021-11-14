@@ -22,8 +22,10 @@ public class ResortsServlet extends HttpServlet {
         String url = request.getPathInfo();
         PrintWriter writer = response.getWriter();
         String[] urlParts= null;
+        // if the url is null then it is a request for all resorts
         if (url == null) {
             doGetResorts(response, writer);
+        // otherwise split the pieces, assess request validity, and respond accordingly
         } else {
             urlParts = url.split("/");
         }
@@ -42,6 +44,7 @@ public class ResortsServlet extends HttpServlet {
         String[] urlParts = request.getPathInfo().split("/");
         PrintWriter writer = response.getWriter();
 
+        // Validate request and respond accordingly
         if (! ContentValidationUtility.validateResortSeasonsRequest(urlParts)){
             errorInvalidParameters(response,writer);
         }

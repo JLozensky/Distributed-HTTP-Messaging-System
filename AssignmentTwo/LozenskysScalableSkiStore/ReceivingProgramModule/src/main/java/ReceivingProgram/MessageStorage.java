@@ -7,11 +7,11 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class MessageStorage {
 
-    private static final int Q_MAX = 300;
+    private static final int Q_MAX = 500;
 
 
     private static final ConcurrentHashMap<String, LiftRide> liftRideStorage =
-        new ConcurrentHashMap(300, 0.9f, 4);
+        new ConcurrentHashMap(500, 0.9f, 4);
 
     private static final ConcurrentLinkedQueue<String> queue = makeQ();
 
