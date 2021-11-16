@@ -12,23 +12,28 @@ public class MessageProcessor implements Runnable {
 
 
     /**
-     * When an object implementing interface {@code Runnable} is used to create a thread, starting the thread causes the
-     * object's {@code run} method to be called in that separately executing thread.
-     * <p>
-     * The general contract of the method {@code run} is that it may take any action whatsoever.
-     *
-     * @see Thread#run()
+     * Runnable that processes a list of messages by using helper classes to check for duplicates, write to csv file,
+     * and send the deletion request for the messages to an AWS SQS queue
      */
     @Override
     public void run() {
+        // create an array to hold non-duplicate messages
         ArrayList<Message> messagesToDelete = new ArrayList<>();
+
+        // for each message int the list
         for (Message m : this.messages) {
+            // create a LiftRide data object from the json in the message
             LiftRide liftRide = gson.fromJson(m.body(),LiftRide.class);
+
+            // Check that the generated LiftRide contains valid values and check for duplicate messages
             if (liftRide.isValid() && MessageStorage.insertData(liftRide, m.messageId())) {
+
+                // Submit the validated record to the file writer and add it to the array for non-duplicate messages
                 ThreadsafeFileWriter.addRecord(m.body());
                 messagesToDelete.add(m);
             }
         }
+        // Delete all non-duplicate messages
         SqsDelete.deleteMessages(messagesToDelete);
     }
 
