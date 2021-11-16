@@ -10,13 +10,7 @@ import software.amazon.awssdk.services.sqs.model.ReceiveMessageRequest;
 
 
 /**
- * num responses against answer time for the bonus charts TODO edit client
- *
- *
- * Consider batching
- * keep last x number record files for debug purposes
- * will probably need to run tests independently which means storing results in file and modifying the logic on the
- * report builder
+ * Singleton instance of an SQS client dedicated to receiving from an SQS queue
  */
 
 
@@ -29,12 +23,21 @@ public class SqsReceive extends AbstractSqsInteractor {
             return instance;
     }
 
+    /**
+     *  Attempts to receive a batch of messages from an SQS queue
+     * @return the list of messages which can be null
+     */
     public List<Message> receiveMessage(){
+        // Format the receiveRequest with the queue's url the number of messages to receive and how long to wait for
+        // a message to arrive
         ReceiveMessageRequest receiveRequest = ReceiveMessageRequest.builder()
             .queueUrl(this.qUrl)
             .maxNumberOfMessages(BATCH_RECEIVE_NUM)
             .waitTimeSeconds(20)
             .build();
+
+        // Measure how long the request takes, if it is in excess of the wait time print the number of messages
+        // deleted thus far to the terminal
         Long start = Instant.now().toEpochMilli();
         List<Message> messageList = sqsClient.receiveMessage(receiveRequest).messages();
         Long stop = Instant.now().toEpochMilli();
