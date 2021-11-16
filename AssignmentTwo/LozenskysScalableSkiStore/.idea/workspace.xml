@@ -25,11 +25,9 @@
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/AssignmentTwo.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/artifacts/LozenskysScalableSkiStore_war.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/artifacts/LozenskysScalableSkiStore_war_exploded.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/artifacts/ReceivingProgramModule_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/aws.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_gson_gson_2_8_5.xml" beforeDir="false" />
@@ -95,18 +93,17 @@
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__software_amazon_awssdk_utils_2_17_46.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__software_amazon_eventstream_eventstream_1_0_1.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/128Threads.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/256Threads.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/32Threads.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/64Threads.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/LozenskysScalableSkiStore.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReceivingProgramModule/ReceivingProgramModule.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReceivingProgramModule/ReceivingProgramModule.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ReceivingProgramModule/ReceivingProgramModule.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ReceivingProgramModule/pom.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/ReceivingProgram/MessageProcessor.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/ReceivingProgramModule/src/main/java/ReceivingProgram/MessageStorage.java" beforeDir="false" />
@@ -662,7 +659,7 @@
       <workItem from="1636688246965" duration="9934000" />
       <workItem from="1636862412246" duration="708000" />
       <workItem from="1637020212422" duration="6799000" />
-      <workItem from="1637031915978" duration="328000" />
+      <workItem from="1637031915978" duration="558000" />
     </task>
     <servers />
   </component>
