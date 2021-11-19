@@ -12,3 +12,4 @@ buildNumber.properties
 AssignmentTwo/LozenskysScalableSkiStore/.idea/*
 AssignmentTwo/LozenskysScalableSkiStore/.idea/workspace.xml
 *.xml
+.idea/Distributed-HTTP-Messaging-System.iml
