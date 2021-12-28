@@ -21,7 +21,7 @@ There are currently three modules in Cloud Services: Server, ReceivingProgram, a
 	Contains the servlets and supporting utility classes to validate requests according to the Swagger doc and then send
 	them onwards to an SQS queue.
 
-	Utilizing four EC2 micro instances, can handle ~99k HTTP requests per minute (~1650 per second)before becoming a
+	Utilizing four EC2 micro instances, can handle ~99k HTTP requests per minute (~1650 per second) before becoming a
 	bottleneck
 
 	o DatabaseReader: Extends DatabaseInteractor and supports all read operations from the database used for GET requests
@@ -49,7 +49,8 @@ There are currently three modules in Cloud Services: Server, ReceivingProgram, a
 
 
 	Contains the code to be run on EC2 instances that reads from an SQS queue and writes to a DynamoDB database
-	Utilizing one EC2 micro instance, can pull and delete from queue as well as write to the database ~70k messages per minute
+	Utilizing one EC2 micro instance, can pull and delete from queue as well as write to the database ~70k messages per
+	minute.
 
 	o DatabaseWriter: Extends DatabaseInteractor and supports all write operations to the database used for POST requests
 
@@ -74,15 +75,15 @@ There are currently three modules in Cloud Services: Server, ReceivingProgram, a
 ### SharedUtilities:
 
 
-	Both the Server and the ReceivingProgram utilize this package
+	Both the Server and the ReceivingProgram utilize this package to standardize data storage and validation as well
+	as communications between system components.
 
 	o Abstract Record: Abstract that provides a standard set of functionalities for any record being stored in the
 	DynamoDB backend
 
 	o AbstractSqsInteractor: Abstract class that all implementations of SQS clients extend
 
-		- SQS clients are used to interface with an SQS queue detected from the context of the EC2 instance the code is
-		being run on
+		- SQS clients are used to interface with an SQS queue detected from the context of the EC2 instance the code 		is being run on
 
 	o ContentValidationUtility: A variety of methods to validate requests and data content
 
@@ -121,20 +122,20 @@ There are currently three modules in Cloud Services: Server, ReceivingProgram, a
 
 		b.	Connection Stability:
 
-			i. An ALB is able to handle generic HTTP requests across a variety of connection types rather than NLB's
-			stricter TCP or UDP connection requirements
+			i. An ALB is able to handle generic HTTP requests across a variety of connection types rather than
+			NLB's stricter TCP or UDP connection requirements
 
 			ii. UDP is not guaranteed to deliver the message
 
-			iii. TCP connections are forcibly reset by the NLB after 10k requests by design, this is not configurable
-			so catching the reset HTTP client connections and remaking them were unnecessary stresses on the load
-			testing client side
+			iii. TCP connections are forcibly reset by the NLB after 10k requests by design, this is not
+			configurable so catching the reset HTTP client connections and remaking them were unnecessary
+			stresses on the load-testing client side
 
 		c.	Performance Differentiation:
 
-			i. While the NLB is more performant than the ALB in terms of throughput, the limitations imposed on EC2
-			instances rendered the minor gains irrelevant and possibly detrimental as the traffic would be pushed
-			through to the servers that much faster potentially resulting in longer tomcat queues.
+			i. While the NLB is more performant than the ALB in terms of throughput, the limitations imposed on 
+			EC2 instances rendered the minor gains irrelevant and possibly detrimental as the traffic would be
+			pushed through to the servers that much faster potentially resulting in longer tomcat queues.
 
 
 	3. The ALB splits the requests via a round-robin policy between server instances
@@ -143,31 +144,33 @@ There are currently three modules in Cloud Services: Server, ReceivingProgram, a
 	4. A Server receives the request into the servlet classes via Tomcat
 
 
-	5. The respective servlet will first utilize the relevant ContentValidationUtility methods to validate the client's request
+	5. The respective servlet will first utilize the relevant ContentValidationUtility methods to validate the client's
+	request
 		
 
-	6. Dependent on the validity of the request, the servlet will call the appropriate response method in the ReadWriteUtility 		class
+	6. Dependent on the validity of the request, the servlet will call the appropriate response method in the
+	ReadWriteUtility class
 
 
 	7. The Server will do one of two actions depending on a POST vs GET request: 
 
-		a. For a successful POST requests it will use the ReadWriteUtility and SqsSend classes to send the request to the
-		SQS queue
+		a. For a successful POST requests it will use the ReadWriteUtility and SqsSend classes to send the request
+		to the SQS queue
 
 			i. Using SQS was necessary with the lack of instances to host alternate queueing technologies
 
-			ii. However, even without the constraints SQS would likely be chosen due to its implementation simplicity
-			and reliability
+			ii. However, even without the constraints SQS would likely be chosen due to its implementation
+			simplicity and reliability
 
-			iii. SQS stores messages across multiple distributed caches enabling asynchronous data storage resulting in
-			lower latencies for clients.
+			iii. SQS stores messages across multiple distributed caches enabling asynchronous data storage
+			resulting in lower latencies for clients.
 
-		b. For a successful GET request the server will use the ReadWriteUtility and DatabaseReader to query the DynamoDB
-		database directly
+		b. For a successful GET request the server will use the ReadWriteUtility and DatabaseReader to query the
+		DynamoDB database directly
 
 
-	8. Once a successful receipt response is returned from the queue or the database, the ReadWriteUtility is able to send a
-	successful response to the client
+	8. Once a successful receipt response is returned from the queue or the database, the ReadWriteUtility is able to
+	send a successful response to the client
 
 
 
@@ -175,28 +178,27 @@ There are currently three modules in Cloud Services: Server, ReceivingProgram, a
 
 	1. The consumer takes messages from the queue in batches of ten (max allowed by SQS) using long polling
 
-		a. Long polling waits for messages to be available or for a timeout (20 seconds in this implementation) before
-		returning
+		a. Long polling waits for messages to be available or for a timeout (20 seconds in this implementation) 		before returning
 
-		b. Short polling immediately returns regardless of the number of messages in the queue making it untenable from a
-		cost perspective as well as unnecessary from a design perspective for an async storage system
+		b. Short polling immediately returns regardless of the number of messages in the queue making it untenable 		from a cost perspective as well as unnecessary from a design perspective for an async storage system
 
 
-	2. The consumer keeps an internal cache to prevent duplicates, stores the data by writing it to a file, then sends a delete
-	request to the queue
+	2. The consumer keeps an internal cache to prevent duplicates, stores the data by writing it to a file, then sends a 
+	delete request to the queue
 
-		a. The consumer uses a bounded queue for its fixed thread pool to prevent unnecessary backup of batch receives.
+		a. The consumer uses a bounded queue for its fixed thread pool to prevent unnecessary backup of batch
+		receives.
 
-		b. The "internal cache" is a concurrent HashMap and queue system that ensures no more than the given number of
-		messages will be received at the same time.
+		b. The "internal cache" is a concurrent HashMap and queue system that ensures no more than the given number
+		of messages will be received at the same time.
 
-		c. The cache is set to the max possible count of messages that can be held in the ThreadPool's  bounded queue,
-		which for the included testing was 500 (bounded queue max was 50 Message lists since each list has at most 10
-		messages).
+		c. The cache is set to the max possible count of messages that can be held in the ThreadPool's  bounded
+		queue, which for the included testing was 500 (bounded queue max was 50 Message lists since each list has at
+		most 10 messages).
 
-		d. This works because SQS will make a make a message "Not Visible" for a configurable period of time once it has
-		served it via a receive request, so the only duplicates happen right away coming from receive requests finding a
-		distributed copy of a message that hasn't made it to the "Not Visible" state yet
+		d. This works because SQS will make a make a message "Not Visible" for a configurable period of time once it
+		has served it via a receive request, so the only duplicates happen right away coming from receive requests
+		finding a distributed copy of a message that hasn't made it to the "Not Visible" state yet
 
 
 
@@ -207,17 +209,17 @@ DynamoDB was chosen for its ability to scale and read quickly as well as integra
 
 This system utilizes a single DynamoDB table for data storage.
 
-	- It uses a skierID as the partition key and a timestamp as the sort key, to guarantee uniqueness for the total composite
-	key.
+	- It uses a skierID as the partition key and a timestamp as the sort key, to guarantee uniqueness for the total
+	composite key.
 
-	- It has a global index with resortID as the primary key and again a timestamp as the sort keyto enable effecient searching
-	by either skier or resort IDs
+	- It has a global index with resortID as the primary key and again a timestamp as the sort keyto enable effecient
+	searching by either skier or resort IDs
 
 	- It has two local indices for the skierID partition key:
 
 		- The first with resortID as the sort key and includes the seasonID, timeID, dayID, and lift ID fields
 
 		- The second with the seasonID as the sort key to then include day, time, and lift IDs.
-			- The intent is to cause bucketization of the data so that it was easer to find a given skiers results for
-			a particular resort or particular season respectively.
+			- The intent is to cause bucketization of the data so that it was easer to find a given skiers
+			results for a particular resort or particular season respectively.
 
