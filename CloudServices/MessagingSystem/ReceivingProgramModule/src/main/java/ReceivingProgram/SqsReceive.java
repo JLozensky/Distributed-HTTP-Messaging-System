@@ -1,7 +1,7 @@
 package ReceivingProgram;
 
 
-import SharedLibrary.AbstractSqsInteractor;
+import SharedUtilities.AbstractSqsInteractor;
 import java.time.Instant;
 import java.util.List;
 import software.amazon.awssdk.services.sqs.model.Message;

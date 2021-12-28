@@ -1,20 +1,18 @@
 package ReceivingProgram;
 
-import java.util.List;
 import software.amazon.awssdk.services.sqs.model.Message;
+
+import java.util.List;
 
 /**
  * An endless loop grabbing messages from an SQS queue as the main function for the ReceivingProgramModule
  */
 public class ReceiverMain {
-    private static final String OUTPUT_FILENAME = "output";
+
     public static void main(String[] args) {
         // Get the reference to the program's singleton ThreadPool instance
         ThreadPool threadPool = ThreadPool.getInstance();
 
-        // Set the filename to record records to and initialize the ThreadsafeFileWriter
-        ThreadsafeFileWriter.setFilename(OUTPUT_FILENAME);
-        ThreadsafeFileWriter.startInstance();
 
         // Set target queue capacity to 20% of the threadpool's max capacity
         int minDesiredRemainingCapacity = (int) Math.round(ThreadPool.getQCapacity() *.2);
@@ -40,6 +38,7 @@ public class ReceiverMain {
                 e.printStackTrace();
             }
         }
+
 
     }
 }

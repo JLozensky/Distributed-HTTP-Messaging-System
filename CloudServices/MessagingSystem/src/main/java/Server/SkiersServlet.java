@@ -1,6 +1,8 @@
 package Server;
 
-import SharedLibrary.LiftRide;
+import SharedUtilities.ContentValidationUtility;
+import SharedUtilities.RecordCreationUtility;
+import SharedUtilities.SkierRecord;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
@@ -37,7 +39,7 @@ public class SkiersServlet extends HttpServlet {
             case "seasons":
 
                 if (ContentValidationUtility.validateLiftRideAndSkierDay(urlParts)){
-                    ReadWriteUtility.sendSkierDayVertical(response,writer);
+                    ReadWriteUtility.sendSkierDayVertical(response,writer,urlParts);
                 } else {
                     ReadWriteUtility.errorInvalidParameters(response, writer);
                 }
@@ -50,7 +52,7 @@ public class SkiersServlet extends HttpServlet {
                 }
                 if (ContentValidationUtility.validateSkierResortTotals(urlParts, queryMap))
                 {
-                    ReadWriteUtility.sendSkierResortTotals(response, writer);
+                    ReadWriteUtility.sendSkierResortTotals(response, writer, urlParts ,queryMap);
                 } else {
                     ReadWriteUtility.errorInvalidParameters(response, writer);
                 }
@@ -72,15 +74,13 @@ public class SkiersServlet extends HttpServlet {
         if (!ContentValidationUtility.validateUrlSize(SEGMENT_COUNT, urlParts)){
             ReadWriteUtility.errorMissingParameters(response,writer);
         }
-        if (!ContentValidationUtility.validateLiftRideAndSkierDay(urlParts)) {
-            ReadWriteUtility.errorInvalidParameters(response, writer);
-        }
+        SkierRecord skierRecord = RecordCreationUtility.createSkierRecord(urlParts,
+            ReadWriteUtility.readLiftRideBody(request.getReader()));
 
-        LiftRide liftRide = ReadWriteUtility.readLiftRideBody(request.getReader());
-        if (liftRide != null && liftRide.isValid()) {
-            ReadWriteUtility.sendPostSuccess(response, writer, liftRide);
+        if (skierRecord == null || !skierRecord.isValid()) {
+            ReadWriteUtility.errorInvalidParameters(response, writer);
         } else {
-            ReadWriteUtility.errorInvalidParameters(response,writer);
+            ReadWriteUtility.sendPostSuccess(response, writer, skierRecord);
         }
     }
 }

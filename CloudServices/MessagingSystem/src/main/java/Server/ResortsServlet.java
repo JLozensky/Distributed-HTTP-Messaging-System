@@ -1,8 +1,13 @@
 package Server;
 
-import static Server.ReadWriteUtility.*;
+import static Server.ReadWriteUtility.doGetResorts;
+import static Server.ReadWriteUtility.errorInvalidParameters;
+import static Server.ReadWriteUtility.readSeasonValue;
+import static Server.ReadWriteUtility.sendPostSuccess;
 
-import SharedLibrary.Season;
+import SharedUtilities.ContentValidationUtility;
+import SharedUtilities.RecordCreationUtility;
+import SharedUtilities.ResortRecord;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -29,8 +34,8 @@ public class ResortsServlet extends HttpServlet {
         } else {
             urlParts = url.split("/");
         }
-        if (urlParts != null && ContentValidationUtility.validateResortSeasonsRequest(urlParts)) {
-            doGetResortSeasons(response, writer);
+        if (urlParts != null && ContentValidationUtility.validateResortUniqueSkiers(urlParts)) {
+            ReadWriteUtility.doGetResortUniqueSkiers(response, writer,urlParts);
         } else {
             errorInvalidParameters(response,writer);
         }
@@ -48,9 +53,11 @@ public class ResortsServlet extends HttpServlet {
         if (! ContentValidationUtility.validateResortSeasonsRequest(urlParts)){
             errorInvalidParameters(response,writer);
         }
-        Season season = readSeasonValue(request.getReader());
-        if (season.isValid()){
-            sendPostSuccess(response, writer, season);
+
+        ResortRecord resortRecord = RecordCreationUtility.createResortRecord(urlParts,
+            readSeasonValue(request.getReader()));
+        if (resortRecord.isValid()){
+            sendPostSuccess(response, writer, resortRecord);
         } else {
             errorInvalidParameters(response, writer);
         }

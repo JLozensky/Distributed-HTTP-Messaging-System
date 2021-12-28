@@ -1,6 +1,6 @@
 package ReceivingProgram;
 
-import SharedLibrary.AbstractSqsInteractor;
+import SharedUtilities.AbstractSqsInteractor;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 import software.amazon.awssdk.services.sqs.model.DeleteMessageBatchRequest;

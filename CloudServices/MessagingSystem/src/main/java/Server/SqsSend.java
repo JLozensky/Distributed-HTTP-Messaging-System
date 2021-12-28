@@ -1,6 +1,6 @@
 package Server;
 
-import SharedLibrary.AbstractSqsInteractor;
+import SharedUtilities.AbstractSqsInteractor;
 import software.amazon.awssdk.services.sqs.model.SendMessageRequest;
 
 /**
